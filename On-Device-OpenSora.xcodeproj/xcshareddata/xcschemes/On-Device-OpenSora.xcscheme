@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1520"
+   LastUpgradeVersion = "1540"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES">
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "Automatic">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -14,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0CFCA4CF2BD9068D00CFA393"
-               BuildableName = "OnDevice-IOS.app"
-               BlueprintName = "OnDevice-IOS"
-               ReferencedContainer = "container:OnDevice-IOS.xcodeproj">
+               BlueprintIdentifier = "0CCFB5262C2AD669009DB83F"
+               BuildableName = "On-Device-OpenSora.app"
+               BlueprintName = "On-Device-OpenSora"
+               ReferencedContainer = "container:On-Device-OpenSora.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -43,12 +44,18 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0CFCA4CF2BD9068D00CFA393"
-            BuildableName = "OnDevice-IOS.app"
-            BlueprintName = "OnDevice-IOS"
-            ReferencedContainer = "container:OnDevice-IOS.xcodeproj">
+            BlueprintIdentifier = "0CCFB5262C2AD669009DB83F"
+            BuildableName = "On-Device-OpenSora.app"
+            BlueprintName = "On-Device-OpenSora"
+            ReferencedContainer = "container:On-Device-OpenSora.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "IDEPreferLogStreaming=YES"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -60,10 +67,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0CFCA4CF2BD9068D00CFA393"
-            BuildableName = "OnDevice-IOS.app"
-            BlueprintName = "OnDevice-IOS"
-            ReferencedContainer = "container:OnDevice-IOS.xcodeproj">
+            BlueprintIdentifier = "0CCFB5262C2AD669009DB83F"
+            BuildableName = "On-Device-OpenSora.app"
+            BlueprintName = "On-Device-OpenSora"
+            ReferencedContainer = "container:On-Device-OpenSora.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

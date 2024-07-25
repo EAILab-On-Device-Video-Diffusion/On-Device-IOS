@@ -7,79 +7,68 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C2E82662BE24F4F009EE49C /* StableDiffusion in Frameworks */ = {isa = PBXBuildFile; productRef = 0C2E82652BE24F4F009EE49C /* StableDiffusion */; };
-		0C43EE1C2BE2331B00DEE303 /* ImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C43EE1B2BE2331B00DEE303 /* ImageGenerator.swift */; };
-		0C6D2E312BE3766D00970C2A /* CoreMLModels in Resources */ = {isa = PBXBuildFile; fileRef = 0C6D2E302BE3766D00970C2A /* CoreMLModels */; };
-		0C9942902BE21FF100CDBEDF /* TextToImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C99428F2BE21FF100CDBEDF /* TextToImageView.swift */; };
-		0C9942922BE2203800CDBEDF /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9942912BE2203800CDBEDF /* PromptView.swift */; };
-		0C9942942BE2206000CDBEDF /* ImageToImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9942932BE2206000CDBEDF /* ImageToImageView.swift */; };
-		0CFCA4D42BD9068D00CFA393 /* OnDevice_IOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCA4D32BD9068D00CFA393 /* OnDevice_IOSApp.swift */; };
-		0CFCA4D62BD9068D00CFA393 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCA4D52BD9068D00CFA393 /* ContentView.swift */; };
-		0CFCA4D82BD9068E00CFA393 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFCA4D72BD9068E00CFA393 /* Assets.xcassets */; };
-		0CFCA4DB2BD9068E00CFA393 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFCA4DA2BD9068E00CFA393 /* Preview Assets.xcassets */; };
+		0CB244492C46835600A8F41A /* stdit3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0CB244482C46835600A8F41A /* stdit3.mlpackage */; };
+		0CCFB52B2C2AD669009DB83F /* On_Device_OpenSoraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFB52A2C2AD669009DB83F /* On_Device_OpenSoraApp.swift */; };
+		0CCFB52D2C2AD669009DB83F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFB52C2C2AD669009DB83F /* ContentView.swift */; };
+		0CCFB52F2C2AD66B009DB83F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */; };
+		0CCFB5322C2AD66B009DB83F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCFB5312C2AD66B009DB83F /* Preview Assets.xcassets */; };
+		0CCFB5452C2AD980009DB83F /* StditGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFB5442C2AD980009DB83F /* StditGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0C43EE1B2BE2331B00DEE303 /* ImageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGenerator.swift; sourceTree = "<group>"; };
-		0C6D2E302BE3766D00970C2A /* CoreMLModels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CoreMLModels; sourceTree = "<group>"; };
-		0C99428F2BE21FF100CDBEDF /* TextToImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToImageView.swift; sourceTree = "<group>"; };
-		0C9942912BE2203800CDBEDF /* PromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
-		0C9942932BE2206000CDBEDF /* ImageToImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageToImageView.swift; sourceTree = "<group>"; };
-		0CFCA4D02BD9068D00CFA393 /* OnDevice-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OnDevice-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0CFCA4D32BD9068D00CFA393 /* OnDevice_IOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDevice_IOSApp.swift; sourceTree = "<group>"; };
-		0CFCA4D52BD9068D00CFA393 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0CFCA4D72BD9068E00CFA393 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0CFCA4DA2BD9068E00CFA393 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0CB244482C46835600A8F41A /* stdit3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3.mlpackage; sourceTree = "<group>"; };
+		0CCFB5272C2AD669009DB83F /* On-Device-OpenSora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On-Device-OpenSora.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CCFB52A2C2AD669009DB83F /* On_Device_OpenSoraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_Device_OpenSoraApp.swift; sourceTree = "<group>"; };
+		0CCFB52C2C2AD669009DB83F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0CCFB5312C2AD66B009DB83F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0CCFB5442C2AD980009DB83F /* StditGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StditGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0CFCA4CD2BD9068D00CFA393 /* Frameworks */ = {
+		0CCFB5242C2AD669009DB83F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C2E82662BE24F4F009EE49C /* StableDiffusion in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0CFCA4C72BD9068D00CFA393 = {
+		0CCFB51E2C2AD669009DB83F = {
 			isa = PBXGroup;
 			children = (
-				0CFCA4D22BD9068D00CFA393 /* OnDevice-IOS */,
-				0CFCA4D12BD9068D00CFA393 /* Products */,
+				0CCFB5292C2AD669009DB83F /* On-Device-OpenSora */,
+				0CCFB5282C2AD669009DB83F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		0CFCA4D12BD9068D00CFA393 /* Products */ = {
+		0CCFB5282C2AD669009DB83F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0CFCA4D02BD9068D00CFA393 /* OnDevice-IOS.app */,
+				0CCFB5272C2AD669009DB83F /* On-Device-OpenSora.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0CFCA4D22BD9068D00CFA393 /* OnDevice-IOS */ = {
+		0CCFB5292C2AD669009DB83F /* On-Device-OpenSora */ = {
 			isa = PBXGroup;
 			children = (
-				0C6D2E302BE3766D00970C2A /* CoreMLModels */,
-				0CFCA4D32BD9068D00CFA393 /* OnDevice_IOSApp.swift */,
-				0CFCA4D52BD9068D00CFA393 /* ContentView.swift */,
-				0C9942932BE2206000CDBEDF /* ImageToImageView.swift */,
-				0C99428F2BE21FF100CDBEDF /* TextToImageView.swift */,
-				0C9942912BE2203800CDBEDF /* PromptView.swift */,
-				0C43EE1B2BE2331B00DEE303 /* ImageGenerator.swift */,
-				0CFCA4D72BD9068E00CFA393 /* Assets.xcassets */,
-				0CFCA4D92BD9068E00CFA393 /* Preview Content */,
+				0CCFB52A2C2AD669009DB83F /* On_Device_OpenSoraApp.swift */,
+				0CCFB52C2C2AD669009DB83F /* ContentView.swift */,
+				0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */,
+				0CB244482C46835600A8F41A /* stdit3.mlpackage */,
+				0CCFB5442C2AD980009DB83F /* StditGenerator.swift */,
+				0CCFB5302C2AD66B009DB83F /* Preview Content */,
 			);
-			path = "OnDevice-IOS";
+			path = "On-Device-OpenSora";
 			sourceTree = "<group>";
 		};
-		0CFCA4D92BD9068E00CFA393 /* Preview Content */ = {
+		0CCFB5302C2AD66B009DB83F /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				0CFCA4DA2BD9068E00CFA393 /* Preview Assets.xcassets */,
+				0CCFB5312C2AD66B009DB83F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -87,42 +76,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0CFCA4CF2BD9068D00CFA393 /* OnDevice-IOS */ = {
+		0CCFB5262C2AD669009DB83F /* On-Device-OpenSora */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0CFCA4DE2BD9068E00CFA393 /* Build configuration list for PBXNativeTarget "OnDevice-IOS" */;
+			buildConfigurationList = 0CCFB5352C2AD66B009DB83F /* Build configuration list for PBXNativeTarget "On-Device-OpenSora" */;
 			buildPhases = (
-				0CFCA4CC2BD9068D00CFA393 /* Sources */,
-				0CFCA4CD2BD9068D00CFA393 /* Frameworks */,
-				0CFCA4CE2BD9068D00CFA393 /* Resources */,
+				0CCFB5232C2AD669009DB83F /* Sources */,
+				0CCFB5242C2AD669009DB83F /* Frameworks */,
+				0CCFB5252C2AD669009DB83F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "OnDevice-IOS";
+			name = "On-Device-OpenSora";
 			packageProductDependencies = (
-				0C2E82652BE24F4F009EE49C /* StableDiffusion */,
 			);
-			productName = "OnDevice-IOS";
-			productReference = 0CFCA4D02BD9068D00CFA393 /* OnDevice-IOS.app */;
+			productName = "On-Device-NLP";
+			productReference = 0CCFB5272C2AD669009DB83F /* On-Device-OpenSora.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		0CFCA4C82BD9068D00CFA393 /* Project object */ = {
+		0CCFB51F2C2AD669009DB83F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
-					0CFCA4CF2BD9068D00CFA393 = {
-						CreatedOnToolsVersion = 15.2;
+					0CCFB5262C2AD669009DB83F = {
+						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
-			buildConfigurationList = 0CFCA4CB2BD9068D00CFA393 /* Build configuration list for PBXProject "OnDevice-IOS" */;
+			buildConfigurationList = 0CCFB5222C2AD669009DB83F /* Build configuration list for PBXProject "On-Device-OpenSora" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -130,50 +118,46 @@
 				en,
 				Base,
 			);
-			mainGroup = 0CFCA4C72BD9068D00CFA393;
+			mainGroup = 0CCFB51E2C2AD669009DB83F;
 			packageReferences = (
-				0C2E82642BE24F4F009EE49C /* XCRemoteSwiftPackageReference "ml-stable-diffusion" */,
 			);
-			productRefGroup = 0CFCA4D12BD9068D00CFA393 /* Products */;
+			productRefGroup = 0CCFB5282C2AD669009DB83F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0CFCA4CF2BD9068D00CFA393 /* OnDevice-IOS */,
+				0CCFB5262C2AD669009DB83F /* On-Device-OpenSora */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0CFCA4CE2BD9068D00CFA393 /* Resources */ = {
+		0CCFB5252C2AD669009DB83F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C6D2E312BE3766D00970C2A /* CoreMLModels in Resources */,
-				0CFCA4DB2BD9068E00CFA393 /* Preview Assets.xcassets in Resources */,
-				0CFCA4D82BD9068E00CFA393 /* Assets.xcassets in Resources */,
+				0CCFB5322C2AD66B009DB83F /* Preview Assets.xcassets in Resources */,
+				0CCFB52F2C2AD66B009DB83F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0CFCA4CC2BD9068D00CFA393 /* Sources */ = {
+		0CCFB5232C2AD669009DB83F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CFCA4D62BD9068D00CFA393 /* ContentView.swift in Sources */,
-				0C9942902BE21FF100CDBEDF /* TextToImageView.swift in Sources */,
-				0C9942942BE2206000CDBEDF /* ImageToImageView.swift in Sources */,
-				0C43EE1C2BE2331B00DEE303 /* ImageGenerator.swift in Sources */,
-				0C9942922BE2203800CDBEDF /* PromptView.swift in Sources */,
-				0CFCA4D42BD9068D00CFA393 /* OnDevice_IOSApp.swift in Sources */,
+				0CCFB52D2C2AD669009DB83F /* ContentView.swift in Sources */,
+				0CCFB52B2C2AD669009DB83F /* On_Device_OpenSoraApp.swift in Sources */,
+				0CCFB5452C2AD980009DB83F /* StditGenerator.swift in Sources */,
+				0CB244492C46835600A8F41A /* stdit3.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0CFCA4DC2BD9068E00CFA393 /* Debug */ = {
+		0CCFB5332C2AD66B009DB83F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -225,7 +209,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -236,7 +220,7 @@
 			};
 			name = Debug;
 		};
-		0CFCA4DD2BD9068E00CFA393 /* Release */ = {
+		0CCFB5342C2AD66B009DB83F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -282,7 +266,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -292,119 +276,86 @@
 			};
 			name = Release;
 		};
-		0CFCA4DF2BD9068E00CFA393 /* Debug */ = {
+		0CCFB5362C2AD66B009DB83F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"OnDevice-IOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"On-Device-OpenSora/Preview Content\"";
 				DEVELOPMENT_TEAM = DHGYXG73DB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "On-Device";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Custom.OnDevice-IOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.EAI.On-Device-OpenSora";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		0CFCA4E02BD9068E00CFA393 /* Release */ = {
+		0CCFB5372C2AD66B009DB83F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"OnDevice-IOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"On-Device-OpenSora/Preview Content\"";
 				DEVELOPMENT_TEAM = DHGYXG73DB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "On-Device";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Custom.OnDevice-IOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.EAI.On-Device-OpenSora";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0CFCA4CB2BD9068D00CFA393 /* Build configuration list for PBXProject "OnDevice-IOS" */ = {
+		0CCFB5222C2AD669009DB83F /* Build configuration list for PBXProject "On-Device-OpenSora" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0CFCA4DC2BD9068E00CFA393 /* Debug */,
-				0CFCA4DD2BD9068E00CFA393 /* Release */,
+				0CCFB5332C2AD66B009DB83F /* Debug */,
+				0CCFB5342C2AD66B009DB83F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0CFCA4DE2BD9068E00CFA393 /* Build configuration list for PBXNativeTarget "OnDevice-IOS" */ = {
+		0CCFB5352C2AD66B009DB83F /* Build configuration list for PBXNativeTarget "On-Device-OpenSora" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0CFCA4DF2BD9068E00CFA393 /* Debug */,
-				0CFCA4E02BD9068E00CFA393 /* Release */,
+				0CCFB5362C2AD66B009DB83F /* Debug */,
+				0CCFB5372C2AD66B009DB83F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		0C2E82642BE24F4F009EE49C /* XCRemoteSwiftPackageReference "ml-stable-diffusion" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/ml-stable-diffusion";
-			requirement = {
-				kind = exactVersion;
-				version = 1.1.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		0C2E82652BE24F4F009EE49C /* StableDiffusion */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0C2E82642BE24F4F009EE49C /* XCRemoteSwiftPackageReference "ml-stable-diffusion" */;
-			productName = StableDiffusion;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 0CFCA4C82BD9068D00CFA393 /* Project object */;
+	rootObject = 0CCFB51F2C2AD669009DB83F /* Project object */;
 }
