@@ -15,9 +15,8 @@ final class StditGenerator: ObservableObject {
     Task.detached(priority: .high) {
       do {
         let config = MLModelConfiguration()
-        config.computeUnits = .cpuOnly
+        config.computeUnits = .cpuAndGPU
         
-        print("Start model processing...")
         let x = try MLMultiArray(shape: [2, 4, 16, 3, 3], dataType: .float32)
         let timestep = try MLMultiArray(shape: [2], dataType: .float32)
         let y = try MLMultiArray(shape: [2, 1, 200, 4096], dataType: .float32)
@@ -44,20 +43,28 @@ final class StditGenerator: ObservableObject {
         for i in 0..<y.count {
           y[i] = NSNumber(value: randomFloat(mean: Float32(mean), variance: Float32(variance)))
         }
-
+        print("Start model processing...")
+        let startLoadTime = DispatchTime.now()
         if let vmodel = try? stdit3(configuration: config) {
+          let endLoadTime = DispatchTime.now()
+          let elapsedLoadTime = endLoadTime.uptimeNanoseconds - startLoadTime.uptimeNanoseconds
+          print(Double(elapsedLoadTime) / 1000000000)
           print("Start Stdit")
           let vinput = stdit3Input(input: x, timestep: timestep, y: y)
-          let vresult = try await vmodel.prediction(input: vinput).var_14604
+          
+          let startPredictTime = DispatchTime.now()
+          let vresult = try await vmodel.prediction(input: vinput).var_14828
+          let endPredictTime = DispatchTime.now()
+          let elapsedPredictTime = endPredictTime.uptimeNanoseconds - startLoadTime.uptimeNanoseconds
+          print(Double(elapsedPredictTime) / 1000000000)
           let c = vresult.count
-          print(c)
           
           var out = [Float]()
           print(vresult[10])
           for i in 0..<c {
             out.append(vresult[i].floatValue)
           }
-          print(out)
+        
           print("Done stdit")
         }
       } catch {
