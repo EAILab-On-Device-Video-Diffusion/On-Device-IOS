@@ -45,7 +45,6 @@ public struct TextEncoderT5: TextEncoderT5Model {
       // Tokenize, padding to the expected length
       var tokens = tokenizer.tokenize(text: text)
       var ids = tokens.map { tokenizer.convertTokenToId($0) ?? 0 }
-
       // Truncate if necessary
       if ids.count > inputLength {
           tokens = tokens.dropLast(tokens.count - inputLength)
@@ -88,6 +87,7 @@ public struct TextEncoderT5: TextEncoderT5Model {
                        attentionMaskName: MLMultiArray(maskArray)])
 
       let result = try model.perform { model in
+        // To do: 쪼개진 T5로 돌아가는 pipeline만들기
           try model.prediction(from: inputFeatures)
       }
 

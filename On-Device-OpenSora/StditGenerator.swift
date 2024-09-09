@@ -20,8 +20,7 @@ final class StditGenerator: ObservableObject {
         let x = try MLMultiArray(shape: [2, 4, 16, 3, 3], dataType: .float32)
         let timestep = try MLMultiArray(shape: [2], dataType: .float32)
         let y = try MLMultiArray(shape: [2, 1, 200, 4096], dataType: .float32)
-        
-
+                
         func randomFloat(mean: Float32, variance: Float32) -> Float32 {
             let u1 = Float32.random(in: 0...1)
             let u2 = Float32.random(in: 0...1)
@@ -43,6 +42,21 @@ final class StditGenerator: ObservableObject {
         for i in 0..<y.count {
           y[i] = NSNumber(value: randomFloat(mean: Float32(mean), variance: Float32(variance)))
         }
+        if let modelPath = Bundle.main.path(forResource: "stdit3", ofType: "mlmodelc") {
+            let testmodelURL = URL(filePath: modelPath)
+            do {
+              let testModel = try MLModel(contentsOf: testmodelURL, configuration: config)
+              print(testModel.modelDescription.inputDescriptionsByName)
+              print("No Error")
+            } catch {
+              print("Error")
+            }
+            print("MLPackage Path: \(modelPath)")
+        } else {
+            print("MLPackage not found")
+        }
+        
+        
         print("Start model processing...")
         let startLoadTime = DispatchTime.now()
         if let vmodel = try? stdit3(configuration: config) {

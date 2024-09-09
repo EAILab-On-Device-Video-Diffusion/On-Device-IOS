@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var stditGenerator = StditGenerator()
+    
     var body: some View {
         VStack {
           Button(action: generate) {
@@ -19,8 +19,13 @@ struct ContentView: View {
     }
   
   func generate() {
-      print("Click")
-      stditGenerator.modelProcessing()
+      do {
+          let soraPipeline = try SoraPipeline(resourcesAt: Bundle.main.bundleURL)
+          print("Click")
+          soraPipeline.sample(prompt: "Please Test T5...")
+      } catch {
+          print("Error: Can't initiallize SoraPipeline")
+      }
     }
 }
 
