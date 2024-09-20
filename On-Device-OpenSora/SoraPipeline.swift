@@ -18,7 +18,6 @@ struct ResourceURLs {
     public let dataT5URL: URL
     public let embedURL: URL
     public let finalNormURL: URL
-    public let dropoutURL: URL
     // To do: change the file format to mlpackage
     public init(resourcesAt baseURL: URL) {
         stditURL = baseURL.appending(path: "stdit3.mlmodelc")
@@ -27,7 +26,6 @@ struct ResourceURLs {
         dataT5URL = baseURL.appending(path: "tokenizer.json")
         embedURL = baseURL.appending(path: "t5embed-tokens.mlmodelc")
         finalNormURL = baseURL.appending(path: "t5final-layer-norm.mlmodelc")
-        dropoutURL = baseURL.appending(path: "t5dropout.mlmodelc")
     }
 }
 
@@ -46,21 +44,19 @@ public struct SoraPipeline {
        FileManager.default.fileExists(atPath: urls.dataT5URL.path),
        FileManager.default.fileExists(atPath: urls.embedURL.path),
        FileManager.default.fileExists(atPath: urls.finalNormURL.path),
-       FileManager.default.fileExists(atPath: urls.dropoutURL.path),
        FileManager.default.fileExists(atPath: urls.configT5URL.path)
     {
       let config = MLModelConfiguration()
-      config.computeUnits = .cpuOnly // 일단 기본으로는 cpu로만.
+      config.computeUnits = .all
       let tokenizerT5 = try PreTrainedTokenizer(tokenizerConfig: Config(fileURL: urls.configT5URL), tokenizerData: Config(fileURL: urls.dataT5URL))
       let embedLayer = ManagedMLModel(modelURL: urls.embedURL, config: config)
-      let dropoutLayer = ManagedMLModel(modelURL: urls.dropoutURL, config: config)
       let finalNormLayer = ManagedMLModel(modelURL: urls.finalNormURL, config: config)
       var DivT5s: [ManagedMLModel] = []
       for i in 0...23 {
         let T5BlockURL = baseURL.appending(path: "t5block-layer\(i).mlmodelc")
         DivT5s.append(ManagedMLModel(modelURL: T5BlockURL, config: config))
       }
-      TextEncodingT5 = TextEncoding(tokenizer: tokenizerT5, DivT5s: DivT5s, embed: embedLayer, dropout: dropoutLayer, finalNorm: finalNormLayer)
+      TextEncodingT5 = TextEncoding(tokenizer: tokenizerT5, DivT5s: DivT5s, embed: embedLayer, finalNorm: finalNormLayer)
     } else {
       TextEncodingT5 = nil
     }

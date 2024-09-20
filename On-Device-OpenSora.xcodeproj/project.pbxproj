@@ -7,37 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C488E3E2C8EB1D00035F112 /* t5final-layer-norm.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C488E3B2C8EB1D00035F112 /* t5final-layer-norm.mlpackage */; };
-		0C488E3F2C8EB1D00035F112 /* t5dropout.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C488E3C2C8EB1D00035F112 /* t5dropout.mlpackage */; };
-		0C488E402C8EB1D00035F112 /* t5embed-tokens.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C488E3D2C8EB1D00035F112 /* t5embed-tokens.mlpackage */; };
-		0C4CBA032C8055A400B37757 /* t5block-layer0.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9EA2C8055A400B37757 /* t5block-layer0.mlpackage */; };
-		0C4CBA042C8055A400B37757 /* t5block-layer1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9EB2C8055A400B37757 /* t5block-layer1.mlpackage */; };
-		0C4CBA052C8055A400B37757 /* t5block-layer2.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9EC2C8055A400B37757 /* t5block-layer2.mlpackage */; };
-		0C4CBA062C8055A400B37757 /* t5block-layer3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9ED2C8055A400B37757 /* t5block-layer3.mlpackage */; };
-		0C4CBA072C8055A400B37757 /* t5block-layer4.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9EE2C8055A400B37757 /* t5block-layer4.mlpackage */; };
-		0C4CBA082C8055A400B37757 /* t5block-layer5.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9EF2C8055A400B37757 /* t5block-layer5.mlpackage */; };
-		0C4CBA092C8055A400B37757 /* t5block-layer6.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9F02C8055A400B37757 /* t5block-layer6.mlpackage */; };
-		0C4CBA0A2C8055A400B37757 /* t5block-layer7.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9F12C8055A400B37757 /* t5block-layer7.mlpackage */; };
-		0C4CBA0B2C8055A400B37757 /* t5block-layer8.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9F22C8055A400B37757 /* t5block-layer8.mlpackage */; };
-		0C4CBA0C2C8055A400B37757 /* t5block-layer9.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9F32C8055A400B37757 /* t5block-layer9.mlpackage */; };
-		0C4CBA0D2C8055A400B37757 /* t5block-layer10.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9F42C8055A400B37757 /* t5block-layer10.mlpackage */; };
-		0C4CBA0E2C8055A400B37757 /* t5block-layer11.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9F52C8055A400B37757 /* t5block-layer11.mlpackage */; };
-		0C4CBA0F2C8055A400B37757 /* t5block-layer12.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9F62C8055A400B37757 /* t5block-layer12.mlpackage */; };
-		0C4CBA102C8055A400B37757 /* t5block-layer13.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9F72C8055A400B37757 /* t5block-layer13.mlpackage */; };
-		0C4CBA112C8055A400B37757 /* t5block-layer14.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9F82C8055A400B37757 /* t5block-layer14.mlpackage */; };
-		0C4CBA122C8055A400B37757 /* t5block-layer15.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9F92C8055A400B37757 /* t5block-layer15.mlpackage */; };
-		0C4CBA132C8055A400B37757 /* t5block-layer16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9FA2C8055A400B37757 /* t5block-layer16.mlpackage */; };
-		0C4CBA142C8055A400B37757 /* t5block-layer17.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9FB2C8055A400B37757 /* t5block-layer17.mlpackage */; };
-		0C4CBA152C8055A400B37757 /* t5block-layer18.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9FC2C8055A400B37757 /* t5block-layer18.mlpackage */; };
-		0C4CBA162C8055A400B37757 /* t5block-layer19.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9FD2C8055A400B37757 /* t5block-layer19.mlpackage */; };
-		0C4CBA172C8055A400B37757 /* t5block-layer20.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9FE2C8055A400B37757 /* t5block-layer20.mlpackage */; };
-		0C4CBA182C8055A400B37757 /* t5block-layer21.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB9FF2C8055A400B37757 /* t5block-layer21.mlpackage */; };
-		0C4CBA192C8055A400B37757 /* t5block-layer22.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CBA002C8055A400B37757 /* t5block-layer22.mlpackage */; };
-		0C4CBA1A2C8055A400B37757 /* t5block-layer23.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CBA012C8055A400B37757 /* t5block-layer23.mlpackage */; };
 		0C4CBA1D2C8059AC00B37757 /* tokenizer_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */; };
 		0C4CBA1E2C8059AC00B37757 /* tokenizer.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C4CBA1C2C8059AC00B37757 /* tokenizer.json */; };
 		0C4CBA202C805F5D00B37757 /* TextEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CBA1F2C805F5D00B37757 /* TextEncoding.swift */; };
 		0C4CBA282C89640E00B37757 /* T5Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CBA272C89640E00B37757 /* T5Block.swift */; };
+		0C5EA2EB2C98433000CAABE5 /* t5block-layer4.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D12C98432E00CAABE5 /* t5block-layer4.mlpackage */; };
+		0C5EA2EC2C98433000CAABE5 /* t5block-layer8.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D22C98432E00CAABE5 /* t5block-layer8.mlpackage */; };
+		0C5EA2ED2C98433000CAABE5 /* t5block-layer13.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D32C98432E00CAABE5 /* t5block-layer13.mlpackage */; };
+		0C5EA2EE2C98433000CAABE5 /* t5block-layer12.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D42C98432E00CAABE5 /* t5block-layer12.mlpackage */; };
+		0C5EA2EF2C98433000CAABE5 /* t5embed-tokens.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D52C98432E00CAABE5 /* t5embed-tokens.mlpackage */; };
+		0C5EA2F02C98433000CAABE5 /* t5block-layer20.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D62C98432E00CAABE5 /* t5block-layer20.mlpackage */; };
+		0C5EA2F12C98433000CAABE5 /* t5block-layer14.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D72C98432E00CAABE5 /* t5block-layer14.mlpackage */; };
+		0C5EA2F22C98433000CAABE5 /* t5block-layer5.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D82C98432E00CAABE5 /* t5block-layer5.mlpackage */; };
+		0C5EA2F32C98433000CAABE5 /* t5block-layer6.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D92C98432E00CAABE5 /* t5block-layer6.mlpackage */; };
+		0C5EA2F42C98433000CAABE5 /* t5block-layer2.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2DA2C98432E00CAABE5 /* t5block-layer2.mlpackage */; };
+		0C5EA2F52C98433000CAABE5 /* t5block-layer0.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2DB2C98432E00CAABE5 /* t5block-layer0.mlpackage */; };
+		0C5EA2F62C98433000CAABE5 /* t5block-layer19.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2DC2C98432E00CAABE5 /* t5block-layer19.mlpackage */; };
+		0C5EA2F72C98433000CAABE5 /* t5block-layer1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2DD2C98432F00CAABE5 /* t5block-layer1.mlpackage */; };
+		0C5EA2F82C98433000CAABE5 /* t5block-layer21.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2DE2C98432F00CAABE5 /* t5block-layer21.mlpackage */; };
+		0C5EA2F92C98433000CAABE5 /* t5block-layer15.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2DF2C98432F00CAABE5 /* t5block-layer15.mlpackage */; };
+		0C5EA2FA2C98433000CAABE5 /* t5block-layer10.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E02C98432F00CAABE5 /* t5block-layer10.mlpackage */; };
+		0C5EA2FB2C98433000CAABE5 /* t5block-layer18.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E12C98432F00CAABE5 /* t5block-layer18.mlpackage */; };
+		0C5EA2FC2C98433000CAABE5 /* t5block-layer3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E22C98432F00CAABE5 /* t5block-layer3.mlpackage */; };
+		0C5EA2FD2C98433000CAABE5 /* t5block-layer7.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E32C98432F00CAABE5 /* t5block-layer7.mlpackage */; };
+		0C5EA2FE2C98433000CAABE5 /* t5block-layer11.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E42C98432F00CAABE5 /* t5block-layer11.mlpackage */; };
+		0C5EA2FF2C98433000CAABE5 /* t5block-layer17.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E52C98432F00CAABE5 /* t5block-layer17.mlpackage */; };
+		0C5EA3002C98433000CAABE5 /* t5block-layer9.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E62C98432F00CAABE5 /* t5block-layer9.mlpackage */; };
+		0C5EA3012C98433000CAABE5 /* t5block-layer23.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E72C98432F00CAABE5 /* t5block-layer23.mlpackage */; };
+		0C5EA3022C98433000CAABE5 /* t5final-layer-norm.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E82C98433000CAABE5 /* t5final-layer-norm.mlpackage */; };
+		0C5EA3032C98433000CAABE5 /* t5block-layer16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E92C98433000CAABE5 /* t5block-layer16.mlpackage */; };
+		0C5EA3042C98433000CAABE5 /* t5block-layer22.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2EA2C98433000CAABE5 /* t5block-layer22.mlpackage */; };
 		0C76050B2C5B67CF005BCF3B /* stdit3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C76050A2C5B67CF005BCF3B /* stdit3.mlpackage */; };
 		0CCD49F12C6C4760005D7F77 /* ManagedMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F02C6C4760005D7F77 /* ManagedMLModel.swift */; };
 		0CCD49F32C6C54CA005D7F77 /* STDit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F22C6C54CA005D7F77 /* STDit.swift */; };
@@ -56,37 +55,36 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0C488E3B2C8EB1D00035F112 /* t5final-layer-norm.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5final-layer-norm.mlpackage"; sourceTree = "<group>"; };
-		0C488E3C2C8EB1D00035F112 /* t5dropout.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = t5dropout.mlpackage; sourceTree = "<group>"; };
-		0C488E3D2C8EB1D00035F112 /* t5embed-tokens.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5embed-tokens.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9EA2C8055A400B37757 /* t5block-layer0.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer0.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9EB2C8055A400B37757 /* t5block-layer1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer1.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9EC2C8055A400B37757 /* t5block-layer2.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer2.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9ED2C8055A400B37757 /* t5block-layer3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer3.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9EE2C8055A400B37757 /* t5block-layer4.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer4.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9EF2C8055A400B37757 /* t5block-layer5.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer5.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9F02C8055A400B37757 /* t5block-layer6.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer6.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9F12C8055A400B37757 /* t5block-layer7.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer7.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9F22C8055A400B37757 /* t5block-layer8.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer8.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9F32C8055A400B37757 /* t5block-layer9.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer9.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9F42C8055A400B37757 /* t5block-layer10.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer10.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9F52C8055A400B37757 /* t5block-layer11.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer11.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9F62C8055A400B37757 /* t5block-layer12.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer12.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9F72C8055A400B37757 /* t5block-layer13.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer13.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9F82C8055A400B37757 /* t5block-layer14.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer14.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9F92C8055A400B37757 /* t5block-layer15.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer15.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9FA2C8055A400B37757 /* t5block-layer16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer16.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9FB2C8055A400B37757 /* t5block-layer17.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer17.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9FC2C8055A400B37757 /* t5block-layer18.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer18.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9FD2C8055A400B37757 /* t5block-layer19.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer19.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9FE2C8055A400B37757 /* t5block-layer20.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer20.mlpackage"; sourceTree = "<group>"; };
-		0C4CB9FF2C8055A400B37757 /* t5block-layer21.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer21.mlpackage"; sourceTree = "<group>"; };
-		0C4CBA002C8055A400B37757 /* t5block-layer22.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer22.mlpackage"; sourceTree = "<group>"; };
-		0C4CBA012C8055A400B37757 /* t5block-layer23.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer23.mlpackage"; sourceTree = "<group>"; };
 		0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokenizer_config.json; sourceTree = "<group>"; };
 		0C4CBA1C2C8059AC00B37757 /* tokenizer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokenizer.json; sourceTree = "<group>"; };
 		0C4CBA1F2C805F5D00B37757 /* TextEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEncoding.swift; sourceTree = "<group>"; };
 		0C4CBA272C89640E00B37757 /* T5Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T5Block.swift; sourceTree = "<group>"; };
+		0C5EA2D12C98432E00CAABE5 /* t5block-layer4.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer4.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2D22C98432E00CAABE5 /* t5block-layer8.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer8.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2D32C98432E00CAABE5 /* t5block-layer13.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer13.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2D42C98432E00CAABE5 /* t5block-layer12.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer12.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2D52C98432E00CAABE5 /* t5embed-tokens.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5embed-tokens.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2D62C98432E00CAABE5 /* t5block-layer20.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer20.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2D72C98432E00CAABE5 /* t5block-layer14.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer14.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2D82C98432E00CAABE5 /* t5block-layer5.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer5.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2D92C98432E00CAABE5 /* t5block-layer6.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer6.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2DA2C98432E00CAABE5 /* t5block-layer2.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer2.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2DB2C98432E00CAABE5 /* t5block-layer0.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer0.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2DC2C98432E00CAABE5 /* t5block-layer19.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer19.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2DD2C98432F00CAABE5 /* t5block-layer1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer1.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2DE2C98432F00CAABE5 /* t5block-layer21.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer21.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2DF2C98432F00CAABE5 /* t5block-layer15.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer15.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2E02C98432F00CAABE5 /* t5block-layer10.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer10.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2E12C98432F00CAABE5 /* t5block-layer18.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer18.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2E22C98432F00CAABE5 /* t5block-layer3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer3.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2E32C98432F00CAABE5 /* t5block-layer7.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer7.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2E42C98432F00CAABE5 /* t5block-layer11.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer11.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2E52C98432F00CAABE5 /* t5block-layer17.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer17.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2E62C98432F00CAABE5 /* t5block-layer9.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer9.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2E72C98432F00CAABE5 /* t5block-layer23.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer23.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2E82C98433000CAABE5 /* t5final-layer-norm.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5final-layer-norm.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2E92C98433000CAABE5 /* t5block-layer16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer16.mlpackage"; sourceTree = "<group>"; };
+		0C5EA2EA2C98433000CAABE5 /* t5block-layer22.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer22.mlpackage"; sourceTree = "<group>"; };
 		0C76050A2C5B67CF005BCF3B /* stdit3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3.mlpackage; sourceTree = "<group>"; };
 		0CCD49F02C6C4760005D7F77 /* ManagedMLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMLModel.swift; sourceTree = "<group>"; };
 		0CCD49F22C6C54CA005D7F77 /* STDit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STDit.swift; sourceTree = "<group>"; };
@@ -119,33 +117,32 @@
 		0C4CBA022C8055A400B37757 /* T5_div */ = {
 			isa = PBXGroup;
 			children = (
-				0C488E3C2C8EB1D00035F112 /* t5dropout.mlpackage */,
-				0C488E3D2C8EB1D00035F112 /* t5embed-tokens.mlpackage */,
-				0C488E3B2C8EB1D00035F112 /* t5final-layer-norm.mlpackage */,
-				0C4CB9EA2C8055A400B37757 /* t5block-layer0.mlpackage */,
-				0C4CB9EB2C8055A400B37757 /* t5block-layer1.mlpackage */,
-				0C4CB9EC2C8055A400B37757 /* t5block-layer2.mlpackage */,
-				0C4CB9ED2C8055A400B37757 /* t5block-layer3.mlpackage */,
-				0C4CB9EE2C8055A400B37757 /* t5block-layer4.mlpackage */,
-				0C4CB9EF2C8055A400B37757 /* t5block-layer5.mlpackage */,
-				0C4CB9F02C8055A400B37757 /* t5block-layer6.mlpackage */,
-				0C4CB9F12C8055A400B37757 /* t5block-layer7.mlpackage */,
-				0C4CB9F22C8055A400B37757 /* t5block-layer8.mlpackage */,
-				0C4CB9F32C8055A400B37757 /* t5block-layer9.mlpackage */,
-				0C4CB9F42C8055A400B37757 /* t5block-layer10.mlpackage */,
-				0C4CB9F52C8055A400B37757 /* t5block-layer11.mlpackage */,
-				0C4CB9F62C8055A400B37757 /* t5block-layer12.mlpackage */,
-				0C4CB9F72C8055A400B37757 /* t5block-layer13.mlpackage */,
-				0C4CB9F82C8055A400B37757 /* t5block-layer14.mlpackage */,
-				0C4CB9F92C8055A400B37757 /* t5block-layer15.mlpackage */,
-				0C4CB9FA2C8055A400B37757 /* t5block-layer16.mlpackage */,
-				0C4CB9FB2C8055A400B37757 /* t5block-layer17.mlpackage */,
-				0C4CB9FC2C8055A400B37757 /* t5block-layer18.mlpackage */,
-				0C4CB9FD2C8055A400B37757 /* t5block-layer19.mlpackage */,
-				0C4CB9FE2C8055A400B37757 /* t5block-layer20.mlpackage */,
-				0C4CB9FF2C8055A400B37757 /* t5block-layer21.mlpackage */,
-				0C4CBA002C8055A400B37757 /* t5block-layer22.mlpackage */,
-				0C4CBA012C8055A400B37757 /* t5block-layer23.mlpackage */,
+				0C5EA2DB2C98432E00CAABE5 /* t5block-layer0.mlpackage */,
+				0C5EA2DD2C98432F00CAABE5 /* t5block-layer1.mlpackage */,
+				0C5EA2DA2C98432E00CAABE5 /* t5block-layer2.mlpackage */,
+				0C5EA2E22C98432F00CAABE5 /* t5block-layer3.mlpackage */,
+				0C5EA2D12C98432E00CAABE5 /* t5block-layer4.mlpackage */,
+				0C5EA2D82C98432E00CAABE5 /* t5block-layer5.mlpackage */,
+				0C5EA2D92C98432E00CAABE5 /* t5block-layer6.mlpackage */,
+				0C5EA2E32C98432F00CAABE5 /* t5block-layer7.mlpackage */,
+				0C5EA2D22C98432E00CAABE5 /* t5block-layer8.mlpackage */,
+				0C5EA2E62C98432F00CAABE5 /* t5block-layer9.mlpackage */,
+				0C5EA2E02C98432F00CAABE5 /* t5block-layer10.mlpackage */,
+				0C5EA2E42C98432F00CAABE5 /* t5block-layer11.mlpackage */,
+				0C5EA2D42C98432E00CAABE5 /* t5block-layer12.mlpackage */,
+				0C5EA2D32C98432E00CAABE5 /* t5block-layer13.mlpackage */,
+				0C5EA2D72C98432E00CAABE5 /* t5block-layer14.mlpackage */,
+				0C5EA2DF2C98432F00CAABE5 /* t5block-layer15.mlpackage */,
+				0C5EA2E92C98433000CAABE5 /* t5block-layer16.mlpackage */,
+				0C5EA2E52C98432F00CAABE5 /* t5block-layer17.mlpackage */,
+				0C5EA2E12C98432F00CAABE5 /* t5block-layer18.mlpackage */,
+				0C5EA2DC2C98432E00CAABE5 /* t5block-layer19.mlpackage */,
+				0C5EA2D62C98432E00CAABE5 /* t5block-layer20.mlpackage */,
+				0C5EA2DE2C98432F00CAABE5 /* t5block-layer21.mlpackage */,
+				0C5EA2EA2C98433000CAABE5 /* t5block-layer22.mlpackage */,
+				0C5EA2E72C98432F00CAABE5 /* t5block-layer23.mlpackage */,
+				0C5EA2D52C98432E00CAABE5 /* t5embed-tokens.mlpackage */,
+				0C5EA2E82C98433000CAABE5 /* t5final-layer-norm.mlpackage */,
 			);
 			path = T5_div;
 			sourceTree = "<group>";
@@ -278,47 +275,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C4CBA142C8055A400B37757 /* t5block-layer17.mlpackage in Sources */,
-				0C4CBA032C8055A400B37757 /* t5block-layer0.mlpackage in Sources */,
-				0C4CBA0B2C8055A400B37757 /* t5block-layer8.mlpackage in Sources */,
+				0C5EA2FF2C98433000CAABE5 /* t5block-layer17.mlpackage in Sources */,
+				0C5EA2F62C98433000CAABE5 /* t5block-layer19.mlpackage in Sources */,
+				0C5EA3002C98433000CAABE5 /* t5block-layer9.mlpackage in Sources */,
 				0CCD49FD2C6C744F005D7F77 /* Scheduler.swift in Sources */,
-				0C4CBA052C8055A400B37757 /* t5block-layer2.mlpackage in Sources */,
-				0C4CBA132C8055A400B37757 /* t5block-layer16.mlpackage in Sources */,
+				0C5EA2EC2C98433000CAABE5 /* t5block-layer8.mlpackage in Sources */,
+				0C5EA3022C98433000CAABE5 /* t5final-layer-norm.mlpackage in Sources */,
+				0C5EA2EB2C98433000CAABE5 /* t5block-layer4.mlpackage in Sources */,
+				0C5EA2EE2C98433000CAABE5 /* t5block-layer12.mlpackage in Sources */,
+				0C5EA2F02C98433000CAABE5 /* t5block-layer20.mlpackage in Sources */,
 				0CCD49F92C6C59DA005D7F77 /* TextEncoderT5.swift in Sources */,
-				0C488E3E2C8EB1D00035F112 /* t5final-layer-norm.mlpackage in Sources */,
 				0CCFB52D2C2AD669009DB83F /* ContentView.swift in Sources */,
 				0CCFB52B2C2AD669009DB83F /* On_Device_OpenSoraApp.swift in Sources */,
-				0C4CBA182C8055A400B37757 /* t5block-layer21.mlpackage in Sources */,
 				0C76050B2C5B67CF005BCF3B /* stdit3.mlpackage in Sources */,
+				0C5EA2FE2C98433000CAABE5 /* t5block-layer11.mlpackage in Sources */,
+				0C5EA2FD2C98433000CAABE5 /* t5block-layer7.mlpackage in Sources */,
+				0C5EA2F12C98433000CAABE5 /* t5block-layer14.mlpackage in Sources */,
 				0CCD49F72C6C5936005D7F77 /* ResourceManaging.swift in Sources */,
-				0C4CBA172C8055A400B37757 /* t5block-layer20.mlpackage in Sources */,
-				0C4CBA092C8055A400B37757 /* t5block-layer6.mlpackage in Sources */,
-				0C4CBA102C8055A400B37757 /* t5block-layer13.mlpackage in Sources */,
+				0C5EA2F42C98433000CAABE5 /* t5block-layer2.mlpackage in Sources */,
 				0CCD49F12C6C4760005D7F77 /* ManagedMLModel.swift in Sources */,
 				0CCD49F52C6C58A6005D7F77 /* VAEDecoder.swift in Sources */,
-				0C4CBA152C8055A400B37757 /* t5block-layer18.mlpackage in Sources */,
+				0C5EA2FB2C98433000CAABE5 /* t5block-layer18.mlpackage in Sources */,
+				0C5EA2FA2C98433000CAABE5 /* t5block-layer10.mlpackage in Sources */,
 				0C4CBA202C805F5D00B37757 /* TextEncoding.swift in Sources */,
-				0C4CBA0E2C8055A400B37757 /* t5block-layer11.mlpackage in Sources */,
-				0C4CBA0C2C8055A400B37757 /* t5block-layer9.mlpackage in Sources */,
+				0C5EA2F22C98433000CAABE5 /* t5block-layer5.mlpackage in Sources */,
+				0C5EA2F82C98433000CAABE5 /* t5block-layer21.mlpackage in Sources */,
 				0CCD49FF2C6C84FC005D7F77 /* T5Tokenizer.swift in Sources */,
-				0C4CBA0F2C8055A400B37757 /* t5block-layer12.mlpackage in Sources */,
-				0C4CBA162C8055A400B37757 /* t5block-layer19.mlpackage in Sources */,
-				0C4CBA0A2C8055A400B37757 /* t5block-layer7.mlpackage in Sources */,
-				0C4CBA042C8055A400B37757 /* t5block-layer1.mlpackage in Sources */,
-				0C4CBA062C8055A400B37757 /* t5block-layer3.mlpackage in Sources */,
-				0C488E3F2C8EB1D00035F112 /* t5dropout.mlpackage in Sources */,
+				0C5EA2F32C98433000CAABE5 /* t5block-layer6.mlpackage in Sources */,
+				0C5EA2F72C98433000CAABE5 /* t5block-layer1.mlpackage in Sources */,
+				0C5EA2F52C98433000CAABE5 /* t5block-layer0.mlpackage in Sources */,
+				0C5EA2ED2C98433000CAABE5 /* t5block-layer13.mlpackage in Sources */,
+				0C5EA3042C98433000CAABE5 /* t5block-layer22.mlpackage in Sources */,
+				0C5EA2EF2C98433000CAABE5 /* t5embed-tokens.mlpackage in Sources */,
 				0C4CBA282C89640E00B37757 /* T5Block.swift in Sources */,
-				0C4CBA122C8055A400B37757 /* t5block-layer15.mlpackage in Sources */,
-				0C4CBA1A2C8055A400B37757 /* t5block-layer23.mlpackage in Sources */,
 				0CCFB5452C2AD980009DB83F /* StditGenerator.swift in Sources */,
-				0C488E402C8EB1D00035F112 /* t5embed-tokens.mlpackage in Sources */,
-				0C4CBA082C8055A400B37757 /* t5block-layer5.mlpackage in Sources */,
+				0C5EA2FC2C98433000CAABE5 /* t5block-layer3.mlpackage in Sources */,
+				0C5EA2F92C98433000CAABE5 /* t5block-layer15.mlpackage in Sources */,
+				0C5EA3012C98433000CAABE5 /* t5block-layer23.mlpackage in Sources */,
+				0C5EA3032C98433000CAABE5 /* t5block-layer16.mlpackage in Sources */,
 				0CCD49FB2C6C5A1E005D7F77 /* SoraPipeline.swift in Sources */,
-				0C4CBA192C8055A400B37757 /* t5block-layer22.mlpackage in Sources */,
 				0CCD49F32C6C54CA005D7F77 /* STDit.swift in Sources */,
-				0C4CBA112C8055A400B37757 /* t5block-layer14.mlpackage in Sources */,
-				0C4CBA0D2C8055A400B37757 /* t5block-layer10.mlpackage in Sources */,
-				0C4CBA072C8055A400B37757 /* t5block-layer4.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
