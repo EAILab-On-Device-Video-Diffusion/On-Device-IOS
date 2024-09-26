@@ -52,6 +52,8 @@
 		0CCFB52F2C2AD66B009DB83F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */; };
 		0CCFB5322C2AD66B009DB83F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCFB5312C2AD66B009DB83F /* Preview Assets.xcassets */; };
 		0CCFB5452C2AD980009DB83F /* StditGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFB5442C2AD980009DB83F /* StditGenerator.swift */; };
+		91DAA8B32CA52D5100455E52 /* vae.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 91DAA8B22CA52D5100455E52 /* vae.mlpackage */; };
+		91DAA8B52CA52D5900455E52 /* T5Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DAA8B42CA52D5900455E52 /* T5Tokenizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,8 @@
 		0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CCFB5312C2AD66B009DB83F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0CCFB5442C2AD980009DB83F /* StditGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StditGenerator.swift; sourceTree = "<group>"; };
+		91DAA8B22CA52D5100455E52 /* vae.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae.mlpackage; sourceTree = "<group>"; };
+		91DAA8B42CA52D5900455E52 /* T5Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T5Tokenizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +184,9 @@
 				0CCD49F22C6C54CA005D7F77 /* STDit.swift */,
 				0CCD49F42C6C58A6005D7F77 /* VAEDecoder.swift */,
 				0CCD49F62C6C5936005D7F77 /* ResourceManaging.swift */,
+				91DAA8B22CA52D5100455E52 /* vae.mlpackage */,
 				0CCD49F82C6C59DA005D7F77 /* TextEncoderT5.swift */,
+				91DAA8B42CA52D5900455E52 /* T5Tokenizer.swift */,
 				0C4CBA1F2C805F5D00B37757 /* TextEncoding.swift */,
 				0CCD49FA2C6C5A1E005D7F77 /* SoraPipeline.swift */,
 				0C4CBA272C89640E00B37757 /* T5Block.swift */,
@@ -277,6 +283,7 @@
 			files = (
 				0C5EA2FF2C98433000CAABE5 /* t5block-layer17.mlpackage in Sources */,
 				0C5EA2F62C98433000CAABE5 /* t5block-layer19.mlpackage in Sources */,
+				91DAA8B52CA52D5900455E52 /* T5Tokenizer.swift in Sources */,
 				0C5EA3002C98433000CAABE5 /* t5block-layer9.mlpackage in Sources */,
 				0CCD49FD2C6C744F005D7F77 /* Scheduler.swift in Sources */,
 				0C5EA2EC2C98433000CAABE5 /* t5block-layer8.mlpackage in Sources */,
@@ -291,6 +298,7 @@
 				0C5EA2FE2C98433000CAABE5 /* t5block-layer11.mlpackage in Sources */,
 				0C5EA2FD2C98433000CAABE5 /* t5block-layer7.mlpackage in Sources */,
 				0C5EA2F12C98433000CAABE5 /* t5block-layer14.mlpackage in Sources */,
+				91DAA8B32CA52D5100455E52 /* vae.mlpackage in Sources */,
 				0CCD49F72C6C5936005D7F77 /* ResourceManaging.swift in Sources */,
 				0C5EA2F42C98433000CAABE5 /* t5block-layer2.mlpackage in Sources */,
 				0CCD49F12C6C4760005D7F77 /* ManagedMLModel.swift in Sources */,

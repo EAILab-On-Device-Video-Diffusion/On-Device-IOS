@@ -21,7 +21,7 @@ struct ResourceURLs {
     // To do: change the file format to mlpackage
     public init(resourcesAt baseURL: URL) {
         stditURL = baseURL.appending(path: "stdit3.mlmodelc")
-        decoderURL = baseURL.appending(path: "VAEDecoder.mlmodelc") // 참고: 현재 모델 파일 존재하지 않음.
+        decoderURL = baseURL.appending(path: "vae.mlmodelc") // 참고: 현재 모델 파일 존재하지 않음.
         configT5URL = baseURL.appending(path: "tokenizer_config.json")
         dataT5URL = baseURL.appending(path: "tokenizer.json")
         embedURL = baseURL.appending(path: "t5embed-tokens.mlmodelc")
@@ -44,6 +44,7 @@ public struct SoraPipeline {
        FileManager.default.fileExists(atPath: urls.dataT5URL.path),
        FileManager.default.fileExists(atPath: urls.embedURL.path),
        FileManager.default.fileExists(atPath: urls.finalNormURL.path),
+       FileManager.default.fileExists(atPath: urls.decoderURL.path),
        FileManager.default.fileExists(atPath: urls.configT5URL.path)
     {
       let config = MLModelConfiguration()
@@ -72,7 +73,7 @@ public struct SoraPipeline {
     // initialize Models for VAE
     if FileManager.default.fileExists(atPath: urls.decoderURL.path) {
       // To do: VAE for decoding video
-      VAE = nil
+      VAE = VAEDecoder(modelURL: urls.decoderURL, config: config)
     } else {
       VAE = nil
     }
@@ -90,6 +91,20 @@ public struct SoraPipeline {
         return
       }
       // To do : STDit and VAE
+      print("Begin Decoding")
+      
+      // Sampling loop, here.
+      
+      
+      // Get sample
+      let latentShape = [2,3,8,16,16]
+      let totalElements = latentShape.reduce(1,*)
+      var latentVars = (0..<totalElements).map { _ in Float32(1.0)}
+      
+      guard let resultDecoding = try VAE?.decode(latentVars: latentVars) else {
+        print("Error: Can't Decode")
+        return
+      }
     } catch {
       print("Error: Can't make sample.")
       print(error)

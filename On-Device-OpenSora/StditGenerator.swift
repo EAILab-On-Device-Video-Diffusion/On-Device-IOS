@@ -67,7 +67,7 @@ final class StditGenerator: ObservableObject {
           let vinput = stdit3Input(input: x, timestep: timestep, y: y)
           
           let startPredictTime = DispatchTime.now()
-          let vresult = try await vmodel.prediction(input: vinput).var_14828
+          let vresult = try await vmodel.prediction(input: vinput).var_14604
           let endPredictTime = DispatchTime.now()
           let elapsedPredictTime = endPredictTime.uptimeNanoseconds - startLoadTime.uptimeNanoseconds
           print(Double(elapsedPredictTime) / 1000000000)
