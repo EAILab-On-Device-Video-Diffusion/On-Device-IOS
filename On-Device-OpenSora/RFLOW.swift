@@ -8,7 +8,7 @@
 import Accelerate
 import CoreML
 
-public final class RFlowScheduler {
+public final class RFLOW {
   public let timesteps: Int
   public let sampling_steps: Int
   public let discrete_timesteps: Bool
@@ -24,3 +24,4 @@ public final class RFlowScheduler {
     self.discrete_timesteps = discrete_timesteps
   }
 }
+
