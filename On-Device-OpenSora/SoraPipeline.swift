@@ -65,6 +65,7 @@ public struct SoraPipeline {
     if FileManager.default.fileExists(atPath: urls.stditURL.path) {
       // To do: STDit Model
       STDit = nil
+
     } else {
       STDit = nil
     }
@@ -77,7 +78,7 @@ public struct SoraPipeline {
       VAE = nil
     }
   }
-  func sample(prompt: String) {
+  func sample(prompt: String) async {
     // To do: make the sample process
     do {
       guard let ids = try TextEncodingT5?.tokenize(prompt) else {
@@ -89,7 +90,23 @@ public struct SoraPipeline {
         print("Error: Can't Encoding")
         return
       }
+      print("Done T5 Encoding")
+      
       // To do : STDit and VAE
+      // Scheduler input
+      let numFrames = get_num_frames(num_frames: "512")
+      let additionalArgs: [String: MLTensor] = [:]
+      let modelArgs = ["y": resultEncoding.encoderHiddenStates, "mask": resultEncoding.masks]
+      let lenBatchPromt = 1
+      let vaeOutChannels = 4
+      let latentsize = (6, 20, 27)
+      let z = await MLTensor(randomNormal: [1, vaeOutChannels, latentsize.0, latentsize.1, latentsize.2], scalarType: Float32.self).shapedArray(of: Float32.self)
+      let mask = await MLTensor(ones: [6], scalarType: Float32.self).shapedArray(of: Float32.self)
+      let rflowInput = RFLOWInput(model: STDit!, modelArgs: modelArgs, z: z, mask: mask, additionalArgs: additionalArgs)
+      let rflow = RFLOW()
+      let resultSTDit = await rflow.sample(rflowInput: rflowInput)
+      // Scheduler Sample
+      
     } catch {
       print("Error: Can't make sample.")
       print(error)
@@ -98,3 +115,12 @@ public struct SoraPipeline {
 }
 
 
+extension SoraPipeline {
+  private func prepareMultiResolutionInfo(imageSize: [Int], numFrames: Int, fps: Int) -> [String : MLTensor] {
+    let fps = MLTensor([Float32(numFrames > 1 ? fps : 120)])
+    let height = MLTensor([Float32(imageSize[0])])
+    let width = MLTensor([Float32(imageSize[1])])
+    let numFrames = MLTensor([Float32(numFrames)])
+    return ["fps": fps, "height": height,"width": width, "numFrames": numFrames]
+  }
+}

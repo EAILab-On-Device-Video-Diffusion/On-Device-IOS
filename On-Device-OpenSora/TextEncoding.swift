@@ -10,9 +10,10 @@ import Tokenizers
 import CoreML
 import SwiftUI
 
-//public struct TextEncoderT5Output {
-//    public let encoderHiddenStates: MLShapedArray<Float32>
-//}
+public struct TextEncoderT5Output {
+  public let encoderHiddenStates: MLShapedArray<Float32>
+  public let masks: MLShapedArray<Float32>
+}
 
 public struct TextEncoding {
   var tokenizer: Tokenizer
@@ -134,7 +135,7 @@ public struct TextEncoding {
 //      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-1] as! Float)
 //    }
 //    print(output2)
-    return TextEncoderT5Output(encoderHiddenStates: MLShapedArray<Float32>(converting: resultNorm.featureValue(for: "output")!.multiArrayValue!))
+    return TextEncoderT5Output(encoderHiddenStates: MLShapedArray<Float32>(converting: resultNorm.featureValue(for: "output")!.multiArrayValue!), masks: MLShapedArray<Float32>(converting: inputFeatures.featureValue(for: "attention_mask")!.multiArrayValue!))
   }
   
   var inputDescription: MLFeatureDescription {

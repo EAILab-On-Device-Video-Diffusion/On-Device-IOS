@@ -24,5 +24,10 @@ public struct STDit: ResourceManaging {
     }
   }
   // To do: Sample
-
+  public func sample(x:MLShapedArray<Float32>, timestep: Float32, modelargs:Dictionary<String, MLShapedArray<Float32>>) -> MLTensor {
+    
+    // 임시
+    let result = MLTensor(1)
+    return result
+  }
 }
