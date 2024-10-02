@@ -21,7 +21,7 @@ struct ResourceURLs {
     // To do: change the file format to mlpackage
     public init(resourcesAt baseURL: URL) {
         stditURL = baseURL.appending(path: "stdit3.mlmodelc")
-        decoderURL = baseURL.appending(path: "VAEDecoder.mlmodelc") // 참고: 현재 모델 파일 존재하지 않음.
+        decoderURL = baseURL.appending(path: "vae.mlmodelc") // 참고: 현재 모델 파일 존재하지 않음.
         configT5URL = baseURL.appending(path: "tokenizer_config.json")
         dataT5URL = baseURL.appending(path: "tokenizer.json")
         embedURL = baseURL.appending(path: "t5embed-tokens.mlmodelc")
@@ -44,6 +44,7 @@ public struct SoraPipeline {
        FileManager.default.fileExists(atPath: urls.dataT5URL.path),
        FileManager.default.fileExists(atPath: urls.embedURL.path),
        FileManager.default.fileExists(atPath: urls.finalNormURL.path),
+       FileManager.default.fileExists(atPath: urls.decoderURL.path),
        FileManager.default.fileExists(atPath: urls.configT5URL.path)
     {
       let config = MLModelConfiguration()
@@ -73,7 +74,7 @@ public struct SoraPipeline {
     // initialize Models for VAE
     if FileManager.default.fileExists(atPath: urls.decoderURL.path) {
       // To do: VAE for decoding video
-      VAE = nil
+      VAE = VAEDecoder(modelURL: urls.decoderURL, config: config)
     } else {
       VAE = nil
     }
@@ -81,15 +82,22 @@ public struct SoraPipeline {
   func sample(prompt: String) async {
     // To do: make the sample process
     do {
-      guard let ids = try TextEncodingT5?.tokenize(prompt) else {
-        print("Error: Can't tokenize")
-        return
-      }
-      print("Result of Tokenizing: \(ids)")
-      guard let resultEncoding = try TextEncodingT5?.encode(ids: ids) else {
-        print("Error: Can't Encoding")
-        return
-      }
+//      guard let ids = try TextEncodingT5?.tokenize(prompt) else {
+//        print("Error: Can't tokenize")
+//        return
+//      }
+//      print("Result of Tokenizing: \(ids)")
+//      guard let resultEncoding = try TextEncodingT5?.encode(ids: ids) else {
+//        print("Error: Can't Encoding")
+//        return
+//      }
+
+
+
+  
+      
+
+
       print("Done T5 Encoding")
       
       // To do : STDit and VAE
@@ -106,6 +114,18 @@ public struct SoraPipeline {
       let rflow = RFLOW()
       let resultSTDit = await rflow.sample(rflowInput: rflowInput)
       // Scheduler Sample
+      
+      print("Begin Decoding")
+      
+      // Get dummy sample
+      let latentShape = [1, 4, 4, 20, 27]
+      let totalElements = latentShape.reduce(1,*)
+      var latentVars = (0..<totalElements).map { _ in Float32(1.0)}
+      
+      guard let resultDecoding = try VAE?.decode(latentVars: latentVars) else {
+        print("Error: Can't Decode")
+        return
+      }
       
     } catch {
       print("Error: Can't make sample.")
