@@ -32,3 +32,34 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+/*
+That is the code for the video conversion test.
+
+struct ContentView: View {
+    @StateObject private var tensor2vidConverter = Tensor2Vid()
+    
+    var body: some View {
+        VStack {
+            if let videoURL = tensor2vidConverter.videoURL {
+                VideoPlayerView(url: videoURL)
+            } else {
+                Text("video is not generated yet")
+            }
+            
+            Button("generate video") {
+                Task {
+                
+                // MLMultiArray(shape: [1, 3, 256, 256], dataType: .float32)
+                    let multiArray = tensor2vidConverter.generateRandomInput(frameCount: 1, width: 256, height: 256)
+                    await tensor2vidConverter.convertToVideo(multiArray: multiArray!)
+                }
+            }
+        }
+        .padding()
+    }
+}
+
+
+
+*/
