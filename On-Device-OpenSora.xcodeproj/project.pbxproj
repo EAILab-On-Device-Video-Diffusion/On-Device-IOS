@@ -38,13 +38,15 @@
 		0C5EA3032C98433000CAABE5 /* t5block-layer16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E92C98433000CAABE5 /* t5block-layer16.mlpackage */; };
 		0C5EA3042C98433000CAABE5 /* t5block-layer22.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2EA2C98433000CAABE5 /* t5block-layer22.mlpackage */; };
 		0C76050B2C5B67CF005BCF3B /* stdit3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C76050A2C5B67CF005BCF3B /* stdit3.mlpackage */; };
+		0CC6190D2CAA718A00FF7506 /* RFlowScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6190C2CAA717B00FF7506 /* RFlowScheduler.swift */; };
+		0CC619102CABD02800FF7506 /* Asepct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6190F2CABD02400FF7506 /* Asepct.swift */; };
 		0CCD49F12C6C4760005D7F77 /* ManagedMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F02C6C4760005D7F77 /* ManagedMLModel.swift */; };
 		0CCD49F32C6C54CA005D7F77 /* STDit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F22C6C54CA005D7F77 /* STDit.swift */; };
 		0CCD49F52C6C58A6005D7F77 /* VAEDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F42C6C58A6005D7F77 /* VAEDecoder.swift */; };
 		0CCD49F72C6C5936005D7F77 /* ResourceManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F62C6C5936005D7F77 /* ResourceManaging.swift */; };
 		0CCD49F92C6C59DA005D7F77 /* TextEncoderT5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F82C6C59DA005D7F77 /* TextEncoderT5.swift */; };
 		0CCD49FB2C6C5A1E005D7F77 /* SoraPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49FA2C6C5A1E005D7F77 /* SoraPipeline.swift */; };
-		0CCD49FD2C6C744F005D7F77 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49FC2C6C744F005D7F77 /* Scheduler.swift */; };
+		0CCD49FD2C6C744F005D7F77 /* RFLOW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49FC2C6C744F005D7F77 /* RFLOW.swift */; };
 		0CCD49FF2C6C84FC005D7F77 /* T5Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49FE2C6C84FC005D7F77 /* T5Tokenizer.swift */; };
 		0CCD4A022C6C85E2005D7F77 /* Transformers in Frameworks */ = {isa = PBXBuildFile; productRef = 0CCD4A012C6C85E2005D7F77 /* Transformers */; };
 		0CCFB52B2C2AD669009DB83F /* On_Device_OpenSoraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFB52A2C2AD669009DB83F /* On_Device_OpenSoraApp.swift */; };
@@ -89,13 +91,15 @@
 		0C5EA2E92C98433000CAABE5 /* t5block-layer16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer16.mlpackage"; sourceTree = "<group>"; };
 		0C5EA2EA2C98433000CAABE5 /* t5block-layer22.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer22.mlpackage"; sourceTree = "<group>"; };
 		0C76050A2C5B67CF005BCF3B /* stdit3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3.mlpackage; sourceTree = "<group>"; };
+		0CC6190C2CAA717B00FF7506 /* RFlowScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFlowScheduler.swift; sourceTree = "<group>"; };
+		0CC6190F2CABD02400FF7506 /* Asepct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asepct.swift; sourceTree = "<group>"; };
 		0CCD49F02C6C4760005D7F77 /* ManagedMLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMLModel.swift; sourceTree = "<group>"; };
 		0CCD49F22C6C54CA005D7F77 /* STDit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STDit.swift; sourceTree = "<group>"; };
 		0CCD49F42C6C58A6005D7F77 /* VAEDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAEDecoder.swift; sourceTree = "<group>"; };
 		0CCD49F62C6C5936005D7F77 /* ResourceManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManaging.swift; sourceTree = "<group>"; };
 		0CCD49F82C6C59DA005D7F77 /* TextEncoderT5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEncoderT5.swift; sourceTree = "<group>"; };
 		0CCD49FA2C6C5A1E005D7F77 /* SoraPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoraPipeline.swift; sourceTree = "<group>"; };
-		0CCD49FC2C6C744F005D7F77 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
+		0CCD49FC2C6C744F005D7F77 /* RFLOW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFLOW.swift; sourceTree = "<group>"; };
 		0CCD49FE2C6C84FC005D7F77 /* T5Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T5Tokenizer.swift; sourceTree = "<group>"; };
 		0CCFB5272C2AD669009DB83F /* On-Device-OpenSora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On-Device-OpenSora.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CCFB52A2C2AD669009DB83F /* On_Device_OpenSoraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_Device_OpenSoraApp.swift; sourceTree = "<group>"; };
@@ -182,7 +186,9 @@
 				0C76050A2C5B67CF005BCF3B /* stdit3.mlpackage */,
 				0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */,
 				0CCD49F02C6C4760005D7F77 /* ManagedMLModel.swift */,
-				0CCD49FC2C6C744F005D7F77 /* Scheduler.swift */,
+				0CCD49FC2C6C744F005D7F77 /* RFLOW.swift */,
+				0CC6190C2CAA717B00FF7506 /* RFlowScheduler.swift */,
+				0CC6190F2CABD02400FF7506 /* Asepct.swift */,
 				0CCD49F22C6C54CA005D7F77 /* STDit.swift */,
 				0CCD49F42C6C58A6005D7F77 /* VAEDecoder.swift */,
 				0CCD49F62C6C5936005D7F77 /* ResourceManaging.swift */,
@@ -288,7 +294,7 @@
 				0C5EA2F62C98433000CAABE5 /* t5block-layer19.mlpackage in Sources */,
 				91DAA8B52CA52D5900455E52 /* T5Tokenizer.swift in Sources */,
 				0C5EA3002C98433000CAABE5 /* t5block-layer9.mlpackage in Sources */,
-				0CCD49FD2C6C744F005D7F77 /* Scheduler.swift in Sources */,
+				0CCD49FD2C6C744F005D7F77 /* RFLOW.swift in Sources */,
 				0C5EA2EC2C98433000CAABE5 /* t5block-layer8.mlpackage in Sources */,
 				0C5EA3022C98433000CAABE5 /* t5final-layer-norm.mlpackage in Sources */,
 				0C5EA2EB2C98433000CAABE5 /* t5block-layer4.mlpackage in Sources */,
@@ -307,6 +313,7 @@
 				0CCD49F12C6C4760005D7F77 /* ManagedMLModel.swift in Sources */,
 				0CCD49F52C6C58A6005D7F77 /* VAEDecoder.swift in Sources */,
 				0C5EA2FB2C98433000CAABE5 /* t5block-layer18.mlpackage in Sources */,
+				0CC619102CABD02800FF7506 /* Asepct.swift in Sources */,
 				0C5EA2FA2C98433000CAABE5 /* t5block-layer10.mlpackage in Sources */,
 				0C4CBA202C805F5D00B37757 /* TextEncoding.swift in Sources */,
 				0C5EA2F22C98433000CAABE5 /* t5block-layer5.mlpackage in Sources */,
@@ -325,6 +332,7 @@
 				0C5EA2F92C98433000CAABE5 /* t5block-layer15.mlpackage in Sources */,
 				0C5EA3012C98433000CAABE5 /* t5block-layer23.mlpackage in Sources */,
 				0C5EA3032C98433000CAABE5 /* t5block-layer16.mlpackage in Sources */,
+				0CC6190D2CAA718A00FF7506 /* RFlowScheduler.swift in Sources */,
 				0CCD49FB2C6C5A1E005D7F77 /* SoraPipeline.swift in Sources */,
 				0CCD49F32C6C54CA005D7F77 /* STDit.swift in Sources */,
 			);
@@ -468,7 +476,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -498,7 +506,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
