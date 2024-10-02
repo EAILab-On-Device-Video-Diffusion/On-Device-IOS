@@ -54,6 +54,7 @@
 		0CCFB5452C2AD980009DB83F /* StditGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFB5442C2AD980009DB83F /* StditGenerator.swift */; };
 		91DAA8B32CA52D5100455E52 /* vae.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 91DAA8B22CA52D5100455E52 /* vae.mlpackage */; };
 		91DAA8B52CA52D5900455E52 /* T5Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DAA8B42CA52D5900455E52 /* T5Tokenizer.swift */; };
+		91DAA8B72CAC3C5300455E52 /* vae_new_pipe.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 91DAA8B62CAC3C5300455E52 /* vae_new_pipe.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		0CCFB5442C2AD980009DB83F /* StditGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StditGenerator.swift; sourceTree = "<group>"; };
 		91DAA8B22CA52D5100455E52 /* vae.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae.mlpackage; sourceTree = "<group>"; };
 		91DAA8B42CA52D5900455E52 /* T5Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T5Tokenizer.swift; sourceTree = "<group>"; };
+		91DAA8B62CAC3C5300455E52 /* vae_new_pipe.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_new_pipe.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				0CCD49F22C6C54CA005D7F77 /* STDit.swift */,
 				0CCD49F42C6C58A6005D7F77 /* VAEDecoder.swift */,
 				0CCD49F62C6C5936005D7F77 /* ResourceManaging.swift */,
+				91DAA8B62CAC3C5300455E52 /* vae_new_pipe.mlpackage */,
 				91DAA8B22CA52D5100455E52 /* vae.mlpackage */,
 				0CCD49F82C6C59DA005D7F77 /* TextEncoderT5.swift */,
 				91DAA8B42CA52D5900455E52 /* T5Tokenizer.swift */,
@@ -308,6 +311,7 @@
 				0C4CBA202C805F5D00B37757 /* TextEncoding.swift in Sources */,
 				0C5EA2F22C98433000CAABE5 /* t5block-layer5.mlpackage in Sources */,
 				0C5EA2F82C98433000CAABE5 /* t5block-layer21.mlpackage in Sources */,
+				91DAA8B72CAC3C5300455E52 /* vae_new_pipe.mlpackage in Sources */,
 				0CCD49FF2C6C84FC005D7F77 /* T5Tokenizer.swift in Sources */,
 				0C5EA2F32C98433000CAABE5 /* t5block-layer6.mlpackage in Sources */,
 				0C5EA2F72C98433000CAABE5 /* t5block-layer1.mlpackage in Sources */,

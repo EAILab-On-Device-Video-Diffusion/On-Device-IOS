@@ -81,23 +81,37 @@ public struct SoraPipeline {
   func sample(prompt: String) {
     // To do: make the sample process
     do {
-      guard let ids = try TextEncodingT5?.tokenize(prompt) else {
-        print("Error: Can't tokenize")
-        return
-      }
-      print("Result of Tokenizing: \(ids)")
-      guard let resultEncoding = try TextEncodingT5?.encode(ids: ids) else {
-        print("Error: Can't Encoding")
-        return
-      }
+//      guard let ids = try TextEncodingT5?.tokenize(prompt) else {
+//        print("Error: Can't tokenize")
+//        return
+//      }
+//      print("Result of Tokenizing: \(ids)")
+//      guard let resultEncoding = try TextEncodingT5?.encode(ids: ids) else {
+//        print("Error: Can't Encoding")
+//        return
+//      }
+
+
+
+      
       // To do : STDit and VAE
-      print("Begin Decoding")
+//      print("Begin sampling loop")
+      // To do : pre-sampling, noise schedulings
+//
+//      // initial value is given as z
+//      for i in 0..<50 {
+//        
+//        // in sampling, before stdit. noise action. 
+//        // in sampling, update z with stdit
+//
+//        var z = STDit?.sample(z: z)
+//        // in sampling, after stdit. noise aftertouch.
+//        
+//      }
+//      print("Begin Decoding")
       
-      // Sampling loop, here.
-      
-      
-      // Get sample
-      let latentShape = [2,3,8,16,16]
+      // Get dummy sample
+      let latentShape = [1, 4, 4, 20, 27]
       let totalElements = latentShape.reduce(1,*)
       var latentVars = (0..<totalElements).map { _ in Float32(1.0)}
       

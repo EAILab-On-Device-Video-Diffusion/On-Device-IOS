@@ -33,7 +33,7 @@ public struct VAEDecoder: ResourceManaging {
       let startVAEDecodeTime = DispatchTime.now()
 
       // Define input shape for the decoder
-      let latentShape = [2, 3, 8, 16, 16] // Your latent dimension
+      let latentShape = [1, 4, 4, 20, 27] // Your latent dimension
       let totalElements = latentShape.reduce(1, *) // Calculate total number of elements
 
       // Check if the size of latentVars matches the expected total elements
@@ -48,10 +48,11 @@ public struct VAEDecoder: ResourceManaging {
     
     // Create an MLShapedArray from the latentVars
       let latentArray = MLShapedArray<Float32>(scalars: latentVars, shape: latentShape)
+      let numFrames = MLShapedArray(arrayLiteral: 20)
 
       // Prepare input features with only latent input
       let inputFeatures = try MLDictionaryFeatureProvider(dictionary: [
-          "input": MLMultiArray(latentArray) // Adjust input name as necessary
+        "latents": MLMultiArray(latentArray), "num_frames": MLMultiArray(numFrames) // Adjust input name as necessary
       ])
       print("Begin Decoding")
     
@@ -62,8 +63,12 @@ public struct VAEDecoder: ResourceManaging {
 
       print("Done Decoding")
 
+      // Log time and return output
+      let endVAEDecodeTime = DispatchTime.now()
+      let elapsedVAEDecodeTime = endVAEDecodeTime.uptimeNanoseconds - startVAEDecodeTime.uptimeNanoseconds
+      print("VAE Decode Running Time: \(Double(elapsedVAEDecodeTime) / 1000000000) seconds")
       // Extract the result from the decoder's output
-      let outputFeatureName = "var_613" // Replace with the actual output feature name in your model
+      let outputFeatureName = "var_4026" // Replace with the actual output feature name in your model
       let decodedValues = decoderOutput.featureValue(for: outputFeatureName)?.multiArrayValue
 
       // Check if decodedValues is nil or empty
@@ -86,10 +91,7 @@ public struct VAEDecoder: ResourceManaging {
       // Print the first 10 decoded values for debugging purposes
       print("Decoded Output (first 10 values): \(output.prefix(10))")
 
-      // Log time and return output
-      let endVAEDecodeTime = DispatchTime.now()
-      let elapsedVAEDecodeTime = endVAEDecodeTime.uptimeNanoseconds - startVAEDecodeTime.uptimeNanoseconds
-      print("VAE Decode Running Time: \(Double(elapsedVAEDecodeTime) / 1000000000) seconds")
+    
 
       return output
   }
