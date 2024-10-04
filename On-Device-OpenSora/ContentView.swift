@@ -8,30 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @StateObject private var tensor2vidConverter = Tensor2Vid()
     var body: some View {
         VStack {
-          Button(action: generate) {
-            Text("Click").font(.title)
-          }.buttonStyle(.borderedProminent)
+            Button(action: {
+                Task {
+                    await generate()
+                }
+            }) {
+                Text("Click").font(.title)
+            }
+            .buttonStyle(.borderedProminent)
         }
         .padding()
     }
   
-  func generate() {
-      do {
-          let soraPipeline = try SoraPipeline(resourcesAt: Bundle.main.bundleURL)
-          print("Click")
-          soraPipeline.sample(prompt: "Please Test T5...")
-      } catch {
-          print("Error: Can't initiallize SoraPipeline")
-      }
+    func generate() async {
+        do {
+            let soraPipeline = try SoraPipeline(resourcesAt: Bundle.main.bundleURL)
+            print("Click")
+            let decodingResult = await soraPipeline.sample(prompt: "Please Test T5...")
+            // print first 10 elements
+          print("Decoding Result: \(decodingResult?.shape)")
+            // create video
+            let videoURL = try await tensor2vidConverter.convertToVideo(multiArray: decodingResult!)
+            print("Video URL: \(videoURL)")
+
+        } catch {
+            print("Error: Can't initialize SoraPipeline")
+        }
     }
 }
 
 #Preview {
     ContentView()
 }
+
 
 /*
 That is the code for the video conversion test.

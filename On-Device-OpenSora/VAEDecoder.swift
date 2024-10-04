@@ -29,7 +29,7 @@ public struct VAEDecoder: ResourceManaging {
       case noDecodedData
   }
 
-  func decode(latentVars: [Float32]) throws -> [Float32] {
+  func decode(latentVars: [Float32]) throws -> MLMultiArray {
       let startVAEDecodeTime = DispatchTime.now()
 
       // Define input shape for the decoder
@@ -77,23 +77,9 @@ public struct VAEDecoder: ResourceManaging {
           throw DecoderError.noDecodedData
       }
 
-      // Convert the MLMultiArray to a Float array
-      var output = [Float]()
-      for i in 0..<decodedValues.count {
-          output.append(decodedValues[i].floatValue)
-      }
+      print(type(of: decodedValues), "; type of decodedValues")
 
-      // Calculate the sum of the output
-      let sumOfOutput = output.reduce(0, +)
-        
-      // Print the sum of the output
-      print("Sum of Decoded Output: \(sumOfOutput)")
-      // Print the first 10 decoded values for debugging purposes
-      print("Decoded Output (first 10 values): \(output.prefix(10))")
-
-    
-
-      return output
+      return decodedValues
   }
 
   

@@ -34,7 +34,8 @@ public struct SoraPipeline {
   let TextEncodingT5: TextEncoding?
   let STDit: STDit?
   let VAE: VAEDecoder?
-  
+
+
   init(resourcesAt baseURL: URL, configuration config: MLModelConfiguration = .init(), reduceMemory: Bool = false) throws {
     
     let urls = ResourceURLs(resourcesAt: baseURL)
@@ -53,6 +54,7 @@ public struct SoraPipeline {
       let embedLayer = ManagedMLModel(modelURL: urls.embedURL, config: config)
       let finalNormLayer = ManagedMLModel(modelURL: urls.finalNormURL, config: config)
       var DivT5s: [ManagedMLModel] = []
+
       for i in 0...23 {
         let T5BlockURL = baseURL.appending(path: "t5block-layer\(i).mlmodelc")
         DivT5s.append(ManagedMLModel(modelURL: T5BlockURL, config: config))
@@ -78,33 +80,31 @@ public struct SoraPipeline {
     } else {
       VAE = nil
     }
-  }
-  func sample(prompt: String) async {
-    // To do: make the sample process
-    do {
-//      guard let ids = try TextEncodingT5?.tokenize(prompt) else {
-//        print("Error: Can't tokenize")
-//        return
-//      }
-//      print("Result of Tokenizing: \(ids)")
-//      guard let resultEncoding = try TextEncodingT5?.encode(ids: ids) else {
-//        print("Error: Can't Encoding")
-//        return
-//      }
-
-
 
   
-      
-
+    
+    
+  }
+  func sample(prompt: String) async -> MLMultiArray? {
+    // To do: make the sample process
+    do {
+      guard let ids = try TextEncodingT5?.tokenize(prompt) else {
+        print("Error: Can't tokenize")
+        return nil
+      }
+      print("Result of Tokenizing: \(ids)")
+      guard let resultEncoding = try TextEncodingT5?.encode(ids: ids) else {
+        print("Error: Can't Encoding")
+        return nil
+      }
 
       print("Done T5 Encoding")
       
       // To do : STDit and VAE
       // Scheduler input
-      let numFrames = get_num_frames(num_frames: "512")
-      let additionalArgs: [String: MLTensor] = [:]
-      let modelArgs = ["y": resultEncoding.encoderHiddenStates, "mask": resultEncoding.masks]
+      //let numFrames = get_num_frames(num_frames: "512")
+      //let additionalArgs: [String: MLTensor] = [:]
+      /*let modelArgs = ["y": resultEncoding.encoderHiddenStates, "mask": resultEncoding.masks]
       let lenBatchPromt = 1
       let vaeOutChannels = 4
       let latentsize = (6, 20, 27)
@@ -113,6 +113,8 @@ public struct SoraPipeline {
       let rflowInput = RFLOWInput(model: STDit!, modelArgs: modelArgs, z: z, mask: mask, additionalArgs: additionalArgs)
       let rflow = RFLOW()
       let resultSTDit = await rflow.sample(rflowInput: rflowInput)
+       
+       */
       // Scheduler Sample
       
       print("Begin Decoding")
@@ -122,25 +124,24 @@ public struct SoraPipeline {
       let totalElements = latentShape.reduce(1,*)
       var latentVars = (0..<totalElements).map { _ in Float32(1.0)}
       
-      guard let resultDecoding = try VAE?.decode(latentVars: latentVars) else {
-        print("Error: Can't Decode")
-        return
-      }
+      let resultDecoding = try VAE?.decode(latentVars: latentVars)
       
+      return resultDecoding
+
     } catch {
       print("Error: Can't make sample.")
       print(error)
+      return nil
     }
   }
 }
 
-
 extension SoraPipeline {
   private func prepareMultiResolutionInfo(imageSize: [Int], numFrames: Int, fps: Int) -> [String : MLTensor] {
-    let fps = MLTensor([Float32(numFrames > 1 ? fps : 120)])
-    let height = MLTensor([Float32(imageSize[0])])
-    let width = MLTensor([Float32(imageSize[1])])
-    let numFrames = MLTensor([Float32(numFrames)])
-    return ["fps": fps, "height": height,"width": width, "numFrames": numFrames]
+    let fpsTensor = MLTensor([Float32(numFrames > 1 ? fps : 120)])
+    let heightTensor = MLTensor([Float32(imageSize[0])])
+    let widthTensor = MLTensor([Float32(imageSize[1])])
+    let numFramesTensor = MLTensor([Float32(numFrames)])
+    return ["fps": fpsTensor, "height": heightTensor, "width": widthTensor, "numFrames": numFramesTensor]
   }
 }
