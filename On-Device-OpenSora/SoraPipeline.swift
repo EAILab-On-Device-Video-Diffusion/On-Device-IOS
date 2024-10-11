@@ -136,9 +136,11 @@ public struct SoraPipeline {
         guard let resultDecoding = try VAE?.decode(latentVars: latentVars) else {
           print("Error: Can't Decode")
           return
-      } catch {
-        print("Error: Can't make sample.")
-        print(error)
+          }
+        }
+        catch {
+          print("Error: Can't make sample.")
+          print(error)
       }
     }
   }

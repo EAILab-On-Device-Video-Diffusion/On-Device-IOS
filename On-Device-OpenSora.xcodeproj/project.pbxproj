@@ -24,13 +24,6 @@
 		0CCFB52D2C2AD669009DB83F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFB52C2C2AD669009DB83F /* ContentView.swift */; };
 		0CCFB52F2C2AD66B009DB83F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */; };
 		0CCFB5322C2AD66B009DB83F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCFB5312C2AD66B009DB83F /* Preview Assets.xcassets */; };
-<<<<<<< Updated upstream
-		0CCFB5452C2AD980009DB83F /* StditGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFB5442C2AD980009DB83F /* StditGenerator.swift */; };
-		91DAA8B32CA52D5100455E52 /* vae.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 91DAA8B22CA52D5100455E52 /* vae.mlpackage */; };
-		91DAA8B52CA52D5900455E52 /* T5Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DAA8B42CA52D5900455E52 /* T5Tokenizer.swift */; };
-		91DAA8B72CAC3C5300455E52 /* vae_new_pipe.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 91DAA8B62CAC3C5300455E52 /* vae_new_pipe.mlpackage */; };
-=======
->>>>>>> Stashed changes
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,13 +44,6 @@
 		0CCFB52C2C2AD669009DB83F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CCFB5312C2AD66B009DB83F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-<<<<<<< Updated upstream
-		0CCFB5442C2AD980009DB83F /* StditGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StditGenerator.swift; sourceTree = "<group>"; };
-		91DAA8B22CA52D5100455E52 /* vae.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae.mlpackage; sourceTree = "<group>"; };
-		91DAA8B42CA52D5900455E52 /* T5Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T5Tokenizer.swift; sourceTree = "<group>"; };
-		91DAA8B62CAC3C5300455E52 /* vae_new_pipe.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_new_pipe.mlpackage; sourceTree = "<group>"; };
-=======
->>>>>>> Stashed changes
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -114,18 +100,6 @@
 				0CCD49FC2C6C744F005D7F77 /* RFLOW.swift */,
 				0CC6190C2CAA717B00FF7506 /* RFlowScheduler.swift */,
 				0CCD49F42C6C58A6005D7F77 /* VAEDecoder.swift */,
-<<<<<<< Updated upstream
-				0CCD49F62C6C5936005D7F77 /* ResourceManaging.swift */,
-				91DAA8B62CAC3C5300455E52 /* vae_new_pipe.mlpackage */,
-				91DAA8B22CA52D5100455E52 /* vae.mlpackage */,
-				0CCD49F82C6C59DA005D7F77 /* TextEncoderT5.swift */,
-				91DAA8B42CA52D5900455E52 /* T5Tokenizer.swift */,
-				0C4CBA1F2C805F5D00B37757 /* TextEncoding.swift */,
-				0CCD49FA2C6C5A1E005D7F77 /* SoraPipeline.swift */,
-				0C4CBA272C89640E00B37757 /* T5Block.swift */,
-				0CCD49FE2C6C84FC005D7F77 /* T5Tokenizer.swift */,
-=======
->>>>>>> Stashed changes
 			);
 			path = "On-Device-OpenSora";
 			sourceTree = "<group>";
@@ -220,35 +194,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< Updated upstream
-				0C5EA2FF2C98433000CAABE5 /* t5block-layer17.mlpackage in Sources */,
-				0C5EA2F62C98433000CAABE5 /* t5block-layer19.mlpackage in Sources */,
-				91DAA8B52CA52D5900455E52 /* T5Tokenizer.swift in Sources */,
-				0C5EA3002C98433000CAABE5 /* t5block-layer9.mlpackage in Sources */,
-=======
->>>>>>> Stashed changes
 				0CCD49FD2C6C744F005D7F77 /* RFLOW.swift in Sources */,
 				0CCFB52D2C2AD669009DB83F /* ContentView.swift in Sources */,
 				0CCFB52B2C2AD669009DB83F /* On_Device_OpenSoraApp.swift in Sources */,
-<<<<<<< Updated upstream
-				0C76050B2C5B67CF005BCF3B /* stdit3.mlpackage in Sources */,
-				0C5EA2FE2C98433000CAABE5 /* t5block-layer11.mlpackage in Sources */,
-				0C5EA2FD2C98433000CAABE5 /* t5block-layer7.mlpackage in Sources */,
-				0C5EA2F12C98433000CAABE5 /* t5block-layer14.mlpackage in Sources */,
-				91DAA8B32CA52D5100455E52 /* vae.mlpackage in Sources */,
-=======
->>>>>>> Stashed changes
 				0CCD49F72C6C5936005D7F77 /* ResourceManaging.swift in Sources */,
 				0CCD49F12C6C4760005D7F77 /* ManagedMLModel.swift in Sources */,
 				0CCD49F52C6C58A6005D7F77 /* VAEDecoder.swift in Sources */,
 				0CC619102CABD02800FF7506 /* Asepct.swift in Sources */,
 				0C4CBA202C805F5D00B37757 /* TextEncoding.swift in Sources */,
-<<<<<<< Updated upstream
-				0C5EA2F22C98433000CAABE5 /* t5block-layer5.mlpackage in Sources */,
-				0C5EA2F82C98433000CAABE5 /* t5block-layer21.mlpackage in Sources */,
-				91DAA8B72CAC3C5300455E52 /* vae_new_pipe.mlpackage in Sources */,
-=======
->>>>>>> Stashed changes
 				0CCD49FF2C6C84FC005D7F77 /* T5Tokenizer.swift in Sources */,
 				0CC6190D2CAA718A00FF7506 /* RFlowScheduler.swift in Sources */,
 				0CCD49FB2C6C5A1E005D7F77 /* SoraPipeline.swift in Sources */,
