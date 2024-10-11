@@ -20,7 +20,8 @@ struct ResourceURLs {
     public let finalNormURL: URL
     // To do: change the file format to mlpackage
     public init(resourcesAt baseURL: URL) {
-        stditURL = baseURL.appending(path: "stdit3.mlmodelc")
+      
+        stditURL = baseURL.appending(path: "stdit3_part1.mlmodelc")
         decoderURL = baseURL.appending(path: "vae.mlmodelc") // 참고: 현재 모델 파일 존재하지 않음.
         configT5URL = baseURL.appending(path: "tokenizer_config.json")
         dataT5URL = baseURL.appending(path: "tokenizer.json")
@@ -29,10 +30,11 @@ struct ResourceURLs {
     }
 }
 
+
 public struct SoraPipeline {
   // need to initialize the required models. ex) stdit, vae and so on.
   let TextEncodingT5: TextEncoding?
-  let STDit: STDit?
+  let STDit: STDit3?
   let VAE: VAEDecoder?
   
   init(resourcesAt baseURL: URL, configuration config: MLModelConfiguration = .init(), reduceMemory: Bool = false) throws {
@@ -48,7 +50,7 @@ public struct SoraPipeline {
        FileManager.default.fileExists(atPath: urls.configT5URL.path)
     {
       let config = MLModelConfiguration()
-      config.computeUnits = .all
+      config.computeUnits = .cpuAndGPU
       let tokenizerT5 = try PreTrainedTokenizer(tokenizerConfig: Config(fileURL: urls.configT5URL), tokenizerData: Config(fileURL: urls.dataT5URL))
       let embedLayer = ManagedMLModel(modelURL: urls.embedURL, config: config)
       let finalNormLayer = ManagedMLModel(modelURL: urls.finalNormURL, config: config)
@@ -65,7 +67,21 @@ public struct SoraPipeline {
     // initialize Models for STDit
     if FileManager.default.fileExists(atPath: urls.stditURL.path) {
       // To do: STDit Model
-      STDit = nil
+      let config_stdit = MLModelConfiguration()
+      config_stdit.computeUnits = .cpuAndGPU
+
+      var spatialBlocks: [ManagedMLModel] = []
+      for i in 0...27 {
+        let spatialsBlockURL = baseURL.appending(path: "stdit3_spatial_\(i).mlmodelc")
+        spatialBlocks.append(ManagedMLModel(modelURL: spatialsBlockURL, config: config_stdit))
+      }
+      
+      var temporalBlocks: [ManagedMLModel] = []
+      for i in 0...27 {
+        let temporalBlockURL = baseURL.appending(path: "stdit3_temporal_\(i).mlmodelc")
+        temporalBlocks.append(ManagedMLModel(modelURL: temporalBlockURL, config: config_stdit))
+      }
+      STDit = STDit3(spatials: spatialBlocks, temporals: temporalBlocks)
 
     } else {
       STDit = nil
@@ -79,68 +95,62 @@ public struct SoraPipeline {
       VAE = nil
     }
   }
-  func sample(prompt: String) async {
+  func sample(prompt: String) {
     // To do: make the sample process
-    do {
-//      guard let ids = try TextEncodingT5?.tokenize(prompt) else {
-//        print("Error: Can't tokenize")
-//        return
-//      }
-//      print("Result of Tokenizing: \(ids)")
-//      guard let resultEncoding = try TextEncodingT5?.encode(ids: ids) else {
-//        print("Error: Can't Encoding")
-//        return
-//      }
-
-
-
-  
-      
-
-
-      print("Done T5 Encoding")
-      
-      // To do : STDit and VAE
-      // Scheduler input
-      let numFrames = get_num_frames(num_frames: "512")
-      let additionalArgs: [String: MLTensor] = [:]
-      let modelArgs = ["y": resultEncoding.encoderHiddenStates, "mask": resultEncoding.masks]
-      let lenBatchPromt = 1
-      let vaeOutChannels = 4
-      let latentsize = (6, 20, 27)
-      let z = await MLTensor(randomNormal: [1, vaeOutChannels, latentsize.0, latentsize.1, latentsize.2], scalarType: Float32.self).shapedArray(of: Float32.self)
-      let mask = await MLTensor(ones: [6], scalarType: Float32.self).shapedArray(of: Float32.self)
-      let rflowInput = RFLOWInput(model: STDit!, modelArgs: modelArgs, z: z, mask: mask, additionalArgs: additionalArgs)
-      let rflow = RFLOW()
-      let resultSTDit = await rflow.sample(rflowInput: rflowInput)
-      // Scheduler Sample
-      
-      print("Begin Decoding")
-      
-      // Get dummy sample
-      let latentShape = [1, 4, 4, 20, 27]
-      let totalElements = latentShape.reduce(1,*)
-      var latentVars = (0..<totalElements).map { _ in Float32(1.0)}
-      
-      guard let resultDecoding = try VAE?.decode(latentVars: latentVars) else {
-        print("Error: Can't Decode")
-        return
+    Task(priority: .high) {
+      do {
+        guard let ids = try TextEncodingT5?.tokenize(prompt) else {
+          print("Error: Can't tokenize")
+          return
+        }
+        print("Result of Tokenizing: \(ids)")
+        guard let resultEncoding = try TextEncodingT5?.encode(ids: ids) else {
+          print("Error: Can't Encoding")
+          return
+        }
+        print("Done T5 Encoding")
+        
+        // To do : STDit and VAE
+        // Scheduler input
+        let additionalArgs: [String: MLTensor] = [:]
+        let modelArgs = ["y": resultEncoding.encoderHiddenStates, "mask": resultEncoding.masks, "fps" : MLShapedArray<Float32>(arrayLiteral: 7.0) , "weight": MLShapedArray<Float32>(arrayLiteral: 221.0), "height":MLShapedArray<Float32>(arrayLiteral: 166.0)]
+        let vaeOutChannels = 4
+        let latentsize = (5, 20, 27)
+        let z = await MLTensor(randomNormal: [1, vaeOutChannels, latentsize.0, latentsize.1, latentsize.2], scalarType: Float32.self).shapedArray(of: Float32.self)
+        let mask = await MLTensor(ones: [5], scalarType: Float32.self).shapedArray(of: Float32.self)
+        let rflowInput = RFLOWInput(model: STDit!, modelArgs: modelArgs, z: z, mask: mask, additionalArgs: additionalArgs)
+        
+        // Scheduler Sample
+        let rflow = RFLOW(numSamplingsteps: 30, cfgScale: 7.0)
+        let resultSTDit = await rflow.sample(rflowInput: rflowInput, yNull: resultEncoding.yNull).shapedArray(of: Float32.self)
+        print(resultSTDit.shape)
+        print(resultSTDit)
+        
+        print("Begin Decoding")
+        
+        // Get dummy sample
+        let latentShape = [1, 4, 4, 20, 27]
+        let totalElements = latentShape.reduce(1,*)
+        var latentVars = (0..<totalElements).map { _ in Float32(1.0)}
+        
+        guard let resultDecoding = try VAE?.decode(latentVars: latentVars) else {
+          print("Error: Can't Decode")
+          return
+      } catch {
+        print("Error: Can't make sample.")
+        print(error)
       }
-      
-    } catch {
-      print("Error: Can't make sample.")
-      print(error)
     }
   }
 }
 
 
-extension SoraPipeline {
-  private func prepareMultiResolutionInfo(imageSize: [Int], numFrames: Int, fps: Int) -> [String : MLTensor] {
-    let fps = MLTensor([Float32(numFrames > 1 ? fps : 120)])
-    let height = MLTensor([Float32(imageSize[0])])
-    let width = MLTensor([Float32(imageSize[1])])
-    let numFrames = MLTensor([Float32(numFrames)])
-    return ["fps": fps, "height": height,"width": width, "numFrames": numFrames]
-  }
-}
+//extension SoraPipeline {
+//  private func prepareMultiResolutionInfo(imageSize: [Int], numFrames: Int, fps: Int) -> [String : MLTensor] {
+//    let fps = MLTensor([Float32(numFrames > 1 ? fps : 120)])
+//    let height = MLTensor([Float32(imageSize[0])])
+//    let width = MLTensor([Float32(imageSize[1])])
+//    let numFrames = MLTensor([Float32(numFrames)])
+//    return ["fps": fps, "height": height,"width": width, "numFrames": numFrames]
+//  }
+//}

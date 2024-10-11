@@ -3,48 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0C4CBA1D2C8059AC00B37757 /* tokenizer_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */; };
 		0C4CBA1E2C8059AC00B37757 /* tokenizer.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C4CBA1C2C8059AC00B37757 /* tokenizer.json */; };
 		0C4CBA202C805F5D00B37757 /* TextEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CBA1F2C805F5D00B37757 /* TextEncoding.swift */; };
-		0C4CBA282C89640E00B37757 /* T5Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CBA272C89640E00B37757 /* T5Block.swift */; };
-		0C5EA2EB2C98433000CAABE5 /* t5block-layer4.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D12C98432E00CAABE5 /* t5block-layer4.mlpackage */; };
-		0C5EA2EC2C98433000CAABE5 /* t5block-layer8.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D22C98432E00CAABE5 /* t5block-layer8.mlpackage */; };
-		0C5EA2ED2C98433000CAABE5 /* t5block-layer13.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D32C98432E00CAABE5 /* t5block-layer13.mlpackage */; };
-		0C5EA2EE2C98433000CAABE5 /* t5block-layer12.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D42C98432E00CAABE5 /* t5block-layer12.mlpackage */; };
-		0C5EA2EF2C98433000CAABE5 /* t5embed-tokens.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D52C98432E00CAABE5 /* t5embed-tokens.mlpackage */; };
-		0C5EA2F02C98433000CAABE5 /* t5block-layer20.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D62C98432E00CAABE5 /* t5block-layer20.mlpackage */; };
-		0C5EA2F12C98433000CAABE5 /* t5block-layer14.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D72C98432E00CAABE5 /* t5block-layer14.mlpackage */; };
-		0C5EA2F22C98433000CAABE5 /* t5block-layer5.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D82C98432E00CAABE5 /* t5block-layer5.mlpackage */; };
-		0C5EA2F32C98433000CAABE5 /* t5block-layer6.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2D92C98432E00CAABE5 /* t5block-layer6.mlpackage */; };
-		0C5EA2F42C98433000CAABE5 /* t5block-layer2.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2DA2C98432E00CAABE5 /* t5block-layer2.mlpackage */; };
-		0C5EA2F52C98433000CAABE5 /* t5block-layer0.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2DB2C98432E00CAABE5 /* t5block-layer0.mlpackage */; };
-		0C5EA2F62C98433000CAABE5 /* t5block-layer19.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2DC2C98432E00CAABE5 /* t5block-layer19.mlpackage */; };
-		0C5EA2F72C98433000CAABE5 /* t5block-layer1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2DD2C98432F00CAABE5 /* t5block-layer1.mlpackage */; };
-		0C5EA2F82C98433000CAABE5 /* t5block-layer21.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2DE2C98432F00CAABE5 /* t5block-layer21.mlpackage */; };
-		0C5EA2F92C98433000CAABE5 /* t5block-layer15.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2DF2C98432F00CAABE5 /* t5block-layer15.mlpackage */; };
-		0C5EA2FA2C98433000CAABE5 /* t5block-layer10.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E02C98432F00CAABE5 /* t5block-layer10.mlpackage */; };
-		0C5EA2FB2C98433000CAABE5 /* t5block-layer18.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E12C98432F00CAABE5 /* t5block-layer18.mlpackage */; };
-		0C5EA2FC2C98433000CAABE5 /* t5block-layer3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E22C98432F00CAABE5 /* t5block-layer3.mlpackage */; };
-		0C5EA2FD2C98433000CAABE5 /* t5block-layer7.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E32C98432F00CAABE5 /* t5block-layer7.mlpackage */; };
-		0C5EA2FE2C98433000CAABE5 /* t5block-layer11.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E42C98432F00CAABE5 /* t5block-layer11.mlpackage */; };
-		0C5EA2FF2C98433000CAABE5 /* t5block-layer17.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E52C98432F00CAABE5 /* t5block-layer17.mlpackage */; };
-		0C5EA3002C98433000CAABE5 /* t5block-layer9.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E62C98432F00CAABE5 /* t5block-layer9.mlpackage */; };
-		0C5EA3012C98433000CAABE5 /* t5block-layer23.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E72C98432F00CAABE5 /* t5block-layer23.mlpackage */; };
-		0C5EA3022C98433000CAABE5 /* t5final-layer-norm.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E82C98433000CAABE5 /* t5final-layer-norm.mlpackage */; };
-		0C5EA3032C98433000CAABE5 /* t5block-layer16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2E92C98433000CAABE5 /* t5block-layer16.mlpackage */; };
-		0C5EA3042C98433000CAABE5 /* t5block-layer22.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C5EA2EA2C98433000CAABE5 /* t5block-layer22.mlpackage */; };
-		0C76050B2C5B67CF005BCF3B /* stdit3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0C76050A2C5B67CF005BCF3B /* stdit3.mlpackage */; };
 		0CC6190D2CAA718A00FF7506 /* RFlowScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6190C2CAA717B00FF7506 /* RFlowScheduler.swift */; };
 		0CC619102CABD02800FF7506 /* Asepct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6190F2CABD02400FF7506 /* Asepct.swift */; };
 		0CCD49F12C6C4760005D7F77 /* ManagedMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F02C6C4760005D7F77 /* ManagedMLModel.swift */; };
-		0CCD49F32C6C54CA005D7F77 /* STDit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F22C6C54CA005D7F77 /* STDit.swift */; };
+		0CCD49F32C6C54CA005D7F77 /* STDit3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F22C6C54CA005D7F77 /* STDit3.swift */; };
 		0CCD49F52C6C58A6005D7F77 /* VAEDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F42C6C58A6005D7F77 /* VAEDecoder.swift */; };
 		0CCD49F72C6C5936005D7F77 /* ResourceManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F62C6C5936005D7F77 /* ResourceManaging.swift */; };
-		0CCD49F92C6C59DA005D7F77 /* TextEncoderT5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F82C6C59DA005D7F77 /* TextEncoderT5.swift */; };
 		0CCD49FB2C6C5A1E005D7F77 /* SoraPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49FA2C6C5A1E005D7F77 /* SoraPipeline.swift */; };
 		0CCD49FD2C6C744F005D7F77 /* RFLOW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49FC2C6C744F005D7F77 /* RFLOW.swift */; };
 		0CCD49FF2C6C84FC005D7F77 /* T5Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49FE2C6C84FC005D7F77 /* T5Tokenizer.swift */; };
@@ -53,51 +24,25 @@
 		0CCFB52D2C2AD669009DB83F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFB52C2C2AD669009DB83F /* ContentView.swift */; };
 		0CCFB52F2C2AD66B009DB83F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */; };
 		0CCFB5322C2AD66B009DB83F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCFB5312C2AD66B009DB83F /* Preview Assets.xcassets */; };
+<<<<<<< Updated upstream
 		0CCFB5452C2AD980009DB83F /* StditGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFB5442C2AD980009DB83F /* StditGenerator.swift */; };
 		91DAA8B32CA52D5100455E52 /* vae.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 91DAA8B22CA52D5100455E52 /* vae.mlpackage */; };
 		91DAA8B52CA52D5900455E52 /* T5Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DAA8B42CA52D5900455E52 /* T5Tokenizer.swift */; };
 		91DAA8B72CAC3C5300455E52 /* vae_new_pipe.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 91DAA8B62CAC3C5300455E52 /* vae_new_pipe.mlpackage */; };
+=======
+>>>>>>> Stashed changes
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokenizer_config.json; sourceTree = "<group>"; };
 		0C4CBA1C2C8059AC00B37757 /* tokenizer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokenizer.json; sourceTree = "<group>"; };
 		0C4CBA1F2C805F5D00B37757 /* TextEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEncoding.swift; sourceTree = "<group>"; };
-		0C4CBA272C89640E00B37757 /* T5Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T5Block.swift; sourceTree = "<group>"; };
-		0C5EA2D12C98432E00CAABE5 /* t5block-layer4.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer4.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2D22C98432E00CAABE5 /* t5block-layer8.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer8.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2D32C98432E00CAABE5 /* t5block-layer13.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer13.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2D42C98432E00CAABE5 /* t5block-layer12.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer12.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2D52C98432E00CAABE5 /* t5embed-tokens.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5embed-tokens.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2D62C98432E00CAABE5 /* t5block-layer20.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer20.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2D72C98432E00CAABE5 /* t5block-layer14.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer14.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2D82C98432E00CAABE5 /* t5block-layer5.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer5.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2D92C98432E00CAABE5 /* t5block-layer6.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer6.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2DA2C98432E00CAABE5 /* t5block-layer2.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer2.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2DB2C98432E00CAABE5 /* t5block-layer0.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer0.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2DC2C98432E00CAABE5 /* t5block-layer19.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer19.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2DD2C98432F00CAABE5 /* t5block-layer1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer1.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2DE2C98432F00CAABE5 /* t5block-layer21.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer21.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2DF2C98432F00CAABE5 /* t5block-layer15.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer15.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2E02C98432F00CAABE5 /* t5block-layer10.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer10.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2E12C98432F00CAABE5 /* t5block-layer18.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer18.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2E22C98432F00CAABE5 /* t5block-layer3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer3.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2E32C98432F00CAABE5 /* t5block-layer7.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer7.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2E42C98432F00CAABE5 /* t5block-layer11.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer11.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2E52C98432F00CAABE5 /* t5block-layer17.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer17.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2E62C98432F00CAABE5 /* t5block-layer9.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer9.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2E72C98432F00CAABE5 /* t5block-layer23.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer23.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2E82C98433000CAABE5 /* t5final-layer-norm.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5final-layer-norm.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2E92C98433000CAABE5 /* t5block-layer16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer16.mlpackage"; sourceTree = "<group>"; };
-		0C5EA2EA2C98433000CAABE5 /* t5block-layer22.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer22.mlpackage"; sourceTree = "<group>"; };
-		0C76050A2C5B67CF005BCF3B /* stdit3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3.mlpackage; sourceTree = "<group>"; };
 		0CC6190C2CAA717B00FF7506 /* RFlowScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFlowScheduler.swift; sourceTree = "<group>"; };
 		0CC6190F2CABD02400FF7506 /* Asepct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asepct.swift; sourceTree = "<group>"; };
 		0CCD49F02C6C4760005D7F77 /* ManagedMLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMLModel.swift; sourceTree = "<group>"; };
-		0CCD49F22C6C54CA005D7F77 /* STDit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STDit.swift; sourceTree = "<group>"; };
+		0CCD49F22C6C54CA005D7F77 /* STDit3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STDit3.swift; sourceTree = "<group>"; };
 		0CCD49F42C6C58A6005D7F77 /* VAEDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAEDecoder.swift; sourceTree = "<group>"; };
 		0CCD49F62C6C5936005D7F77 /* ResourceManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManaging.swift; sourceTree = "<group>"; };
-		0CCD49F82C6C59DA005D7F77 /* TextEncoderT5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEncoderT5.swift; sourceTree = "<group>"; };
 		0CCD49FA2C6C5A1E005D7F77 /* SoraPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoraPipeline.swift; sourceTree = "<group>"; };
 		0CCD49FC2C6C744F005D7F77 /* RFLOW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFLOW.swift; sourceTree = "<group>"; };
 		0CCD49FE2C6C84FC005D7F77 /* T5Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T5Tokenizer.swift; sourceTree = "<group>"; };
@@ -106,11 +51,19 @@
 		0CCFB52C2C2AD669009DB83F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CCFB5312C2AD66B009DB83F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		0CCFB5442C2AD980009DB83F /* StditGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StditGenerator.swift; sourceTree = "<group>"; };
 		91DAA8B22CA52D5100455E52 /* vae.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae.mlpackage; sourceTree = "<group>"; };
 		91DAA8B42CA52D5900455E52 /* T5Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T5Tokenizer.swift; sourceTree = "<group>"; };
 		91DAA8B62CAC3C5300455E52 /* vae_new_pipe.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_new_pipe.mlpackage; sourceTree = "<group>"; };
+=======
+>>>>>>> Stashed changes
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0CB223802CB6F19E000A75D0 /* T5 */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = T5; sourceTree = "<group>"; };
+		0CB223822CB6F1B2000A75D0 /* STDit */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = STDit; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0CCFB5242C2AD669009DB83F /* Frameworks */ = {
@@ -124,39 +77,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C4CBA022C8055A400B37757 /* T5_div */ = {
-			isa = PBXGroup;
-			children = (
-				0C5EA2DB2C98432E00CAABE5 /* t5block-layer0.mlpackage */,
-				0C5EA2DD2C98432F00CAABE5 /* t5block-layer1.mlpackage */,
-				0C5EA2DA2C98432E00CAABE5 /* t5block-layer2.mlpackage */,
-				0C5EA2E22C98432F00CAABE5 /* t5block-layer3.mlpackage */,
-				0C5EA2D12C98432E00CAABE5 /* t5block-layer4.mlpackage */,
-				0C5EA2D82C98432E00CAABE5 /* t5block-layer5.mlpackage */,
-				0C5EA2D92C98432E00CAABE5 /* t5block-layer6.mlpackage */,
-				0C5EA2E32C98432F00CAABE5 /* t5block-layer7.mlpackage */,
-				0C5EA2D22C98432E00CAABE5 /* t5block-layer8.mlpackage */,
-				0C5EA2E62C98432F00CAABE5 /* t5block-layer9.mlpackage */,
-				0C5EA2E02C98432F00CAABE5 /* t5block-layer10.mlpackage */,
-				0C5EA2E42C98432F00CAABE5 /* t5block-layer11.mlpackage */,
-				0C5EA2D42C98432E00CAABE5 /* t5block-layer12.mlpackage */,
-				0C5EA2D32C98432E00CAABE5 /* t5block-layer13.mlpackage */,
-				0C5EA2D72C98432E00CAABE5 /* t5block-layer14.mlpackage */,
-				0C5EA2DF2C98432F00CAABE5 /* t5block-layer15.mlpackage */,
-				0C5EA2E92C98433000CAABE5 /* t5block-layer16.mlpackage */,
-				0C5EA2E52C98432F00CAABE5 /* t5block-layer17.mlpackage */,
-				0C5EA2E12C98432F00CAABE5 /* t5block-layer18.mlpackage */,
-				0C5EA2DC2C98432E00CAABE5 /* t5block-layer19.mlpackage */,
-				0C5EA2D62C98432E00CAABE5 /* t5block-layer20.mlpackage */,
-				0C5EA2DE2C98432F00CAABE5 /* t5block-layer21.mlpackage */,
-				0C5EA2EA2C98433000CAABE5 /* t5block-layer22.mlpackage */,
-				0C5EA2E72C98432F00CAABE5 /* t5block-layer23.mlpackage */,
-				0C5EA2D52C98432E00CAABE5 /* t5embed-tokens.mlpackage */,
-				0C5EA2E82C98433000CAABE5 /* t5final-layer-norm.mlpackage */,
-			);
-			path = T5_div;
-			sourceTree = "<group>";
-		};
 		0CCFB51E2C2AD669009DB83F = {
 			isa = PBXGroup;
 			children = (
@@ -176,21 +96,25 @@
 		0CCFB5292C2AD669009DB83F /* On-Device-OpenSora */ = {
 			isa = PBXGroup;
 			children = (
+				0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */,
+				0CCFB5302C2AD66B009DB83F /* Preview Content */,
 				0CCFB52A2C2AD669009DB83F /* On_Device_OpenSoraApp.swift */,
 				0CCFB52C2C2AD669009DB83F /* ContentView.swift */,
-				0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */,
-				0CCFB5442C2AD980009DB83F /* StditGenerator.swift */,
-				0CCFB5302C2AD66B009DB83F /* Preview Content */,
-				0C4CBA022C8055A400B37757 /* T5_div */,
-				0C4CBA1C2C8059AC00B37757 /* tokenizer.json */,
-				0C76050A2C5B67CF005BCF3B /* stdit3.mlpackage */,
-				0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */,
+				0CCD49F62C6C5936005D7F77 /* ResourceManaging.swift */,
 				0CCD49F02C6C4760005D7F77 /* ManagedMLModel.swift */,
+				0CCD49FE2C6C84FC005D7F77 /* T5Tokenizer.swift */,
+				0CC6190F2CABD02400FF7506 /* Asepct.swift */,
+				0C4CBA1C2C8059AC00B37757 /* tokenizer.json */,
+				0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */,
+				0CB223802CB6F19E000A75D0 /* T5 */,
+				0CB223822CB6F1B2000A75D0 /* STDit */,
+				0CCD49FA2C6C5A1E005D7F77 /* SoraPipeline.swift */,
+				0C4CBA1F2C805F5D00B37757 /* TextEncoding.swift */,
+				0CCD49F22C6C54CA005D7F77 /* STDit3.swift */,
 				0CCD49FC2C6C744F005D7F77 /* RFLOW.swift */,
 				0CC6190C2CAA717B00FF7506 /* RFlowScheduler.swift */,
-				0CC6190F2CABD02400FF7506 /* Asepct.swift */,
-				0CCD49F22C6C54CA005D7F77 /* STDit.swift */,
 				0CCD49F42C6C58A6005D7F77 /* VAEDecoder.swift */,
+<<<<<<< Updated upstream
 				0CCD49F62C6C5936005D7F77 /* ResourceManaging.swift */,
 				91DAA8B62CAC3C5300455E52 /* vae_new_pipe.mlpackage */,
 				91DAA8B22CA52D5100455E52 /* vae.mlpackage */,
@@ -200,6 +124,8 @@
 				0CCD49FA2C6C5A1E005D7F77 /* SoraPipeline.swift */,
 				0C4CBA272C89640E00B37757 /* T5Block.swift */,
 				0CCD49FE2C6C84FC005D7F77 /* T5Tokenizer.swift */,
+=======
+>>>>>>> Stashed changes
 			);
 			path = "On-Device-OpenSora";
 			sourceTree = "<group>";
@@ -226,6 +152,10 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0CB223802CB6F19E000A75D0 /* T5 */,
+				0CB223822CB6F1B2000A75D0 /* STDit */,
 			);
 			name = "On-Device-OpenSora";
 			packageProductDependencies = (
@@ -290,51 +220,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< Updated upstream
 				0C5EA2FF2C98433000CAABE5 /* t5block-layer17.mlpackage in Sources */,
 				0C5EA2F62C98433000CAABE5 /* t5block-layer19.mlpackage in Sources */,
 				91DAA8B52CA52D5900455E52 /* T5Tokenizer.swift in Sources */,
 				0C5EA3002C98433000CAABE5 /* t5block-layer9.mlpackage in Sources */,
+=======
+>>>>>>> Stashed changes
 				0CCD49FD2C6C744F005D7F77 /* RFLOW.swift in Sources */,
-				0C5EA2EC2C98433000CAABE5 /* t5block-layer8.mlpackage in Sources */,
-				0C5EA3022C98433000CAABE5 /* t5final-layer-norm.mlpackage in Sources */,
-				0C5EA2EB2C98433000CAABE5 /* t5block-layer4.mlpackage in Sources */,
-				0C5EA2EE2C98433000CAABE5 /* t5block-layer12.mlpackage in Sources */,
-				0C5EA2F02C98433000CAABE5 /* t5block-layer20.mlpackage in Sources */,
-				0CCD49F92C6C59DA005D7F77 /* TextEncoderT5.swift in Sources */,
 				0CCFB52D2C2AD669009DB83F /* ContentView.swift in Sources */,
 				0CCFB52B2C2AD669009DB83F /* On_Device_OpenSoraApp.swift in Sources */,
+<<<<<<< Updated upstream
 				0C76050B2C5B67CF005BCF3B /* stdit3.mlpackage in Sources */,
 				0C5EA2FE2C98433000CAABE5 /* t5block-layer11.mlpackage in Sources */,
 				0C5EA2FD2C98433000CAABE5 /* t5block-layer7.mlpackage in Sources */,
 				0C5EA2F12C98433000CAABE5 /* t5block-layer14.mlpackage in Sources */,
 				91DAA8B32CA52D5100455E52 /* vae.mlpackage in Sources */,
+=======
+>>>>>>> Stashed changes
 				0CCD49F72C6C5936005D7F77 /* ResourceManaging.swift in Sources */,
-				0C5EA2F42C98433000CAABE5 /* t5block-layer2.mlpackage in Sources */,
 				0CCD49F12C6C4760005D7F77 /* ManagedMLModel.swift in Sources */,
 				0CCD49F52C6C58A6005D7F77 /* VAEDecoder.swift in Sources */,
-				0C5EA2FB2C98433000CAABE5 /* t5block-layer18.mlpackage in Sources */,
 				0CC619102CABD02800FF7506 /* Asepct.swift in Sources */,
-				0C5EA2FA2C98433000CAABE5 /* t5block-layer10.mlpackage in Sources */,
 				0C4CBA202C805F5D00B37757 /* TextEncoding.swift in Sources */,
+<<<<<<< Updated upstream
 				0C5EA2F22C98433000CAABE5 /* t5block-layer5.mlpackage in Sources */,
 				0C5EA2F82C98433000CAABE5 /* t5block-layer21.mlpackage in Sources */,
 				91DAA8B72CAC3C5300455E52 /* vae_new_pipe.mlpackage in Sources */,
+=======
+>>>>>>> Stashed changes
 				0CCD49FF2C6C84FC005D7F77 /* T5Tokenizer.swift in Sources */,
-				0C5EA2F32C98433000CAABE5 /* t5block-layer6.mlpackage in Sources */,
-				0C5EA2F72C98433000CAABE5 /* t5block-layer1.mlpackage in Sources */,
-				0C5EA2F52C98433000CAABE5 /* t5block-layer0.mlpackage in Sources */,
-				0C5EA2ED2C98433000CAABE5 /* t5block-layer13.mlpackage in Sources */,
-				0C5EA3042C98433000CAABE5 /* t5block-layer22.mlpackage in Sources */,
-				0C5EA2EF2C98433000CAABE5 /* t5embed-tokens.mlpackage in Sources */,
-				0C4CBA282C89640E00B37757 /* T5Block.swift in Sources */,
-				0CCFB5452C2AD980009DB83F /* StditGenerator.swift in Sources */,
-				0C5EA2FC2C98433000CAABE5 /* t5block-layer3.mlpackage in Sources */,
-				0C5EA2F92C98433000CAABE5 /* t5block-layer15.mlpackage in Sources */,
-				0C5EA3012C98433000CAABE5 /* t5block-layer23.mlpackage in Sources */,
-				0C5EA3032C98433000CAABE5 /* t5block-layer16.mlpackage in Sources */,
 				0CC6190D2CAA718A00FF7506 /* RFlowScheduler.swift in Sources */,
 				0CCD49FB2C6C5A1E005D7F77 /* SoraPipeline.swift in Sources */,
-				0CCD49F32C6C54CA005D7F77 /* STDit.swift in Sources */,
+				0CCD49F32C6C54CA005D7F77 /* STDit3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +311,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -450,7 +368,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -484,6 +402,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.EAI.On-Device-OpenSora";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -514,6 +435,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.EAI.On-Device-OpenSora";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

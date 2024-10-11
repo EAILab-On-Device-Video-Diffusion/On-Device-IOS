@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @State var prompt: String = "A serene underwater scene featuring a sea turtle swimming through a coral reef. The turtle, with its greenish-brown shell"
+
     var body: some View {
         VStack {
+          TextField("Enter prompt,but default exists", text: $prompt)
+            .padding()
+            .background(Color(uiColor: .secondarySystemBackground))
+
           Button(action: generate) {
             Text("Click").font(.title)
           }.buttonStyle(.borderedProminent)
@@ -22,7 +27,7 @@ struct ContentView: View {
       do {
           let soraPipeline = try SoraPipeline(resourcesAt: Bundle.main.bundleURL)
           print("Click")
-          soraPipeline.sample(prompt: "Please Test T5...")
+          soraPipeline.sample(prompt: prompt)
       } catch {
           print("Error: Can't initiallize SoraPipeline")
       }

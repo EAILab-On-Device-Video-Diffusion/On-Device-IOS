@@ -8,11 +8,11 @@
 import Foundation
 import Tokenizers
 import CoreML
-import SwiftUI
 
 public struct TextEncoderT5Output {
   public let encoderHiddenStates: MLShapedArray<Float32>
   public let masks: MLShapedArray<Float32>
+  public let yNull: MLShapedArray<Float32>
 }
 
 public struct TextEncoding {
@@ -48,7 +48,7 @@ public struct TextEncoding {
     let startT5Time = DispatchTime.now()
 
     let inputName = "input_ids"
-    let inputShape = [1,512, 4096]
+    let inputShape = [1,300, 4096]
     let inputLength = inputShape[1]
             
     let bosToken = tokenizer.bosTokenId ?? 0
@@ -68,6 +68,7 @@ public struct TextEncoding {
     let inputShapeEmbed = inputShapeEmbed
     let inputArrayEmbed = MLShapedArray<Float32>(scalars: floatIds, shape: inputShapeEmbed)
     let inputFeaturesEmbed = try! MLDictionaryFeatureProvider(dictionary: [inputName: MLMultiArray(inputArrayEmbed)])
+
     
     let resultEmbed = try embed.perform { model in
       try model.prediction(from: inputFeaturesEmbed)
@@ -76,12 +77,16 @@ public struct TextEncoding {
 
     print("Done Embedding")
     
-    let maskArray = MLShapedArray<Float32>(scalars: attentionMask, shape: [1,1,1,512])
+    let maskArray = MLShapedArray<Float32>(scalars: attentionMask, shape: [1,1,1,300])
     var inputFeatures: MLFeatureProvider = try! MLDictionaryFeatureProvider(
       dictionary: ["hidden_states": resultEmbed.featureValue(for: "output") as Any,
-                     "attention_mask": MLMultiArray(maskArray)])
+                   "attention_mask": MLMultiArray(maskArray),
+                   "y_embedding": MLMultiArray(MLShapedArray(repeating: 1.0, shape: [300,4096]))
+                  ])
 
     print("Processing DivT5s")
+    var position_bias: Any? = nil
+    var yNull: MLMultiArray? = nil
     
     for (index,model) in DivT5s.enumerated() {
       let layerOutputs = try model.perform { model in
@@ -89,16 +94,14 @@ public struct TextEncoding {
       }
       model.unloadResources()
       if index == 0 {
-          inputFeatures = try! MLDictionaryFeatureProvider(
-            dictionary: ["hidden_states": layerOutputs.featureValue(for: "output_hidden_states") as Any,
-                         "attention_mask": MLMultiArray(maskArray),
-                         "position_bias" : layerOutputs.featureValue(for: "output_position_bias") as Any])
-      } else {
-          inputFeatures = try! MLDictionaryFeatureProvider(
-            dictionary: ["hidden_states": layerOutputs.featureValue(for: "var_119") as Any,
-                         "attention_mask": MLMultiArray(maskArray),
-                         "position_bias" : layerOutputs.featureValue(for: "position_bias") as Any])
+        position_bias = layerOutputs.featureValue(for: "output_position_bias")
+        yNull = layerOutputs.featureValue(for: "yNull")?.multiArrayValue
       }
+      
+      inputFeatures = try! MLDictionaryFeatureProvider(
+        dictionary: ["hidden_states": layerOutputs.featureValue(for: "output_hidden_states") as Any,
+                     "attention_mask": MLMultiArray(maskArray),
+                     "position_bias" : position_bias as Any])
 //      var output = [Float]()
 //      for i in 0...100 {
 //            output.append(inputFeatures.featureValue(for: "hidden_states")?.multiArrayValue![i] as! Float)
@@ -114,6 +117,7 @@ public struct TextEncoding {
     let resultNorm = try finalNorm.perform { model in
       try model.prediction(from: inputFeaturesNorm)
     }
+    finalNorm.unloadResources()
     print("Done Final Norm")
       
     print("Done T5 processing")
@@ -122,20 +126,21 @@ public struct TextEncoding {
     let endT5Time = DispatchTime.now()
     let elapsedT5Time = endT5Time.uptimeNanoseconds - startT5Time.uptimeNanoseconds
     print("T5 Running Time: \(Double(elapsedT5Time) / 1000000000)")
-//    var output2 = [Float]()
-//    let prompt_length = truncatedIds.count
-//    for var i in 0..<prompt_length {
-//      i = i*4096
-//      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i] as! Float)
-//      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i+1] as! Float)
-//      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i+2] as! Float)
-//      i += 4096
-//      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-3] as! Float)
-//      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-2] as! Float)
-//      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-1] as! Float)
-//    }
-//    print(output2)
-    return TextEncoderT5Output(encoderHiddenStates: MLShapedArray<Float32>(converting: resultNorm.featureValue(for: "output")!.multiArrayValue!), masks: MLShapedArray<Float32>(converting: inputFeatures.featureValue(for: "attention_mask")!.multiArrayValue!))
+    var output2 = [Float]()
+    for var i in 0...299 {
+      print("Channel i:\(i)")
+      output2 = []
+      i = i*4096
+      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i] as! Float)
+      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i+1] as! Float)
+      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i+2] as! Float)
+      i += 4096
+      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-3] as! Float)
+      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-2] as! Float)
+      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-1] as! Float)
+      print(output2)
+    }
+    return TextEncoderT5Output(encoderHiddenStates: MLShapedArray<Float32>(converting: resultNorm.featureValue(for: "output")!.multiArrayValue!).expandingShape(at: 0), masks: MLShapedArray<Float32>(converting: inputFeatures.featureValue(for: "attention_mask")!.multiArrayValue!).squeezingShape().expandingShape(at: 0), yNull: MLShapedArray<Float32>(converting: yNull!).expandingShape(at: 0).expandingShape(at: 0))
   }
   
   var inputDescription: MLFeatureDescription {
@@ -158,5 +163,3 @@ public struct TextEncoding {
     inputDescriptionEmbed.multiArrayConstraint!.shape.map { $0.intValue}
   }
 }
-
-
