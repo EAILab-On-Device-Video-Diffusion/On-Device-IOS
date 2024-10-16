@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var prompt: String = "A serene underwater scene featuring a sea turtle swimming through a coral reef. The turtle, with its greenish-brown shell"
+    @State var prompt: String = "a serene underwater scene featuring a sea turtle swimming through a coral reef. the turtle, with its greenish-brown shell aesthetic score: 6.5."
 
     var body: some View {
         VStack {

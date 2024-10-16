@@ -51,70 +51,61 @@ public final class RFLOW {
     // prepare timesteps
     var timeSteps: [Float32] = []
     for i in 0..<numSamplingsteps {
-      var t = (1.0 - Float32(i) / Float32(self.numSamplingsteps)) * Float32(self.numTimesteps)
+      var t = (1.0 - Float32(i) / Float32(self.numSamplingsteps)) * Float32(self.numTimesteps).rounded()
       t = timestep_transform(t: t, num_timesteps: self.numTimesteps)
       timeSteps.append(t)
     }
     
-    var maskShape: [Int] = []
-    for i in 0..<rflowInput.mask.shape.count {
-      maskShape.append(Int(truncating: rflowInput.mask.shape[i] as NSNumber))
-    }
-    
     let mask = MLTensor(rflowInput.mask)
-    var noiseAdded = MLTensor(repeating: false, shape: maskShape, scalarType: Bool.self)
+    var noiseAdded = MLTensor(repeating: false, shape: mask.shape, scalarType: Bool.self)
     
     noiseAdded = noiseAdded .| (mask .== 1)
-    let numTimestepsTensor = MLTensor(repeating: Float(self.numTimesteps), shape: maskShape)
+    let numTimestepsTensor = MLTensor(repeating: Float32(self.numTimesteps), shape: mask.shape)
     var z = MLTensor(rflowInput.z)
     let startTime = DispatchTime.now()
 
     for (i,t) in timeSteps.enumerated() {
       print("== Step \(i) ==")
       // mask for adding noise
-      var mask_t:MLTensor? = mask * numTimestepsTensor
+      let mask_t = mask * numTimestepsTensor
       let x0 = z
-      var xNoise:MLTensor? = self.scheduler.addNoise(original_samples: x0, noise: MLTensor(randomNormal: x0.shape, scalarType: Float32.self), timesteps: t)
-      var T:MLTensor? = MLTensor([Float32(t)])
-      let maskTUpper = mask_t! .>= T!.expandingShape(at: 1)
+      let xNoise = self.scheduler.addNoise(original_samples: x0, noise: MLTensor(randomNormal: x0.shape, seed: 42,scalarType: Float32.self), timesteps: t)
+      
+      let T = MLTensor([Float32(t)])
+      let maskTUpper = mask_t .>= T.expandingShape(at: 1)
       modelArgs["x_mask"] = await MLTensor(concatenating: [maskTUpper, maskTUpper], alongAxis: 0).cast(to: Float32.self).shapedArray(of: Float32.self)
-      var maskAddNoise: MLTensor? = maskTUpper .& .!noiseAdded
 
+      let maskAddNoise: MLTensor? = maskTUpper .& .!noiseAdded
       // z = torch.where(maskAddNoise[:, None, :, None, None], x_noise, x0) 대안 코드
       let expandedMaskAN = maskAddNoise!.cast(to: Float32.self).expandingShape(at: 1).expandingShape(at: 3).expandingShape(at: 4)
-      z = expandedMaskAN * xNoise! + (1 - expandedMaskAN) * x0
+      z = expandedMaskAN * xNoise + (1.0 - expandedMaskAN) * x0
       
       noiseAdded = maskTUpper
       
       // classifier-free guidance
       let zIn = await MLTensor(concatenating: [z,z], alongAxis: 0).shapedArray(of: Float32.self)
-      let tIn = await MLTensor(concatenating: [T!,T!], alongAxis: 0).shapedArray(of: Float32.self)
-      
-      // cleaning... for reducing memory
-      xNoise = nil
-      T = nil
-      maskAddNoise = nil
-      mask_t = nil
-      // To Do: chuck 구현 필요, input으로 들어갈 때는 shapedArray로 들어가야함
+      let tIn = await MLTensor(concatenating: [T,T], alongAxis: 0).shapedArray(of: Float32.self)
       var pred: MLTensor = try! await rflowInput.model.sample(x: zIn, timestep: tIn, modelargs: modelArgs)
+      
       let splitSize1 = pred.shape[1] / 2
-      pred = pred.split(sizes: [splitSize1,splitSize1], alongAxis: 1)[0]
+      pred = pred.split(sizes: [splitSize1,splitSize1], alongAxis: 1)[0] //chuck
       
       let splitSize2 = pred.shape[0] / 2
-      let finalPred = pred.split(sizes: [splitSize2, splitSize2], alongAxis: 0)
+      let finalPred = pred.split(sizes: [splitSize2, splitSize2], alongAxis: 0) // chuck
       let vPred = finalPred[1] + guidanceScale * (finalPred[0] - finalPred[1])
 
       // update z
       var dt = i < timeSteps.count - 1 ? timeSteps[i] - timeSteps[i + 1] : timeSteps[i]
-      dt = dt / Float(self.numTimesteps)
+      dt = Float32(dt) / Float32(self.numTimesteps)
       let DT = MLTensor([dt])
       
       // z = z + v_pred * dt[:, None, None, None, None] 대안코드
       z = z + vPred * DT.expandingShape(at: 1).expandingShape(at: 2).expandingShape(at: 3).expandingShape(at: 4)
       
       // z = torch.where(mask_t_upper[:, None, :, None, None], z, x0) 대안 코드
-      let expandedMaskTU = maskTUpper.expandingShape(at: 1).expandingShape(at: 3).expandingShape(at: 4)
-      z = expandedMaskTU * z + (1 - expandedMaskTU) * x0
+      let expandedMaskTU = maskTUpper.cast(to: Float32.self).expandingShape(at: 1).expandingShape(at: 3).expandingShape(at: 4)
+      z = expandedMaskTU * z + (1.0 - expandedMaskTU) * x0
+      print(await z.shapedArray(of: Float32.self))
     }
     let endTime = DispatchTime.now()
     let elapsedTime = endTime.uptimeNanoseconds - startTime.uptimeNanoseconds
@@ -126,7 +117,7 @@ public final class RFLOW {
 extension RFLOW {
   func timestep_transform(t: Float32, num_timesteps: Int = 1) -> Float32 {
     let base_resolution = 512.0 * 512.0
-    let base_num_frames = 1
+//    let base_num_frames = 1
     let scale: Float32 = 1.0
     let resolution = 221.0 * 166.0
     

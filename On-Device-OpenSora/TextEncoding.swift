@@ -56,6 +56,7 @@ public struct TextEncoding {
     let padToken = bosToken
     let maskToken = -Float32.greatestFiniteMagnitude
     let truncatedIds = ids.prefix(inputLength - 1) + [eosToken]
+    print("Result of Tokenizing: \(truncatedIds)")
     let inputIds = truncatedIds + Array(repeating: padToken, count: inputLength - truncatedIds.count)
 
     var attentionMask: [Float32] = inputIds.map { token in
@@ -140,7 +141,13 @@ public struct TextEncoding {
       output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-1] as! Float)
       print(output2)
     }
-    return TextEncoderT5Output(encoderHiddenStates: MLShapedArray<Float32>(converting: resultNorm.featureValue(for: "output")!.multiArrayValue!).expandingShape(at: 0), masks: MLShapedArray<Float32>(converting: inputFeatures.featureValue(for: "attention_mask")!.multiArrayValue!).squeezingShape().expandingShape(at: 0), yNull: MLShapedArray<Float32>(converting: yNull!).expandingShape(at: 0).expandingShape(at: 0))
+    var returnAttentionMask: [Float32] = inputIds.map { token in
+      token == padToken ? 0.0 : 1.0
+    }
+    let returnAttentionMaskArray = MLShapedArray<Float32>(scalars: returnAttentionMask, shape: [1,1,1,300])
+
+    print(returnAttentionMask)
+    return TextEncoderT5Output(encoderHiddenStates: MLShapedArray<Float32>(converting: resultNorm.featureValue(for: "output")!.multiArrayValue!).expandingShape(at: 0), masks: returnAttentionMaskArray.squeezingShape().expandingShape(at: 0), yNull: MLShapedArray<Float32>(converting: yNull!).expandingShape(at: 0).expandingShape(at: 0))
   }
   
   var inputDescription: MLFeatureDescription {

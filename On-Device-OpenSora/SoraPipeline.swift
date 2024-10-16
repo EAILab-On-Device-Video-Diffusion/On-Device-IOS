@@ -45,9 +45,7 @@ public struct SoraPipeline {
     if FileManager.default.fileExists(atPath: urls.configT5URL.path),
        FileManager.default.fileExists(atPath: urls.dataT5URL.path),
        FileManager.default.fileExists(atPath: urls.embedURL.path),
-       FileManager.default.fileExists(atPath: urls.finalNormURL.path),
-       FileManager.default.fileExists(atPath: urls.decoderURL.path),
-       FileManager.default.fileExists(atPath: urls.configT5URL.path)
+       FileManager.default.fileExists(atPath: urls.finalNormURL.path)
     {
       let config = MLModelConfiguration()
       config.computeUnits = .cpuAndGPU
@@ -70,18 +68,12 @@ public struct SoraPipeline {
       let config_stdit = MLModelConfiguration()
       config_stdit.computeUnits = .cpuAndGPU
 
-      var spatialBlocks: [ManagedMLModel] = []
+      var spatialAndTemporalBlocks: [ManagedMLModel] = []
       for i in 0...27 {
-        let spatialsBlockURL = baseURL.appending(path: "stdit3_spatial_\(i).mlmodelc")
-        spatialBlocks.append(ManagedMLModel(modelURL: spatialsBlockURL, config: config_stdit))
+        let spatialsBlockURL = baseURL.appending(path: "stdit3_ST_\(i).mlmodelc")
+        spatialAndTemporalBlocks.append(ManagedMLModel(modelURL: spatialsBlockURL, config: config_stdit))
       }
-      
-      var temporalBlocks: [ManagedMLModel] = []
-      for i in 0...27 {
-        let temporalBlockURL = baseURL.appending(path: "stdit3_temporal_\(i).mlmodelc")
-        temporalBlocks.append(ManagedMLModel(modelURL: temporalBlockURL, config: config_stdit))
-      }
-      STDit = STDit3(spatials: spatialBlocks, temporals: temporalBlocks)
+      STDit = STDit3(spatialAndTemporals: spatialAndTemporalBlocks)
 
     } else {
       STDit = nil
@@ -103,21 +95,21 @@ public struct SoraPipeline {
           print("Error: Can't tokenize")
           return
         }
-        print("Result of Tokenizing: \(ids)")
+        
         guard let resultEncoding = try TextEncodingT5?.encode(ids: ids) else {
           print("Error: Can't Encoding")
           return
         }
-        print("Done T5 Encoding")
         
+        print("Done T5 Encoding")
         // To do : STDit and VAE
         // Scheduler input
         let additionalArgs: [String: MLTensor] = [:]
-        let modelArgs = ["y": resultEncoding.encoderHiddenStates, "mask": resultEncoding.masks, "fps" : MLShapedArray<Float32>(arrayLiteral: 7.0) , "weight": MLShapedArray<Float32>(arrayLiteral: 221.0), "height":MLShapedArray<Float32>(arrayLiteral: 166.0)]
+        let modelArgs = ["y": resultEncoding.encoderHiddenStates, "mask": resultEncoding.masks, "fps" : MLShapedArray<Float32>(arrayLiteral: 24.0) , "width": MLShapedArray<Float32>(arrayLiteral: 221.0), "height":MLShapedArray<Float32>(arrayLiteral: 166.0)]
         let vaeOutChannels = 4
-        let latentsize = (5, 20, 27)
-        let z = await MLTensor(randomNormal: [1, vaeOutChannels, latentsize.0, latentsize.1, latentsize.2], scalarType: Float32.self).shapedArray(of: Float32.self)
-        let mask = await MLTensor(ones: [5], scalarType: Float32.self).shapedArray(of: Float32.self)
+        let latentsize = (15, 20, 27)
+        let z = await MLTensor(randomNormal: [1, vaeOutChannels, latentsize.0, latentsize.1, latentsize.2],seed: 42,scalarType: Float32.self).shapedArray(of: Float32.self)
+        let mask = await MLTensor(ones: [latentsize.0], scalarType: Float32.self).shapedArray(of: Float32.self)
         let rflowInput = RFLOWInput(model: STDit!, modelArgs: modelArgs, z: z, mask: mask, additionalArgs: additionalArgs)
         
         // Scheduler Sample
@@ -129,7 +121,7 @@ public struct SoraPipeline {
         print("Begin Decoding")
         
         // Get dummy sample
-        let latentShape = [1, 4, 4, 20, 27]
+        let latentShape = [1, 4, 15, 20, 27]
         let totalElements = latentShape.reduce(1,*)
         var latentVars = (0..<totalElements).map { _ in Float32(1.0)}
         
