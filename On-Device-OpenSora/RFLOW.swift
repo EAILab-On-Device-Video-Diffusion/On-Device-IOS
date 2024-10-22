@@ -50,9 +50,9 @@ public final class RFLOW {
     
     // prepare timesteps
     var timeSteps: [Float32] = []
-    for i in 0..<numSamplingsteps {
-      var t = (1.0 - Float32(i) / Float32(self.numSamplingsteps)) * Float32(self.numTimesteps).rounded()
-      t = timestep_transform(t: t, num_timesteps: self.numTimesteps)
+    for i in 0..<self.numSamplingsteps {
+      var t = (1.0 - Float32(i) / Float32(self.numSamplingsteps)) * Float32(self.numTimesteps)
+      t = timestep_transform(t: round(t), num_timesteps: self.numTimesteps)
       timeSteps.append(t)
     }
     
@@ -86,10 +86,23 @@ public final class RFLOW {
       let zIn = await MLTensor(concatenating: [z,z], alongAxis: 0).shapedArray(of: Float32.self)
       let tIn = await MLTensor(concatenating: [T,T], alongAxis: 0).shapedArray(of: Float32.self)
       var pred: MLTensor = try! await rflowInput.model.sample(x: zIn, timestep: tIn, modelargs: modelArgs)
-      
+//      print(await pred.shapedArray(of: Float32.self))
+//      var printOutput = [Float32]()
+//      for i in 0...100 {
+//        printOutput.append(Float32(MLMultiArray(await pred.shapedArray(of: Float32.self))[i]))
+//        }
+//      print(printOutput[0...100])
+
       let splitSize1 = pred.shape[1] / 2
       pred = pred.split(sizes: [splitSize1,splitSize1], alongAxis: 1)[0] //chuck
-      
+//      printOutput = []
+//      for i in 0...100 {
+//        printOutput.append(Float32(MLMultiArray(await pred.shapedArray(of: Float32.self))[i]))
+//        }
+//
+//      print("pred")
+//      print(printOutput[0...100])
+
       let splitSize2 = pred.shape[0] / 2
       let finalPred = pred.split(sizes: [splitSize2, splitSize2], alongAxis: 0) // chuck
       let vPred = finalPred[1] + guidanceScale * (finalPred[0] - finalPred[1])
@@ -105,7 +118,7 @@ public final class RFLOW {
       // z = torch.where(mask_t_upper[:, None, :, None, None], z, x0) 대안 코드
       let expandedMaskTU = maskTUpper.cast(to: Float32.self).expandingShape(at: 1).expandingShape(at: 3).expandingShape(at: 4)
       z = expandedMaskTU * z + (1.0 - expandedMaskTU) * x0
-      print(await z.shapedArray(of: Float32.self))
+//      print(await z.shapedArray(of: Float32.self))
     }
     let endTime = DispatchTime.now()
     let elapsedTime = endTime.uptimeNanoseconds - startTime.uptimeNanoseconds
@@ -117,14 +130,14 @@ public final class RFLOW {
 extension RFLOW {
   func timestep_transform(t: Float32, num_timesteps: Int = 1) -> Float32 {
     let base_resolution = 512.0 * 512.0
-//    let base_num_frames = 1
+  //    let base_num_frames = 1
     let scale: Float32 = 1.0
     let resolution = 221.0 * 166.0
     
     let T = t / Float32(num_timesteps)
     let ratio_space = Float32(resolution / base_resolution).squareRoot()
-    let ratio_time = Float32(Int(20 / 17) * 5).squareRoot()
-    let ratio = ratio_space * ratio_time * scale
+    let ratio_time = Float32(51 / 17 * 5).squareRoot()
+    let ratio = ratio_space * ratio_time
     var new_t = ratio * T / (1 + (ratio - 1) * T)
     new_t = new_t * Float32(num_timesteps)
     return new_t

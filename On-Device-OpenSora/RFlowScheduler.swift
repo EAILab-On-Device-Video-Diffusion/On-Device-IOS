@@ -28,8 +28,8 @@ public final class RFlowScheduler {
 //    self.useTimestepTransform = useTimestepTransform
   }
   
-  public func addNoise(original_samples:MLTensor, noise: MLTensor, timesteps: Float) -> MLTensor {
-    var timepoints = MLTensor([1.0 - (Float(timesteps) / Float(self.numTimesteps))])
+  public func addNoise(original_samples:MLTensor, noise: MLTensor, timesteps: Float32) -> MLTensor {
+    var timepoints = MLTensor([1.0 - (Float32(timesteps) / Float32(self.numTimesteps))])
     
     timepoints = timepoints.expandingShape(at: 1).expandingShape(at: 1).expandingShape(at: 1).expandingShape(at: 1)
 //    timepoints = timepoints.repeat(1, noise.shape[1], noise.shape[2], noise.shape[3], noise.shape[4]) 대안 코드

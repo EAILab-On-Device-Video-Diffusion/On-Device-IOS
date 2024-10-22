@@ -8,7 +8,7 @@
 import Foundation
 import CoreML
 
-public struct VAEDecoder: ResourceManaging {
+public struct VAEDecoder {
   
   var model: ManagedMLModel
   
@@ -16,51 +16,44 @@ public struct VAEDecoder: ResourceManaging {
     self.model = ManagedMLModel(modelURL: modelURL, config: config)
   }
   
-  public func loadResources() throws {
-    try model.loadResources()
-  }
-  
-  public func unloadResources() {
-    model.unloadResources()
-  }
-  // To do: func decode
-  
   enum DecoderError: Error {
       case noDecodedData
   }
 
-  func decode(latentVars: [Float32]) throws -> [Float32] {
+  func decode(latentVars: MLShapedArray<Float32>) throws -> MLMultiArray {
       let startVAEDecodeTime = DispatchTime.now()
 
       // Define input shape for the decoder
-      let latentShape = [1, 4, 4, 20, 27] // Your latent dimension
-      let totalElements = latentShape.reduce(1, *) // Calculate total number of elements
+//      let latentShape = [1, 4, 15, 20, 27] // Your latent dimension
+//      let totalElements = latentShape.reduce(1, *) // Calculate total number of elements
 
       // Check if the size of latentVars matches the expected total elements
-      guard latentVars.count == totalElements else {
-          throw DecoderError.noDecodedData
-      }
+//      guard latentVars.count == totalElements else {
+//          throw DecoderError.noDecodedData
+//      }
 
       // Calculate the sum of the input latent variables
-      let sumOfInput = latentVars.reduce(0, +)
-      print("Sum of Input Latent Variables: \(sumOfInput)")
+//      let sumOfInput = latentVars.reduce(0, +)
+//      print("Sum of Input Latent Variables: \(sumOfInput)")
       
     
     // Create an MLShapedArray from the latentVars
-      let latentArray = MLShapedArray<Float32>(scalars: latentVars, shape: latentShape)
-      let numFrames = MLShapedArray(arrayLiteral: 20)
+//      let latentArray = MLShapedArray<Float32>(scalars: latentVars, shape: latentShape)
+      let numFrames = MLShapedArray(arrayLiteral: 51)
 
       // Prepare input features with only latent input
       let inputFeatures = try MLDictionaryFeatureProvider(dictionary: [
-        "latents": MLMultiArray(latentArray), "num_frames": MLMultiArray(numFrames) // Adjust input name as necessary
+        "latents": latentVars
       ])
       print("Begin Decoding")
     
-      // Pass inputs through the decoder model
-      let decoderOutput = try model.perform { model in
-          try model.prediction(from: inputFeatures)
-      }
-
+//      // Pass inputs through the decoder model
+//      let decoderOutput = try model.perform { model in
+//          try model.prediction(from: inputFeatures)
+//      }
+      let inputVae = vaeInput(latents: latentVars)
+      let modelVae = try vae(configuration: model.config)
+      let decoderOutput = try modelVae.prediction(input: inputVae)
       print("Done Decoding")
 
       // Log time and return output
@@ -68,8 +61,7 @@ public struct VAEDecoder: ResourceManaging {
       let elapsedVAEDecodeTime = endVAEDecodeTime.uptimeNanoseconds - startVAEDecodeTime.uptimeNanoseconds
       print("VAE Decode Running Time: \(Double(elapsedVAEDecodeTime) / 1000000000) seconds")
       // Extract the result from the decoder's output
-      let outputFeatureName = "var_4026" // Replace with the actual output feature name in your model
-      let decodedValues = decoderOutput.featureValue(for: outputFeatureName)?.multiArrayValue
+      let decodedValues = decoderOutput.featureValue(for: "output")?.multiArrayValue
 
       // Check if decodedValues is nil or empty
       guard let decodedValues = decodedValues, decodedValues.count > 0 else {
@@ -79,21 +71,12 @@ public struct VAEDecoder: ResourceManaging {
 
       // Convert the MLMultiArray to a Float array
       var output = [Float]()
-      for i in 0..<decodedValues.count {
+      for i in 0..<10 {
           output.append(decodedValues[i].floatValue)
       }
-
-      // Calculate the sum of the output
-      let sumOfOutput = output.reduce(0, +)
-        
-      // Print the sum of the output
-      print("Sum of Decoded Output: \(sumOfOutput)")
       // Print the first 10 decoded values for debugging purposes
-      print("Decoded Output (first 10 values): \(output.prefix(10))")
-
-    
-
-      return output
+      print("Decoded Output (first 10 values): \(output)")
+    return decodedValues
   }
 
   

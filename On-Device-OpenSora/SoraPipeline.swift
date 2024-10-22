@@ -36,10 +36,12 @@ public struct SoraPipeline {
   let TextEncodingT5: TextEncoding?
   let STDit: STDit3?
   let VAE: VAEDecoder?
+  let Converter: Tensor2Vid?
   
-  init(resourcesAt baseURL: URL, configuration config: MLModelConfiguration = .init(), reduceMemory: Bool = false) throws {
+  init(resourcesAt baseURL: URL, videoConverter converter: Tensor2Vid ) throws {
     
     let urls = ResourceURLs(resourcesAt: baseURL)
+    Converter = converter
     
     // initialize Models for Text Encoding
     if FileManager.default.fileExists(atPath: urls.configT5URL.path),
@@ -67,13 +69,14 @@ public struct SoraPipeline {
       // To do: STDit Model
       let config_stdit = MLModelConfiguration()
       config_stdit.computeUnits = .cpuAndGPU
-
+      let part1 = ManagedMLModel(modelURL: baseURL.appending(path: "stdit3_part1.mlmodelc"), config: config_stdit)
       var spatialAndTemporalBlocks: [ManagedMLModel] = []
       for i in 0...27 {
         let spatialsBlockURL = baseURL.appending(path: "stdit3_ST_\(i).mlmodelc")
         spatialAndTemporalBlocks.append(ManagedMLModel(modelURL: spatialsBlockURL, config: config_stdit))
       }
-      STDit = STDit3(spatialAndTemporals: spatialAndTemporalBlocks)
+      let part2 = ManagedMLModel(modelURL: baseURL.appending(path: "stdit3_part2.mlmodelc"), config: config_stdit)
+      STDit = STDit3(part1: part1, spatialAndTemporals: spatialAndTemporalBlocks, part2: part2)
 
     } else {
       STDit = nil
@@ -82,11 +85,14 @@ public struct SoraPipeline {
     // initialize Models for VAE
     if FileManager.default.fileExists(atPath: urls.decoderURL.path) {
       // To do: VAE for decoding video
-      VAE = VAEDecoder(modelURL: urls.decoderURL, config: config)
+      let config_vae = MLModelConfiguration()
+      config_vae.computeUnits = .cpuOnly
+      VAE = VAEDecoder(modelURL: urls.decoderURL, config: config_vae)
     } else {
       VAE = nil
     }
   }
+  
   func sample(prompt: String) {
     // To do: make the sample process
     Task(priority: .high) {
@@ -118,17 +124,11 @@ public struct SoraPipeline {
         print(resultSTDit.shape)
         print(resultSTDit)
         
-        print("Begin Decoding")
-        
-        // Get dummy sample
-        let latentShape = [1, 4, 15, 20, 27]
-        let totalElements = latentShape.reduce(1,*)
-        var latentVars = (0..<totalElements).map { _ in Float32(1.0)}
-        
-        guard let resultDecoding = try VAE?.decode(latentVars: latentVars) else {
+        guard let resultDecoding = try VAE?.decode(latentVars: resultSTDit) else {
           print("Error: Can't Decode")
           return
           }
+        let _ = await Converter!.convertToVideo(multiArray: resultDecoding)
         }
         catch {
           print("Error: Can't make sample.")

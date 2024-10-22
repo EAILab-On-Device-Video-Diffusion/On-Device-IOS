@@ -9,12 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     @State var prompt: String = "a serene underwater scene featuring a sea turtle swimming through a coral reef. the turtle, with its greenish-brown shell aesthetic score: 6.5."
+    @StateObject private var tensor2vidConverter = Tensor2Vid()
 
     var body: some View {
         VStack {
-          TextField("Enter prompt,but default exists", text: $prompt)
-            .padding()
-            .background(Color(uiColor: .secondarySystemBackground))
+          if let videoURL = tensor2vidConverter.videoURL {
+              VideoPlayerView(url: videoURL)
+          } else {
+            TextField("Enter prompt,but default exists", text: $prompt)
+              .padding()
+              .background(Color(uiColor: .secondarySystemBackground))
+          }
 
           Button(action: generate) {
             Text("Click").font(.title)
@@ -25,7 +30,7 @@ struct ContentView: View {
   
   func generate() {
       do {
-          let soraPipeline = try SoraPipeline(resourcesAt: Bundle.main.bundleURL)
+        let soraPipeline = try SoraPipeline(resourcesAt: Bundle.main.bundleURL, videoConverter: tensor2vidConverter)
           print("Click")
           soraPipeline.sample(prompt: prompt)
       } catch {

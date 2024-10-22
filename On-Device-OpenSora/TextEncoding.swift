@@ -127,26 +127,26 @@ public struct TextEncoding {
     let endT5Time = DispatchTime.now()
     let elapsedT5Time = endT5Time.uptimeNanoseconds - startT5Time.uptimeNanoseconds
     print("T5 Running Time: \(Double(elapsedT5Time) / 1000000000)")
-    var output2 = [Float]()
-    for var i in 0...299 {
-      print("Channel i:\(i)")
-      output2 = []
-      i = i*4096
-      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i] as! Float)
-      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i+1] as! Float)
-      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i+2] as! Float)
-      i += 4096
-      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-3] as! Float)
-      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-2] as! Float)
-      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-1] as! Float)
-      print(output2)
-    }
-    var returnAttentionMask: [Float32] = inputIds.map { token in
+//    var output2 = [Float]()
+//    for var i in 0...299 {
+//      print("Channel i:\(i)")
+//      output2 = []
+//      i = i*4096
+//      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i] as! Float)
+//      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i+1] as! Float)
+//      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i+2] as! Float)
+//      i += 4096
+//      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-3] as! Float)
+//      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-2] as! Float)
+//      output2.append(resultNorm.featureValue(for: "output")?.multiArrayValue![i-1] as! Float)
+//      print(output2)
+//    }
+    
+    let returnAttentionMask: [Float32] = inputIds.map { token in
       token == padToken ? 0.0 : 1.0
     }
     let returnAttentionMaskArray = MLShapedArray<Float32>(scalars: returnAttentionMask, shape: [1,1,1,300])
 
-    print(returnAttentionMask)
     return TextEncoderT5Output(encoderHiddenStates: MLShapedArray<Float32>(converting: resultNorm.featureValue(for: "output")!.multiArrayValue!).expandingShape(at: 0), masks: returnAttentionMaskArray.squeezingShape().expandingShape(at: 0), yNull: MLShapedArray<Float32>(converting: yNull!).expandingShape(at: 0).expandingShape(at: 0))
   }
   

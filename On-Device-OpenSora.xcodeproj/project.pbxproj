@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C3D77F12CC63BD900277C60 /* Tensor2Vid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3D77F02CC63BD900277C60 /* Tensor2Vid.swift */; };
+		0C3D77F32CC63BF700277C60 /* Tensor2VidContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3D77F22CC63BF700277C60 /* Tensor2VidContentView.swift */; };
 		0C4CBA1D2C8059AC00B37757 /* tokenizer_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */; };
 		0C4CBA1E2C8059AC00B37757 /* tokenizer.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C4CBA1C2C8059AC00B37757 /* tokenizer.json */; };
 		0C4CBA202C805F5D00B37757 /* TextEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CBA1F2C805F5D00B37757 /* TextEncoding.swift */; };
+		0CABCB132CC6AE6600D5E57A /* vae.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0CABCB122CC6AE6600D5E57A /* vae.mlpackage */; };
 		0CC6190D2CAA718A00FF7506 /* RFlowScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6190C2CAA717B00FF7506 /* RFlowScheduler.swift */; };
 		0CC619102CABD02800FF7506 /* Asepct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6190F2CABD02400FF7506 /* Asepct.swift */; };
 		0CCD49F12C6C4760005D7F77 /* ManagedMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F02C6C4760005D7F77 /* ManagedMLModel.swift */; };
@@ -27,9 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C3D77F02CC63BD900277C60 /* Tensor2Vid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tensor2Vid.swift; sourceTree = "<group>"; };
+		0C3D77F22CC63BF700277C60 /* Tensor2VidContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tensor2VidContentView.swift; sourceTree = "<group>"; };
 		0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokenizer_config.json; sourceTree = "<group>"; };
 		0C4CBA1C2C8059AC00B37757 /* tokenizer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokenizer.json; sourceTree = "<group>"; };
 		0C4CBA1F2C805F5D00B37757 /* TextEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEncoding.swift; sourceTree = "<group>"; };
+		0CABCB122CC6AE6600D5E57A /* vae.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae.mlpackage; sourceTree = "<group>"; };
 		0CC6190C2CAA717B00FF7506 /* RFlowScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFlowScheduler.swift; sourceTree = "<group>"; };
 		0CC6190F2CABD02400FF7506 /* Asepct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asepct.swift; sourceTree = "<group>"; };
 		0CCD49F02C6C4760005D7F77 /* ManagedMLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMLModel.swift; sourceTree = "<group>"; };
@@ -92,6 +98,7 @@
 				0CC6190F2CABD02400FF7506 /* Asepct.swift */,
 				0C4CBA1C2C8059AC00B37757 /* tokenizer.json */,
 				0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */,
+				0CABCB122CC6AE6600D5E57A /* vae.mlpackage */,
 				0CB223802CB6F19E000A75D0 /* T5 */,
 				0CB223822CB6F1B2000A75D0 /* STDit */,
 				0CCD49FA2C6C5A1E005D7F77 /* SoraPipeline.swift */,
@@ -100,6 +107,8 @@
 				0CCD49FC2C6C744F005D7F77 /* RFLOW.swift */,
 				0CC6190C2CAA717B00FF7506 /* RFlowScheduler.swift */,
 				0CCD49F42C6C58A6005D7F77 /* VAEDecoder.swift */,
+				0C3D77F02CC63BD900277C60 /* Tensor2Vid.swift */,
+				0C3D77F22CC63BF700277C60 /* Tensor2VidContentView.swift */,
 			);
 			path = "On-Device-OpenSora";
 			sourceTree = "<group>";
@@ -199,6 +208,7 @@
 				0CCFB52B2C2AD669009DB83F /* On_Device_OpenSoraApp.swift in Sources */,
 				0CCD49F72C6C5936005D7F77 /* ResourceManaging.swift in Sources */,
 				0CCD49F12C6C4760005D7F77 /* ManagedMLModel.swift in Sources */,
+				0C3D77F32CC63BF700277C60 /* Tensor2VidContentView.swift in Sources */,
 				0CCD49F52C6C58A6005D7F77 /* VAEDecoder.swift in Sources */,
 				0CC619102CABD02800FF7506 /* Asepct.swift in Sources */,
 				0C4CBA202C805F5D00B37757 /* TextEncoding.swift in Sources */,
@@ -206,6 +216,8 @@
 				0CC6190D2CAA718A00FF7506 /* RFlowScheduler.swift in Sources */,
 				0CCD49FB2C6C5A1E005D7F77 /* SoraPipeline.swift in Sources */,
 				0CCD49F32C6C54CA005D7F77 /* STDit3.swift in Sources */,
+				0C3D77F12CC63BD900277C60 /* Tensor2Vid.swift in Sources */,
+				0CABCB132CC6AE6600D5E57A /* vae.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
