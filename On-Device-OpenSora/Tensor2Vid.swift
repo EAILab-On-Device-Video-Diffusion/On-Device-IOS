@@ -11,11 +11,6 @@ import AVFoundation
 import VideoToolbox
 import SwiftUI
 
-import Foundation
-import CoreML
-import AVFoundation
-import VideoToolbox
-
 @MainActor
 final class Tensor2Vid: ObservableObject {
     @Published var videoURL: URL?
@@ -28,7 +23,7 @@ final class Tensor2Vid: ObservableObject {
         }
         
         for i in 0..<multiArray.count {
-            multiArray[i] = NSNumber(value: Float.random(in: 0...1))
+            multiArray[i] = NSNumber(value: Float.random(in: -1...1))  // Example: generating random data in the range [-1, 1]
         }
         
         return multiArray
@@ -36,10 +31,10 @@ final class Tensor2Vid: ObservableObject {
   
 
     func convertToVideo(multiArray: MLMultiArray) async -> URL? {
-        let frameCount = multiArray.shape[0].intValue
+        let frameCount = multiArray.shape[2].intValue
         let channels = multiArray.shape[1].intValue
-        let height = multiArray.shape[2].intValue
-        let width = multiArray.shape[3].intValue
+        let height = multiArray.shape[3].intValue
+        let width = multiArray.shape[4].intValue
         
         guard channels == 3 else {
         print("Invalid number of channels. Expected 3, got \(channels)")
@@ -72,46 +67,43 @@ final class Tensor2Vid: ObservableObject {
         var frameTime = CMTime.zero
         
         for frameIndex in 0..<frameCount {
-            autoreleasepool {
-                guard let pixelBuffer = createPixelBuffer(from: multiArray, frameIndex: frameIndex, width: width, height: height) else {
-                print("Failed to create pixel buffer for frame \(frameIndex)")
-                return
-                }
                 
-                while !videoWriterInput.isReadyForMoreMediaData {
-                Thread.sleep(forTimeInterval: 0.1)
-                }
+          let pixelBuffer = createPixelBuffer(from: multiArray, frameIndex: frameIndex, width: width, height: height)
+          
+          while !videoWriterInput.isReadyForMoreMediaData {
+          Thread.sleep(forTimeInterval: 0.1)
+          }
                 
-                if adaptor.append(pixelBuffer, withPresentationTime: frameTime) {
-                frameTime = CMTimeAdd(frameTime, frameDuration)
-                } else {
-                print("Failed to append pixel buffer for frame \(frameIndex)")
-                }
+          if adaptor.append(pixelBuffer!, withPresentationTime: frameTime) {
+            frameTime = CMTimeAdd(frameTime, frameDuration)
+            } else {
+            print("Failed to append pixel buffer for frame \(frameIndex)")
             }
+            
         }
         
         videoWriterInput.markAsFinished()
         await videoWriter.finishWriting()
         
-        await MainActor.run{
+        await MainActor.run {
             self.videoURL = outputURL
         }
         print("Video saved to: \(outputURL.path)")
-        
         
         return outputURL
     }
 
     private func createPixelBuffer(from multiArray: MLMultiArray, frameIndex: Int, width: Int, height: Int) -> CVPixelBuffer? {
+      
         var pixelBuffer: CVPixelBuffer?
         let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue,
-                kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
+                     kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
         let status = CVPixelBufferCreate(kCFAllocatorDefault,
-                                    width,
-                                    height,
-                                    kCVPixelFormatType_32BGRA,
-                                    attrs,
-                                    &pixelBuffer)
+                                         width,
+                                         height,
+                                         kCVPixelFormatType_32BGRA,
+                                         attrs,
+                                         &pixelBuffer)
 
         guard status == kCVReturnSuccess, let pixelBuffer = pixelBuffer else {
             return nil
@@ -121,18 +113,16 @@ final class Tensor2Vid: ObservableObject {
         let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer)
 
         let bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
-        _ = CVPixelBufferGetDataSize(pixelBuffer)
-
+        
         for y in 0..<height {
             for x in 0..<width {
                 let pixelOffset = y * bytesPerRow + x * 4
                 guard let pixelOffsetPointer = pixelData?.advanced(by: pixelOffset) else { continue }
                 
                 let pixel = pixelOffsetPointer.bindMemory(to: UInt8.self, capacity: 4)
-                
-                let r = UInt8(max(0, min(255, multiArray[[frameIndex, 0, y, x] as [NSNumber]].floatValue * 255)))
-                let g = UInt8(max(0, min(255, multiArray[[frameIndex, 1, y, x] as [NSNumber]].floatValue * 255)))
-                let b = UInt8(max(0, min(255, multiArray[[frameIndex, 2, y, x] as [NSNumber]].floatValue * 255)))
+                let r = normalizeTensorValue(multiArray[[0, 0, frameIndex, y, x] as [NSNumber]].floatValue, minValue: -1.0, maxValue: 1.0)
+                let g = normalizeTensorValue(multiArray[[0, 1, frameIndex, y, x] as [NSNumber]].floatValue, minValue: -1.0, maxValue: 1.0)
+                let b = normalizeTensorValue(multiArray[[0, 2, frameIndex, y, x] as [NSNumber]].floatValue, minValue: -1.0, maxValue: 1.0)
                 
                 pixel[0] = b
                 pixel[1] = g
@@ -145,7 +135,10 @@ final class Tensor2Vid: ObservableObject {
 
         return pixelBuffer
     }
+    
+    private func normalizeTensorValue(_ value: Float, minValue: Float, maxValue: Float) -> UInt8 {
+        
+        let normalized = (value - minValue) / (maxValue - minValue)
+        return UInt8(max(0, min(255, normalized * 255)))
+    }
 }
-
-
-

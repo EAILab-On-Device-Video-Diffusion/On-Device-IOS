@@ -48,7 +48,7 @@ public struct TextEncoding {
     let startT5Time = DispatchTime.now()
 
     let inputName = "input_ids"
-    let inputShape = [1,300, 4096]
+    let inputShape = [1,300,4096]
     let inputLength = inputShape[1]
             
     let bosToken = tokenizer.bosTokenId ?? 0
@@ -67,7 +67,7 @@ public struct TextEncoding {
     let floatIds = inputIds.map { Float32($0) }
 
     let inputShapeEmbed = inputShapeEmbed
-    let inputArrayEmbed = MLShapedArray<Float32>(scalars: floatIds, shape: inputShapeEmbed)
+    let inputArrayEmbed =  MLShapedArray<Float32>(scalars: floatIds, shape: inputShapeEmbed)
     let inputFeaturesEmbed = try! MLDictionaryFeatureProvider(dictionary: [inputName: MLMultiArray(inputArrayEmbed)])
 
     

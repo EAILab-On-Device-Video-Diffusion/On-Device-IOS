@@ -50,12 +50,12 @@ public struct SoraPipeline {
        FileManager.default.fileExists(atPath: urls.finalNormURL.path)
     {
       let config = MLModelConfiguration()
-      config.computeUnits = .cpuAndGPU
+      config.computeUnits = .cpuOnly
       let tokenizerT5 = try PreTrainedTokenizer(tokenizerConfig: Config(fileURL: urls.configT5URL), tokenizerData: Config(fileURL: urls.dataT5URL))
       let embedLayer = ManagedMLModel(modelURL: urls.embedURL, config: config)
       let finalNormLayer = ManagedMLModel(modelURL: urls.finalNormURL, config: config)
       var DivT5s: [ManagedMLModel] = []
-      for i in 0...23 {
+      for i in 0...1 {
         let T5BlockURL = baseURL.appending(path: "t5block-layer\(i).mlmodelc")
         DivT5s.append(ManagedMLModel(modelURL: T5BlockURL, config: config))
       }
@@ -71,7 +71,7 @@ public struct SoraPipeline {
       config_stdit.computeUnits = .cpuAndGPU
       let part1 = ManagedMLModel(modelURL: baseURL.appending(path: "stdit3_part1.mlmodelc"), config: config_stdit)
       var spatialAndTemporalBlocks: [ManagedMLModel] = []
-      for i in 0...27 {
+      for i in 0...1 {
         let spatialsBlockURL = baseURL.appending(path: "stdit3_ST_\(i).mlmodelc")
         spatialAndTemporalBlocks.append(ManagedMLModel(modelURL: spatialsBlockURL, config: config_stdit))
       }
@@ -119,15 +119,16 @@ public struct SoraPipeline {
         let rflowInput = RFLOWInput(model: STDit!, modelArgs: modelArgs, z: z, mask: mask, additionalArgs: additionalArgs)
         
         // Scheduler Sample
-        let rflow = RFLOW(numSamplingsteps: 30, cfgScale: 7.0)
+        let rflow = RFLOW(numSamplingsteps: 1, cfgScale: 7.0)
         let resultSTDit = await rflow.sample(rflowInput: rflowInput, yNull: resultEncoding.yNull).shapedArray(of: Float32.self)
         print(resultSTDit.shape)
-        print(resultSTDit)
         
         guard let resultDecoding = try VAE?.decode(latentVars: resultSTDit) else {
           print("Error: Can't Decode")
           return
           }
+        print("Decoding-shape:")
+        print(resultDecoding.shape)
         let _ = await Converter!.convertToVideo(multiArray: resultDecoding)
         }
         catch {
