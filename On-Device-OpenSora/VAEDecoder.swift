@@ -20,7 +20,7 @@ public struct VAEDecoder {
       case noDecodedData
   }
 
-  func decode(latentVars: MLShapedArray<Float32>) throws -> MLMultiArray {
+  func decode(latentVars: MLShapedArray<Float32>) async throws -> MLMultiArray {
       let startVAEDecodeTime = DispatchTime.now()
 
       // Define input shape for the decoder
@@ -51,9 +51,30 @@ public struct VAEDecoder {
 //      let decoderOutput = try model.perform { model in
 //          try model.prediction(from: inputFeatures)
 //      }
-      let inputVae = vaeInput(latents: latentVars)
-      let modelVae = try vae(configuration: model.config)
-      let decoderOutput = try modelVae.prediction(input: inputVae)
+//      let inputVae = vaeInput(latents: latentVars)
+//      let modelVae = try vae(configuration: model.config)
+//      let decoderOutput = try modelVae.prediction(input: inputVae)
+      
+      let inputTemporalVae = vae_temporalInput(latents: latentVars)
+      let modelTemporalVae = try vae_temporal(configuration: model.config)
+      print("Temporal VAE Loaded")
+      let temporalVaeOutput = try await modelTemporalVae.prediction(input: inputTemporalVae).featureValue(for: "output")?.shapedArrayValue(of: Float32.self)
+      print("Done Temporal VAE")
+      let test = MLTensor(temporalVaeOutput!).split(count: 17, alongAxis: 2)
+
+      var decoded :[MLMultiArray] = []
+      
+      for i in 0...16 {
+          print("========Spatial VAE\(i)=======")
+          let latents = await test[i].shapedArray(of: Float32.self)
+          let inputSpatial = vae_spatialInput(latents: latents)
+          let spatialVAE = try vae_spatial(configuration: model.config)
+          let spatialVAEOutput = try await spatialVAE.prediction(input: inputSpatial).featureValue(for: "output")?.multiArrayValue
+          decoded.append(spatialVAEOutput!)
+      }
+
+      let decodedValues = MLMultiArray(concatenating: decoded, axis: 2, dataType: MLMultiArrayDataType.float32)
+
       print("Done Decoding")
 
       // Log time and return output
@@ -61,21 +82,20 @@ public struct VAEDecoder {
       let elapsedVAEDecodeTime = endVAEDecodeTime.uptimeNanoseconds - startVAEDecodeTime.uptimeNanoseconds
       print("VAE Decode Running Time: \(Double(elapsedVAEDecodeTime) / 1000000000) seconds")
       // Extract the result from the decoder's output
-      let decodedValues = decoderOutput.featureValue(for: "output")?.multiArrayValue
-
+//      let decodedValues = decoderOutput.featureValue(for: "output")?.multiArrayValue
       // Check if decodedValues is nil or empty
-      guard let decodedValues = decodedValues, decodedValues.count > 0 else {
-          print("No decoded data found.")
-          throw DecoderError.noDecodedData
-      }
+//      guard let decodedValues = decodedValues, decodedValues.count > 0 else {
+//          print("No decoded data found.")
+//          throw DecoderError.noDecodedData
+//      }
 
-      // Convert the MLMultiArray to a Float array
-      var output = [Float]()
-      for i in 0..<10 {
-          output.append(decodedValues[i].floatValue)
-      }
-      // Print the first 10 decoded values for debugging purposes
-      print("Decoded Output (first 10 values): \(output)")
+//      // Convert the MLMultiArray to a Float array
+//      var output = [Float]()
+//      for i in 0..<10 {
+//          output.append(decodedValues[i].floatValue)
+//      }
+//      // Print the first 10 decoded values for debugging purposes
+//      print("Decoded Output (first 10 values): \(output)")
     return decodedValues
   }
 

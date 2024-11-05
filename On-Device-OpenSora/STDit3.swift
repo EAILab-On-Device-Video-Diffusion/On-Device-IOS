@@ -18,7 +18,6 @@ public struct STDit3 {
   }
   
   func sample(x:MLShapedArray<Float32>, timestep: MLShapedArray<Float32>, modelargs:Dictionary<String, MLShapedArray<Float32>>) async throws -> MLTensor {
-
     // === Start layer ===
     var inputFeatures = try MLDictionaryFeatureProvider(
       dictionary: ["z_in": MLMultiArray(x), "t": MLMultiArray(timestep), "y": MLMultiArray(modelargs["y"]!), "mask": MLMultiArray(modelargs["mask"]!), "fps": MLMultiArray(modelargs["fps"]!), "height": MLMultiArray(modelargs["height"]!), "width": MLMultiArray(modelargs["width"]!)]
@@ -31,7 +30,7 @@ public struct STDit3 {
     print("=== Done stdit3 Part1 ===")
     
     inputFeatures = try MLDictionaryFeatureProvider (
-      dictionary : [ "x" : stdit3Part1Output.featureValue(for: "x")!, "y" : stdit3Part1Output.featureValue(for: "outY")!, "y_lens": stdit3Part1Output.featureValue(for: "y_lens")!, "t_mlp": stdit3Part1Output.featureValue(for: "t_mlp")!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t0_mlp": stdit3Part1Output.featureValue(for: "t0_mlp")!, "T": stdit3Part1Output.featureValue(for: "T")!, "S": stdit3Part1Output.featureValue(for: "S")!]
+      dictionary : [ "x" : stdit3Part1Output.featureValue(for: "x")!, "y" : stdit3Part1Output.featureValue(for: "outY")!, "attn": MLMultiArray(modelargs["BDM"]!), "t_mlp": stdit3Part1Output.featureValue(for: "t_mlp")!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t0_mlp": stdit3Part1Output.featureValue(for: "t0_mlp")!, "T": stdit3Part1Output.featureValue(for: "T")!, "S": stdit3Part1Output.featureValue(for: "S")!]
     )
 
 
@@ -42,7 +41,7 @@ public struct STDit3 {
       }
       spatialAndTemporal.unloadResources()
       inputFeatures = try MLDictionaryFeatureProvider (
-        dictionary : [ "x" : spatialOutput.featureValue(for: "output")!, "y" : stdit3Part1Output.featureValue(for: "outY")!, "y_lens": stdit3Part1Output.featureValue(for: "y_lens")!, "t_mlp": stdit3Part1Output.featureValue(for: "t_mlp")!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t0_mlp": stdit3Part1Output.featureValue(for: "t0_mlp")!, "T": stdit3Part1Output.featureValue(for: "T")!, "S": stdit3Part1Output.featureValue(for: "S")!]
+        dictionary : [ "x" : spatialOutput.featureValue(for: "output")!, "y" : stdit3Part1Output.featureValue(for: "outY")!, "attn": MLMultiArray(modelargs["BDM"]!), "t_mlp": stdit3Part1Output.featureValue(for: "t_mlp")!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t0_mlp": stdit3Part1Output.featureValue(for: "t0_mlp")!, "T": stdit3Part1Output.featureValue(for: "T")!, "S": stdit3Part1Output.featureValue(for: "S")!]
       )
 //      var output = [Float32]()
 //      for i in 0...100 {

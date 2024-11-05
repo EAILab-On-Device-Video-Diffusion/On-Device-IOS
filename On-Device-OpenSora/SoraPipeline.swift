@@ -22,7 +22,7 @@ struct ResourceURLs {
     public init(resourcesAt baseURL: URL) {
       
         stditURL = baseURL.appending(path: "stdit3_part1.mlmodelc")
-        decoderURL = baseURL.appending(path: "vae.mlmodelc") // 참고: 현재 모델 파일 존재하지 않음.
+        decoderURL = baseURL.appending(path: "vae_spatial.mlmodelc")
         configT5URL = baseURL.appending(path: "tokenizer_config.json")
         dataT5URL = baseURL.appending(path: "tokenizer.json")
         embedURL = baseURL.appending(path: "t5embed-tokens.mlmodelc")
@@ -50,7 +50,7 @@ public struct SoraPipeline {
        FileManager.default.fileExists(atPath: urls.finalNormURL.path)
     {
       let config = MLModelConfiguration()
-      config.computeUnits = .cpuOnly
+      config.computeUnits = .cpuAndGPU
       let tokenizerT5 = try PreTrainedTokenizer(tokenizerConfig: Config(fileURL: urls.configT5URL), tokenizerData: Config(fileURL: urls.dataT5URL))
       let embedLayer = ManagedMLModel(modelURL: urls.embedURL, config: config)
       let finalNormLayer = ManagedMLModel(modelURL: urls.finalNormURL, config: config)
@@ -97,6 +97,7 @@ public struct SoraPipeline {
     // To do: make the sample process
     Task(priority: .high) {
       do {
+        let startTotalTime = DispatchTime.now()
         guard let ids = try TextEncodingT5?.tokenize(prompt) else {
           print("Error: Can't tokenize")
           return
@@ -113,29 +114,49 @@ public struct SoraPipeline {
         let additionalArgs: [String: MLTensor] = [:]
         let modelArgs = ["y": resultEncoding.encoderHiddenStates, "mask": resultEncoding.masks, "fps" : MLShapedArray<Float32>(arrayLiteral: 24.0) , "width": MLShapedArray<Float32>(arrayLiteral: 221.0), "height":MLShapedArray<Float32>(arrayLiteral: 166.0)]
         let vaeOutChannels = 4
-        let latentsize = (15, 20, 27)
+        let latentsize = (20, 20, 27)
         let z = await MLTensor(randomNormal: [1, vaeOutChannels, latentsize.0, latentsize.1, latentsize.2],seed: 42,scalarType: Float32.self).shapedArray(of: Float32.self)
         let mask = await MLTensor(ones: [latentsize.0], scalarType: Float32.self).shapedArray(of: Float32.self)
-        let rflowInput = RFLOWInput(model: STDit!, modelArgs: modelArgs, z: z, mask: mask, additionalArgs: additionalArgs)
+        let BDM = makeAttnMask(count: ids.count + 1)
+        let rflowInput = RFLOWInput(model: STDit!, modelArgs: modelArgs, z: z, mask: mask, additionalArgs: additionalArgs, BDM: BDM)
         
         // Scheduler Sample
         let rflow = RFLOW(numSamplingsteps: 30, cfgScale: 7.0)
         let resultSTDit = await rflow.sample(rflowInput: rflowInput, yNull: resultEncoding.yNull).shapedArray(of: Float32.self)
+//        print(resultSTDit)
         print(resultSTDit.shape)
         
-        guard let resultDecoding = try VAE?.decode(latentVars: resultSTDit) else {
+        guard let resultDecoding = try await VAE?.decode(latentVars: resultSTDit) else {
           print("Error: Can't Decode")
           return
           }
         print("Decoding-shape:")
         print(resultDecoding.shape)
         let _ = await Converter!.convertToVideo(multiArray: resultDecoding)
+        let endTotalTime = DispatchTime.now()
+        let elapsedTotalTime = endTotalTime.uptimeNanoseconds - startTotalTime.uptimeNanoseconds
+        print("Total Running Time: \(Double(elapsedTotalTime) / 1000000000) seconds")
         }
         catch {
           print("Error: Can't make sample.")
           print(error)
       }
     }
+  }
+}
+
+extension SoraPipeline {
+  func makeAttnMask(count: Int)  -> MLShapedArray<Float32> {
+    let blockdigonalmask = MLShapedArray(repeating: -Float32.greatestFiniteMagnitude, shape: [2800, count])
+    let blockdigonalnonmask = MLShapedArray(repeating: Float32(0.0), shape: [2800, count])
+    let blockMask = MLShapedArray(concatenating: [blockdigonalnonmask, blockdigonalmask], alongAxis: 1)
+    let blockNonMask = MLShapedArray(concatenating: [blockdigonalmask, blockdigonalnonmask], alongAxis: 1)
+    let blockConcat = MLShapedArray(concatenating: [blockMask, blockNonMask], alongAxis: 0).expandingShape(at: 0).expandingShape(at: 0)
+    var concatList: [MLShapedArray<Float32>] = [] // for expand
+    for _ in 0...15 {
+      concatList.append(blockConcat)
+    }
+    return MLShapedArray(concatenating: concatList, alongAxis: 1)
   }
 }
 
