@@ -12,7 +12,6 @@
 		0C4CBA1D2C8059AC00B37757 /* tokenizer_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */; };
 		0C4CBA1E2C8059AC00B37757 /* tokenizer.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C4CBA1C2C8059AC00B37757 /* tokenizer.json */; };
 		0C4CBA202C805F5D00B37757 /* TextEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CBA1F2C805F5D00B37757 /* TextEncoding.swift */; };
-		0CABCB132CC6AE6600D5E57A /* vae.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0CABCB122CC6AE6600D5E57A /* vae.mlpackage */; };
 		0CC6190D2CAA718A00FF7506 /* RFlowScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6190C2CAA717B00FF7506 /* RFlowScheduler.swift */; };
 		0CC619102CABD02800FF7506 /* Asepct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6190F2CABD02400FF7506 /* Asepct.swift */; };
 		0CCD49F12C6C4760005D7F77 /* ManagedMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCD49F02C6C4760005D7F77 /* ManagedMLModel.swift */; };
@@ -27,6 +26,8 @@
 		0CCFB52D2C2AD669009DB83F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFB52C2C2AD669009DB83F /* ContentView.swift */; };
 		0CCFB52F2C2AD66B009DB83F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */; };
 		0CCFB5322C2AD66B009DB83F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCFB5312C2AD66B009DB83F /* Preview Assets.xcassets */; };
+		650514292CDB3354004F65A5 /* vae_spatial.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 650514272CDB3354004F65A5 /* vae_spatial.mlpackage */; };
+		6505142A2CDB3354004F65A5 /* vae_temporal.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 650514282CDB3354004F65A5 /* vae_temporal.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +36,6 @@
 		0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokenizer_config.json; sourceTree = "<group>"; };
 		0C4CBA1C2C8059AC00B37757 /* tokenizer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tokenizer.json; sourceTree = "<group>"; };
 		0C4CBA1F2C805F5D00B37757 /* TextEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEncoding.swift; sourceTree = "<group>"; };
-		0CABCB122CC6AE6600D5E57A /* vae.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae.mlpackage; sourceTree = "<group>"; };
 		0CC6190C2CAA717B00FF7506 /* RFlowScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFlowScheduler.swift; sourceTree = "<group>"; };
 		0CC6190F2CABD02400FF7506 /* Asepct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asepct.swift; sourceTree = "<group>"; };
 		0CCD49F02C6C4760005D7F77 /* ManagedMLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMLModel.swift; sourceTree = "<group>"; };
@@ -50,6 +50,8 @@
 		0CCFB52C2C2AD669009DB83F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CCFB5312C2AD66B009DB83F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		650514272CDB3354004F65A5 /* vae_spatial.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial.mlpackage; sourceTree = "<group>"; };
+		650514282CDB3354004F65A5 /* vae_temporal.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_temporal.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -98,10 +100,11 @@
 				0CC6190F2CABD02400FF7506 /* Asepct.swift */,
 				0C4CBA1C2C8059AC00B37757 /* tokenizer.json */,
 				0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */,
-				0CABCB122CC6AE6600D5E57A /* vae.mlpackage */,
 				0CB223802CB6F19E000A75D0 /* T5 */,
 				0CB223822CB6F1B2000A75D0 /* STDit */,
 				0CCD49FA2C6C5A1E005D7F77 /* SoraPipeline.swift */,
+				650514272CDB3354004F65A5 /* vae_spatial.mlpackage */,
+				650514282CDB3354004F65A5 /* vae_temporal.mlpackage */,
 				0C4CBA1F2C805F5D00B37757 /* TextEncoding.swift */,
 				0CCD49F22C6C54CA005D7F77 /* STDit3.swift */,
 				0CCD49FC2C6C744F005D7F77 /* RFLOW.swift */,
@@ -217,7 +220,8 @@
 				0CCD49FB2C6C5A1E005D7F77 /* SoraPipeline.swift in Sources */,
 				0CCD49F32C6C54CA005D7F77 /* STDit3.swift in Sources */,
 				0C3D77F12CC63BD900277C60 /* Tensor2Vid.swift in Sources */,
-				0CABCB132CC6AE6600D5E57A /* vae.mlpackage in Sources */,
+				650514292CDB3354004F65A5 /* vae_spatial.mlpackage in Sources */,
+				6505142A2CDB3354004F65A5 /* vae_temporal.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,7 +356,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"On-Device-OpenSora/Preview Content\"";
-				DEVELOPMENT_TEAM = 52W74A4Q92;
+				DEVELOPMENT_TEAM = N79RZ6G4Y6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -366,7 +370,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.EAI.On-Device-OpenSora-kbs";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.EAI.On-Device-OpenSora-jjm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -387,7 +391,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"On-Device-OpenSora/Preview Content\"";
-				DEVELOPMENT_TEAM = 52W74A4Q92;
+				DEVELOPMENT_TEAM = N79RZ6G4Y6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -401,7 +405,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.EAI.On-Device-OpenSora-kbs";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.EAI.On-Device-OpenSora-jjm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

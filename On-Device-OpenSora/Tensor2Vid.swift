@@ -42,6 +42,7 @@ final class Tensor2Vid: ObservableObject {
         }
         
         let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent("output.mp4")
+        //let outputURL = URL(fileURLWithPath: "/Users/jeonjeongmin/Downloads/output.mp4")
         let videoWriter: AVAssetWriter
         do {
         videoWriter = try AVAssetWriter(outputURL: outputURL, fileType: .mp4)

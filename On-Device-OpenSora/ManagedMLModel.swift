@@ -34,7 +34,7 @@ public final class ManagedMLModel: ResourceManaging {
           loadedModel = nil
       }
   }
-  
+
   public func perform<R>(_ body: (MLModel) throws -> R) throws -> R {
       return try queue.sync {
           try autoreleasepool {

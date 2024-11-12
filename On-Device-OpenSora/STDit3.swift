@@ -35,20 +35,46 @@ public struct STDit3 {
 
 
     // === blocks ===
+    let loadQueue = DispatchQueue(label: "modelLoadQueue", qos: .background, attributes: .concurrent)
+    let computeQueue = DispatchQueue(label: "modelComputeQueue", qos: .userInitiated)
     for (i, spatialAndTemporal) in spatialAndTemporals.enumerated() {
-      let spatialOutput = try spatialAndTemporal.perform { model in
-        try model.prediction(from: inputFeatures)
-      }
-      spatialAndTemporal.unloadResources()
-      inputFeatures = try MLDictionaryFeatureProvider (
-        dictionary : [ "x" : spatialOutput.featureValue(for: "output")!, "y" : stdit3Part1Output.featureValue(for: "outY")!, "attn": MLMultiArray(modelargs["BDM"]!), "t_mlp": stdit3Part1Output.featureValue(for: "t_mlp")!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t0_mlp": stdit3Part1Output.featureValue(for: "t0_mlp")!, "T": stdit3Part1Output.featureValue(for: "T")!, "S": stdit3Part1Output.featureValue(for: "S")!]
-      )
-//      var output = [Float32]()
-//      for i in 0...100 {
-//          output.append(inputFeatures.featureValue(for: "x")?.multiArrayValue![i] as! Float)
+        let group = DispatchGroup()
+        
+        group.enter()
+        computeQueue.async {
+            do {
+                let spatialOutput = try spatialAndTemporal.perform { model in
+                    try model.prediction(from: inputFeatures)
+                }
+                spatialAndTemporal.unloadResources()
+                inputFeatures = try MLDictionaryFeatureProvider (
+                dictionary : [ "x" : spatialOutput.featureValue(for: "output")!, "y" : stdit3Part1Output.featureValue(for: "outY")!, "attn": MLMultiArray(modelargs["BDM"]!), "t_mlp": stdit3Part1Output.featureValue(for: "t_mlp")!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t0_mlp": stdit3Part1Output.featureValue(for: "t0_mlp")!, "T": stdit3Part1Output.featureValue(for: "T")!, "S": stdit3Part1Output.featureValue(for: "S")!])
+                
+                } catch {
+                    print("Failed to perform prediction")
+                }
+                group.leave()
+        }
+        if i < spatialAndTemporals.count - 1 {
+            let nextModel = spatialAndTemporals[i + 1]
+            //group.enter()
+            loadQueue.async {
+                do {
+                    try nextModel.loadResources()
+                } catch {
+                    print("Failed to load next Model")
+                }
+                //group.leave()
+            }
+        }
+        group.wait()
+//        let spatialOutput = try spatialAndTemporal.perform { model in
+//        try model.prediction(from: inputFeatures)
 //        }
-//      print(output[0...100])
-//      print("=== Done stdit3 Spatial & Temporal \(i) ===")
+//        spatialAndTemporal.unloadResources()
+//        inputFeatures = try MLDictionaryFeatureProvider (
+//        dictionary : [ "x" : spatialOutput.featureValue(for: "output")!, "y" : stdit3Part1Output.featureValue(for: "outY")!, "attn": MLMultiArray(modelargs["BDM"]!), "t_mlp": stdit3Part1Output.featureValue(for: "t_mlp")!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t0_mlp": stdit3Part1Output.featureValue(for: "t0_mlp")!, "T": stdit3Part1Output.featureValue(for: "T")!, "S": stdit3Part1Output.featureValue(for: "S")!]
+//        )
     }
     
     // === final layer ===
