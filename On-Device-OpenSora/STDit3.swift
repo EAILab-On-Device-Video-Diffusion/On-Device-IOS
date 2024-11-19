@@ -18,22 +18,23 @@ public struct STDit3 {
   }
   
   func sample(x:MLShapedArray<Float32>, timestep: MLShapedArray<Float32>, modelargs:Dictionary<String, MLShapedArray<Float32>>) async throws -> MLTensor {
+    
     // === Start layer ===
     var inputFeatures = try MLDictionaryFeatureProvider(
-      dictionary: ["z_in": MLMultiArray(x), "t": MLMultiArray(timestep), "y": MLMultiArray(modelargs["y"]!), "mask": MLMultiArray(modelargs["mask"]!), "fps": MLMultiArray(modelargs["fps"]!), "height": MLMultiArray(modelargs["height"]!), "width": MLMultiArray(modelargs["width"]!)]
+      dictionary: ["z_in": MLMultiArray(x), "t": MLMultiArray(timestep), "y": MLMultiArray(modelargs["y"]!), "mask": MLMultiArray(modelargs["mask"]!), "fps": MLMultiArray(modelargs["fps"]!), "height": MLMultiArray(modelargs["height"]!), "width": MLMultiArray(modelargs["width"]!), "padH": MLMultiArray(modelargs["padH"]!), "padW": MLMultiArray(modelargs["padW"]!)]
     )
     let stdit3Part1Output = try part1.perform { model in
       try model.prediction(from: inputFeatures)
     }
     part1.unloadResources()
-
+    
     print("=== Done stdit3 Part1 ===")
     
     inputFeatures = try MLDictionaryFeatureProvider (
       dictionary : [ "x" : stdit3Part1Output.featureValue(for: "x")!, "y" : stdit3Part1Output.featureValue(for: "outY")!, "attn": MLMultiArray(modelargs["BDM"]!), "t_mlp": stdit3Part1Output.featureValue(for: "t_mlp")!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t0_mlp": stdit3Part1Output.featureValue(for: "t0_mlp")!, "T": stdit3Part1Output.featureValue(for: "T")!, "S": stdit3Part1Output.featureValue(for: "S")!]
     )
-
-
+    
+    
     // === blocks ===
     for (i, spatialAndTemporal) in spatialAndTemporals.enumerated() {
       let spatialOutput = try spatialAndTemporal.perform { model in
@@ -43,16 +44,17 @@ public struct STDit3 {
       inputFeatures = try MLDictionaryFeatureProvider (
         dictionary : [ "x" : spatialOutput.featureValue(for: "output")!, "y" : stdit3Part1Output.featureValue(for: "outY")!, "attn": MLMultiArray(modelargs["BDM"]!), "t_mlp": stdit3Part1Output.featureValue(for: "t_mlp")!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t0_mlp": stdit3Part1Output.featureValue(for: "t0_mlp")!, "T": stdit3Part1Output.featureValue(for: "T")!, "S": stdit3Part1Output.featureValue(for: "S")!]
       )
-//      var output = [Float32]()
-//      for i in 0...100 {
-//          output.append(inputFeatures.featureValue(for: "x")?.multiArrayValue![i] as! Float)
-//        }
-//      print(output[0...100])
-//      print("=== Done stdit3 Spatial & Temporal \(i) ===")
+      //      var output = [Float32]()
+      //      for i in 0...100 {
+      //          output.append(inputFeatures.featureValue(for: "x")?.multiArrayValue![i] as! Float)
+      //        }
+      //      print(output[0...100])
+      //      print("=== Done stdit3 Spatial & Temporal \(i) ===")
     }
     
     // === final layer ===
-    inputFeatures = try MLDictionaryFeatureProvider(dictionary: ["x": (inputFeatures.featureValue(for: "x")?.multiArrayValue!)!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t": (stdit3Part1Output.featureValue(for: "outT")?.multiArrayValue!)!, "t0": (stdit3Part1Output.featureValue(for: "t0")?.multiArrayValue!)!, "T": (stdit3Part1Output.featureValue(for: "T")?.multiArrayValue!)!, "S": (stdit3Part1Output.featureValue(for: "S")?.multiArrayValue!)!, "H": (stdit3Part1Output.featureValue(for: "H")?.multiArrayValue!)!,"W": (stdit3Part1Output.featureValue(for: "W")?.multiArrayValue!)!, "Tx": (stdit3Part1Output.featureValue(for: "Tx")?.multiArrayValue!)!, "Hx": (stdit3Part1Output.featureValue(for: "Hx")?.multiArrayValue!)!, "Wx": (stdit3Part1Output.featureValue(for: "Wx")?.multiArrayValue!)!])
+    //    inputFeatures = try MLDictionaryFeatureProvider(dictionary: ["x": (inputFeatures.featureValue(for: "x")?.multiArrayValue!)!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t": (stdit3Part1Output.featureValue(for: "outT")?.multiArrayValue!)!, "t0": (stdit3Part1Output.featureValue(for: "t0")?.multiArrayValue!)!, "T": (stdit3Part1Output.featureValue(for: "T")?.multiArrayValue!)!, "S": (stdit3Part1Output.featureValue(for: "S")?.multiArrayValue!)!, "H": (stdit3Part1Output.featureValue(for: "H")?.multiArrayValue!)!,"W": (stdit3Part1Output.featureValue(for: "W")?.multiArrayValue!)!, "Tx": (stdit3Part1Output.featureValue(for: "T")?.multiArrayValue!)!, "Hx": (stdit3Part1Output.featureValue(for: "Hx")?.multiArrayValue!)!, "Wx": (stdit3Part1Output.featureValue(for: "Wx")?.multiArrayValue!)!])
+    inputFeatures = try MLDictionaryFeatureProvider(dictionary: ["z_in": MLMultiArray(x), "x": (inputFeatures.featureValue(for: "x")?.multiArrayValue!)!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t": (stdit3Part1Output.featureValue(for: "outT")?.multiArrayValue!)!, "t0": (stdit3Part1Output.featureValue(for: "t0")?.multiArrayValue!)!, "padH": MLMultiArray(modelargs["padH"]!), "padW": MLMultiArray(modelargs["padW"]!)])
     
     let stdit3Part2Output = try part2.perform { model in
       try model.prediction(from: inputFeatures)
@@ -62,4 +64,45 @@ public struct STDit3 {
     let output = MLTensor(MLShapedArray<Float32>((stdit3Part2Output.featureValue(for: "output")?.multiArrayValue)!))
     return output
   }
+  
+  func sample_tome(x:MLShapedArray<Float32>, timestep: MLShapedArray<Float32>, modelargs:Dictionary<String, MLShapedArray<Float32>>) async throws -> MLTensor {
+    let ToME = MLMultiArray(MLShapedArray<Float32>(arrayLiteral: Float32(1.0)))
+    
+    // === Start layer ===
+    var inputFeatures = try MLDictionaryFeatureProvider(
+      dictionary: ["z_in": MLMultiArray(x), "t": MLMultiArray(timestep), "y": MLMultiArray(modelargs["y"]!), "mask": MLMultiArray(modelargs["mask"]!), "fps": MLMultiArray(modelargs["fps"]!), "height": MLMultiArray(modelargs["height"]!), "width": MLMultiArray(modelargs["width"]!), "padH": MLMultiArray(modelargs["padH"]!), "padW": MLMultiArray(modelargs["padW"]!)]
+    )
+    let stdit3Part1Output = try part1.perform { model in
+      try model.prediction(from: inputFeatures)
+    }
+    part1.unloadResources()
+    
+    print("=== Done stdit3 Part1 ===")
+    
+    inputFeatures = try MLDictionaryFeatureProvider (
+      dictionary : [ "x" : stdit3Part1Output.featureValue(for: "x")!, "y" : stdit3Part1Output.featureValue(for: "outY")!, "attn": MLMultiArray(modelargs["BDM"]!), "t_mlp": stdit3Part1Output.featureValue(for: "t_mlp")!,"T": stdit3Part1Output.featureValue(for: "T")!, "ToMe": ToME]
+    )
+    
+    
+    // === blocks ===
+    for (i, spatialAndTemporal) in spatialAndTemporals.enumerated() {
+        let spatialOutput = try spatialAndTemporal.perform { model in
+          try model.prediction(from: inputFeatures)
+        }
+        spatialAndTemporal.unloadResources()
+        inputFeatures = try MLDictionaryFeatureProvider (
+          dictionary : [ "x" : spatialOutput.featureValue(for: "output")!, "y" : stdit3Part1Output.featureValue(for: "outY")!, "attn": MLMultiArray(modelargs["BDM"]!), "t": (stdit3Part1Output.featureValue(for: "outT")?.multiArrayValue!)!, "t_mlp": stdit3Part1Output.featureValue(for: "t_mlp")!, "T": stdit3Part1Output.featureValue(for: "T")!, "ToMe": ToME]
+        )
+    }
+    inputFeatures = try MLDictionaryFeatureProvider(dictionary: ["z_in": MLMultiArray(x), "x": (inputFeatures.featureValue(for: "x")?.multiArrayValue!)!, "t": (stdit3Part1Output.featureValue(for: "outT")?.multiArrayValue!)!, "padH": MLMultiArray(modelargs["padH"]!), "padW": MLMultiArray(modelargs["padW"]!)])
+    
+    let stdit3Part2Output = try part2.perform { model in
+      try model.prediction(from: inputFeatures)
+    }
+    part2.unloadResources()
+    
+    let output = MLTensor(MLShapedArray<Float32>((stdit3Part2Output.featureValue(for: "output")?.multiArrayValue)!))
+    return output
+  }
+  
 }

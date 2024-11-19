@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var prompt: String = "a serene underwater scene featuring a sea turtle swimming through a coral reef. the turtle, with its greenish-brown shell aesthetic score: 6.5."
+    @State var prompt: String = "a beautiful waterfall aesthetic score: 6.5."
     @StateObject private var tensor2vidConverter = Tensor2Vid()
 
     var body: some View {
