@@ -89,27 +89,60 @@ public struct TextEncoding {
     var position_bias: Any? = nil
     var yNull: MLMultiArray? = nil
     
+    let t5loadQueue = DispatchQueue(label: "T5LoadQueue", qos: .background, attributes: .concurrent)
+    let t5computeQueue = DispatchQueue(label: "T5ComputeQueue", qos: .userInitiated)
     for (index,model) in DivT5s.enumerated() {
-      let layerOutputs = try model.perform { model in
-        try model.prediction(from: inputFeatures)
-      }
-      model.unloadResources()
-      if index == 0 {
-        position_bias = layerOutputs.featureValue(for: "output_position_bias")
-        yNull = layerOutputs.featureValue(for: "yNull")?.multiArrayValue
-      }
-      
-      inputFeatures = try! MLDictionaryFeatureProvider(
-        dictionary: ["hidden_states": layerOutputs.featureValue(for: "output_hidden_states") as Any,
-                     "attention_mask": MLMultiArray(maskArray),
-                     "position_bias" : position_bias as Any])
-//      var output = [Float]()
-//      for i in 0...100 {
-//            output.append(inputFeatures.featureValue(for: "hidden_states")?.multiArrayValue![i] as! Float)
-//        }
-//      print(output[0...100])
-      print("Done T5_layer_\(index)_Block")
+//      let layerOutputs = try model.perform { model in
+//        try model.prediction(from: inputFeatures)
+//      }
+//      model.unloadResources()
+//      if index == 0 {
+//        position_bias = layerOutputs.featureValue(for: "output_position_bias")
+//        yNull = layerOutputs.featureValue(for: "yNull")?.multiArrayValue
+//      }
+//      
+//      inputFeatures = try! MLDictionaryFeatureProvider(
+//        dictionary: ["hidden_states": layerOutputs.featureValue(for: "output_hidden_states") as Any,
+//                     "attention_mask": MLMultiArray(maskArray),
+//                     "position_bias" : position_bias as Any])
+//      print("Done T5_layer_\(index)_Block")
+        let t5group = DispatchGroup()
+        t5group.enter()
+        t5computeQueue.async {
+            do {
+                let layerOutputs = try model.perform { model in
+                  try model.prediction(from: inputFeatures)
+                }
+                model.unloadResources()
+                if index == 0 {
+                  position_bias = layerOutputs.featureValue(for: "output_position_bias")
+                  yNull = layerOutputs.featureValue(for: "yNull")?.multiArrayValue
+                }
+                inputFeatures = try MLDictionaryFeatureProvider(
+                  dictionary: ["hidden_states": layerOutputs.featureValue(for: "output_hidden_states") as Any,
+                               "attention_mask": MLMultiArray(maskArray),
+                               "position_bias" : position_bias as Any])
+                  print("Done T5_layer_\(index)_Block")
+                } catch {
+                    print("Falied to perform T5 prediction")
+                }
+                t5group.leave()
+        }
+        if index < DivT5s.count - 1 {
+            let nextModel = DivT5s[index + 1]
+            //t5group.enter()
+            t5loadQueue.async {
+                do {
+                    try nextModel.loadResources()
+                } catch {
+                    print("Failed to load next T5 Model")
+                }
+                //t5group.leave()
+            }
+        }
+        t5group.wait()
     }
+      
     print("Done DivT5s")
     let hidden_states = inputFeatures.featureValue(for: "hidden_states")
 
