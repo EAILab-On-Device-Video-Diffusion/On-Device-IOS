@@ -18,6 +18,7 @@ public struct RFLOWInput {
   let mask: MLShapedArray<Float32>
   let additionalArgs: [String: MLTensor]
   let BDM: MLShapedArray<Float32>
+  let resolution: Double
 }
 
 public final class RFLOW {
@@ -53,7 +54,7 @@ public final class RFLOW {
     var timeSteps: [Float32] = []
     for i in 0..<self.numSamplingsteps {
       var t = (1.0 - Float32(i) / Float32(self.numSamplingsteps)) * Float32(self.numTimesteps)
-      t = timestep_transform(t: round(t), num_timesteps: self.numTimesteps)
+      t = timestep_transform(t: round(t), num_timesteps: self.numTimesteps, resolution: rflowInput.resolution)
       timeSteps.append(t)
     }
     
@@ -129,9 +130,8 @@ public final class RFLOW {
 }
 
 extension RFLOW {
-  func timestep_transform(t: Float32, num_timesteps: Int = 1) -> Float32 {
+  func timestep_transform(t: Float32, num_timesteps: Int = 1, resolution: Double) -> Float32 {
     let base_resolution = 512.0 * 512.0
-    let resolution = 221.0 * 166.0
     
     let T = t / Float32(num_timesteps)
     let ratio_space = Float32(resolution / base_resolution).squareRoot()

@@ -22,7 +22,7 @@ struct ResourceURLs {
     public init(resourcesAt baseURL: URL) {
       
         stditURL = baseURL.appending(path: "stdit3_part1.mlmodelc")
-        decoderURL = baseURL.appending(path: "vae_spatial.mlmodelc")
+        decoderURL = baseURL.appending(path: "vae_spatial_part1.mlmodelc")
         configT5URL = baseURL.appending(path: "tokenizer_config.json")
         dataT5URL = baseURL.appending(path: "tokenizer.json")
         embedURL = baseURL.appending(path: "t5embed-tokens.mlmodelc")
@@ -112,13 +112,18 @@ public struct SoraPipeline {
         // To do : STDit and VAE
         // Scheduler input
         let additionalArgs: [String: MLTensor] = [:]
-        let modelArgs = ["y": resultEncoding.encoderHiddenStates, "mask": resultEncoding.masks, "fps" : MLShapedArray<Float32>(arrayLiteral: 24.0) , "width": MLShapedArray<Float32>(arrayLiteral: 221.0), "height":MLShapedArray<Float32>(arrayLiteral: 166.0)]
         let vaeOutChannels = 4
         let latentsize = (20, 20, 27)
+        let height = 166.0
+        let width = 221.0
+        let fps = 24.0
+        let resolution = width * height
         let z = await MLTensor(randomNormal: [1, vaeOutChannels, latentsize.0, latentsize.1, latentsize.2],seed: 42,scalarType: Float32.self).shapedArray(of: Float32.self)
         let mask = await MLTensor(ones: [latentsize.0], scalarType: Float32.self).shapedArray(of: Float32.self)
-        let BDM = makeAttnMask(count: ids.count + 1)
-        let rflowInput = RFLOWInput(model: STDit!, modelArgs: modelArgs, z: z, mask: mask, additionalArgs: additionalArgs, BDM: BDM)
+        let dynamicSize = getDynamicSize(latentSize: latentsize)
+        let BDM = makeAttnMask(count: ids.count + 1, attnSize: dynamicSize.2)
+        let modelArgs = ["y": resultEncoding.encoderHiddenStates, "mask": resultEncoding.masks, "fps" : MLShapedArray<Float32>(arrayLiteral: Float32(fps)) , "width": MLShapedArray<Float32>(arrayLiteral: Float32(width)), "height":MLShapedArray<Float32>(arrayLiteral: Float32(height)), "padH": MLShapedArray<Float32>(arrayLiteral: Float32(dynamicSize.0)), "padW": MLShapedArray<Float32>(arrayLiteral: Float32(dynamicSize.1))]
+        let rflowInput = RFLOWInput(model: STDit!, modelArgs: modelArgs, z: z, mask: mask, additionalArgs: additionalArgs, BDM: BDM, resolution: resolution)
         
         // Scheduler Sample
         let rflow = RFLOW(numSamplingsteps: 30, cfgScale: 7.0)
@@ -146,9 +151,9 @@ public struct SoraPipeline {
 }
 
 extension SoraPipeline {
-  func makeAttnMask(count: Int)  -> MLShapedArray<Float32> {
-    let blockdigonalmask = MLShapedArray(repeating: -Float32.greatestFiniteMagnitude, shape: [2800, count])
-    let blockdigonalnonmask = MLShapedArray(repeating: Float32(0.0), shape: [2800, count])
+  func makeAttnMask(count: Int, attnSize: Int)  -> MLShapedArray<Float32> {
+    let blockdigonalmask = MLShapedArray(repeating: -Float32.greatestFiniteMagnitude, shape: [attnSize, count])
+    let blockdigonalnonmask = MLShapedArray(repeating: Float32(0.0), shape: [attnSize, count])
     let blockMask = MLShapedArray(concatenating: [blockdigonalnonmask, blockdigonalmask], alongAxis: 1)
     let blockNonMask = MLShapedArray(concatenating: [blockdigonalmask, blockdigonalnonmask], alongAxis: 1)
     let blockConcat = MLShapedArray(concatenating: [blockMask, blockNonMask], alongAxis: 0).expandingShape(at: 0).expandingShape(at: 0)
@@ -157,6 +162,26 @@ extension SoraPipeline {
       concatList.append(blockConcat)
     }
     return MLShapedArray(concatenating: concatList, alongAxis: 1)
+  }
+  
+  func getDynamicSize(latentSize: (Int, Int, Int)) -> (Int, Int, Int) {
+    var H = latentSize.1
+    var W = latentSize.2
+    
+    if H % 2 != 0 {
+      H = 2 - H % 2
+    } else {
+      H = 0
+    }
+    
+    if W % 2 != 0 {
+      W = 2 - W % 2
+    } else {
+      W = 0
+    }
+    
+    let T = latentSize.0 * (latentSize.1 + H) * (latentSize.2 + W) / 4
+    return (H, W, T)
   }
 }
 

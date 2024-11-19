@@ -20,7 +20,7 @@ public struct STDit3 {
   func sample(x:MLShapedArray<Float32>, timestep: MLShapedArray<Float32>, modelargs:Dictionary<String, MLShapedArray<Float32>>) async throws -> MLTensor {
     // === Start layer ===
     var inputFeatures = try MLDictionaryFeatureProvider(
-      dictionary: ["z_in": MLMultiArray(x), "t": MLMultiArray(timestep), "y": MLMultiArray(modelargs["y"]!), "mask": MLMultiArray(modelargs["mask"]!), "fps": MLMultiArray(modelargs["fps"]!), "height": MLMultiArray(modelargs["height"]!), "width": MLMultiArray(modelargs["width"]!)]
+      dictionary: ["z_in": MLMultiArray(x), "t": MLMultiArray(timestep), "y": MLMultiArray(modelargs["y"]!), "mask": MLMultiArray(modelargs["mask"]!), "fps": MLMultiArray(modelargs["fps"]!), "height": MLMultiArray(modelargs["height"]!), "width": MLMultiArray(modelargs["width"]!), "padH": MLMultiArray(modelargs["padH"]!), "padW": MLMultiArray(modelargs["padW"]!)]
     )
     let stdit3Part1Output = try part1.perform { model in
       try model.prediction(from: inputFeatures)
@@ -78,7 +78,7 @@ public struct STDit3 {
     }
     
     // === final layer ===
-    inputFeatures = try MLDictionaryFeatureProvider(dictionary: ["x": (inputFeatures.featureValue(for: "x")?.multiArrayValue!)!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t": (stdit3Part1Output.featureValue(for: "outT")?.multiArrayValue!)!, "t0": (stdit3Part1Output.featureValue(for: "t0")?.multiArrayValue!)!, "T": (stdit3Part1Output.featureValue(for: "T")?.multiArrayValue!)!, "S": (stdit3Part1Output.featureValue(for: "S")?.multiArrayValue!)!, "H": (stdit3Part1Output.featureValue(for: "H")?.multiArrayValue!)!,"W": (stdit3Part1Output.featureValue(for: "W")?.multiArrayValue!)!, "Tx": (stdit3Part1Output.featureValue(for: "Tx")?.multiArrayValue!)!, "Hx": (stdit3Part1Output.featureValue(for: "Hx")?.multiArrayValue!)!, "Wx": (stdit3Part1Output.featureValue(for: "Wx")?.multiArrayValue!)!])
+    inputFeatures = try MLDictionaryFeatureProvider(dictionary: ["z_in": MLMultiArray(x), "x": (inputFeatures.featureValue(for: "x")?.multiArrayValue!)!, "x_mask": MLMultiArray(modelargs["x_mask"]!), "t": (stdit3Part1Output.featureValue(for: "outT")?.multiArrayValue!)!, "t0": (stdit3Part1Output.featureValue(for: "t0")?.multiArrayValue!)!, "padH": MLMultiArray(modelargs["padH"]!), "padW": MLMultiArray(modelargs["padW"]!)])
     
     let stdit3Part2Output = try part2.perform { model in
       try model.prediction(from: inputFeatures)
