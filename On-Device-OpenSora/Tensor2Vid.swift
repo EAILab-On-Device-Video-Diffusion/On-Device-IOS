@@ -45,7 +45,9 @@ final class Tensor2Vid: ObservableObject {
         // for mac
         // let outputURL = URL(fileURLWithPath: logdir).appendingPathComponent(filename) // Use logdir and filename
         let outputURL = logdir.appendingPathComponent(filename) // Use logdir and filename
-        
+        print(outputURL)
+        print("Motherfuckingdamnsucking shitty swift")
+      
         // for iphone
         // let fileManager = FileManager.default
         // let paths = fileManager.urls(for: .documentDirectory, in: .userDomainMask)

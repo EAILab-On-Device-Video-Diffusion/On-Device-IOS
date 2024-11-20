@@ -25,14 +25,16 @@ public final class RFLOW {
   
   public let numSamplingsteps: Int
   public let numTimesteps: Int
+  public let numLpltarget : Int
   public let cfgScale: Float
   public let scheduler: RFlowScheduler
 //  public let useDiscreteTimestepTransform: Bool
 //  public let useTimestepTransform: Bool
   
-  public init(numSamplingsteps: Int = 10, numTimesteps: Int = 1000, cfgScale: Float = 4.0 /*, useDiscreteTimestepTransform: Bool = false, useTimestepTransform: Bool = false*/) {
+  public init(numSamplingsteps: Int = 10, numTimesteps: Int = 1000, numLpltarget: Int = 20, cfgScale: Float = 4.0 /*, useDiscreteTimestepTransform: Bool = false, useTimestepTransform: Bool = false*/) {
     self.numSamplingsteps = numSamplingsteps
     self.numTimesteps = numTimesteps
+    self.numLpltarget = numLpltarget
     self.cfgScale = cfgScale
     self.scheduler = RFlowScheduler(numTimesteps: numTimesteps)
 //    self.useDiscreteTimestepTransform = useDiscreteTimestepTransform
@@ -111,6 +113,11 @@ public final class RFLOW {
 
       // update z
       var dt = i < timeSteps.count - 1 ? timeSteps[i] - timeSteps[i + 1] : timeSteps[i]
+      
+      if i == self.numLpltarget - 1 {
+        dt = timeSteps[i]
+      }
+      
       dt = Float32(dt) / Float32(self.numTimesteps)
       let DT = MLTensor([dt])
       
@@ -121,6 +128,13 @@ public final class RFLOW {
       let expandedMaskTU = maskTUpper.cast(to: Float32.self).expandingShape(at: 1).expandingShape(at: 3).expandingShape(at: 4)
       z = expandedMaskTU * z + (1.0 - expandedMaskTU) * x0
 //      print(await z.shapedArray(of: Float32.self))
+      
+      
+      if i == self.numLpltarget - 1 {
+        // break the loop
+        break
+      }
+      
     }
     let endTime = DispatchTime.now()
     let elapsedTime = endTime.uptimeNanoseconds - startTime.uptimeNanoseconds

@@ -11,10 +11,10 @@ import Foundation
 struct ContentView: View {
     var fileManager = FileManager.default
     var prompts: [String] = []
-    var category: String = "animal"
+    var category: String = "architecture"
     
     // for mac
-    var macPath: String = "/Users/ijeong/workspace/on-device-diffusion/samples/"
+    var macPath: String = "/Users/embeddedailab/workspace/On-Device-IOS/samples"
     
     var logdir: URL
     @StateObject private var tensor2vidConverter = Tensor2Vid()
@@ -22,13 +22,13 @@ struct ContentView: View {
     init() {
         // ------------- change log dir -------------
         // for mac
-        // logdir = URL(fileURLWithPath: macPath).appendingPathComponent(category)
+         logdir = URL(fileURLWithPath: macPath).appendingPathComponent(category)
         
         // for ios
-        logdir = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        logdir = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
-        logdir = logdir.appendingPathComponent(category)
-        print(logdir)
+//        logdir = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//        logdir = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
+//        logdir = logdir.appendingPathComponent(category)
+//        print(logdir)
         // ------------- change log dir done -------------
         
         // load prompts
