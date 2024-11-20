@@ -93,8 +93,8 @@ init(resourcesAt baseURL: URL, videoConverter converter: Tensor2Vid ) throws {
     }
 }
 
-//func sample(prompt: String, logdir: String, filename: String) {
-func sample(prompts: [String], logdir: String) {
+//func sample(prompts: [String], logdir: String) { // for mac
+func sample(prompts: [String], logdir: URL) { // for ios
     // To do: make the sample process
     Task(priority: .high) {
     do {
@@ -132,7 +132,7 @@ func sample(prompts: [String], logdir: String) {
             
             // Scheduler Sample
             // let rflow = RFLOW(numSamplingsteps: 30, cfgScale: 7.0)
-            let rflow = RFLOW(numSamplingsteps: 30, cfgScale: 7.0)
+            let rflow = RFLOW(numSamplingsteps: 1, cfgScale: 7.0)
             let resultSTDit = await rflow.sample(rflowInput: rflowInput, yNull: resultEncoding.yNull).shapedArray(of: Float32.self)
             //        print(resultSTDit)
             print(resultSTDit.shape)

@@ -9,15 +9,26 @@ import SwiftUI
 import Foundation
 
 struct ContentView: View {
+    var fileManager = FileManager.default
     var prompts: [String] = []
     var category: String = "animal"
-    var logdir: String = "/Users/ijeong/workspace/on-device-diffusion/samples/"
-    @State var prompt: String = "a serene underwater scene featuring a sea turtle swimming through a coral reef. the turtle, with its greenish-brown shell aesthetic score: 6.5."
+    
+    // for mac
+    var macPath: String = "/Users/ijeong/workspace/on-device-diffusion/samples/"
+    
+    var logdir: URL
     @StateObject private var tensor2vidConverter = Tensor2Vid()
 
     init() {
-        // change log dir
-        logdir = "\(logdir)/\(category)"
+        // ------------- change log dir -------------
+        // for mac
+        // logdir = URL(fileURLWithPath: macPath).appendingPathComponent(category)
+        
+        // for ios
+        logdir = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        logdir = logdir.appendingPathComponent(category)
+        print(logdir)
+        // ------------- change log dir done -------------
         
         // load prompts
         let promptURL = Bundle.main.bundleURL.appending(path: "animal.txt")
@@ -32,7 +43,6 @@ struct ContentView: View {
             
             // Split content into lines
             // prompts.append() content.components(separatedBy: .newlines)
-            
             let lines = content.components(separatedBy: .newlines)
             prompts.append(contentsOf: lines)
             print(prompts)
@@ -41,7 +51,7 @@ struct ContentView: View {
             print("Error loading file: \(error)")
         }
     }
-
+    
     var body: some View {
  
         VStack {
@@ -58,7 +68,7 @@ struct ContentView: View {
              // }.buttonStyle(.borderedProminent)
 
             // for experiments
-            Text("Lines from animal.txt:")
+            Text("Lines from \(category).txt:")
                             .font(.headline)
                             .padding()
             
@@ -76,15 +86,6 @@ struct ContentView: View {
   func generate() {
         do {
             let soraPipeline = try SoraPipeline(resourcesAt: Bundle.main.bundleURL, videoConverter: tensor2vidConverter)
-            // print("Click")
-            
-//            for (index, prompt) in prompts.enumerated() {
-//                print("prompt: \(prompt)")
-//                var filename: String = "sample-\(index).mp4"
-//                // soraPipeline.sample(prompt: prompt, logdir: logdir, filename: filename)
-//                soraPipeline.sample(prompt: prompt, logdir: logdir)
-//                print("sample done")
-//            }
             soraPipeline.sample(prompts: prompts, logdir: logdir)
         } catch {
             print("Error: Can't initiallize SoraPipeline")
@@ -122,7 +123,4 @@ struct ContentView: View {
         .padding()
     }
 }
-
-
-
 */
