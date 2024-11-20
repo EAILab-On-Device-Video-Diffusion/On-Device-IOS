@@ -26,12 +26,13 @@ struct ContentView: View {
         
         // for ios
         logdir = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        logdir = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
         logdir = logdir.appendingPathComponent(category)
         print(logdir)
         // ------------- change log dir done -------------
         
         // load prompts
-        let promptURL = Bundle.main.bundleURL.appending(path: "animal.txt")
+        let promptURL = Bundle.main.bundleURL.appending(path: "\(category).txt")
         if !FileManager.default.fileExists(atPath: promptURL.path) {
             print("File does not exist at path: \(promptURL.path)")
             return
