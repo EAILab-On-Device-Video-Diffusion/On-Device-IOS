@@ -30,7 +30,7 @@ final class Tensor2Vid: ObservableObject {
     }
   
 
-    func convertToVideo(multiArray: MLMultiArray) async -> URL? {
+    func convertToVideo(multiArray: MLMultiArray, logdir: String, filename: String) async -> URL? {
         let frameCount = multiArray.shape[2].intValue
         let channels = multiArray.shape[1].intValue
         let height = multiArray.shape[3].intValue
@@ -41,7 +41,16 @@ final class Tensor2Vid: ObservableObject {
             return nil
         }
         
-        let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent("output.mp4")
+        // for mac
+        let outputURL = URL(fileURLWithPath: logdir).appendingPathComponent(filename) // Use logdir and filename
+        
+        // for iphone
+        // let fileManager = FileManager.default
+        // let paths = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        // let paths = paths[0]
+        
+        // let outputURL = getDocumentsDirectory().appendingPathComponent(fileName)
+        // let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent("output.mp4")
         //let outputURL = URL(fileURLWithPath: "/Users/jeonjeongmin/Downloads/output.mp4")
         let videoWriter: AVAssetWriter
         do {

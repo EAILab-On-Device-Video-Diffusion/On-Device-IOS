@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,8 +26,88 @@
 		0CCFB52D2C2AD669009DB83F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFB52C2C2AD669009DB83F /* ContentView.swift */; };
 		0CCFB52F2C2AD66B009DB83F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */; };
 		0CCFB5322C2AD66B009DB83F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCFB5312C2AD66B009DB83F /* Preview Assets.xcassets */; };
-		650514292CDB3354004F65A5 /* vae_spatial.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 650514272CDB3354004F65A5 /* vae_spatial.mlpackage */; };
-		6505142A2CDB3354004F65A5 /* vae_temporal.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 650514282CDB3354004F65A5 /* vae_temporal.mlpackage */; };
+		E29C4A352CED94DB00EFCA9A /* animal.txt in Resources */ = {isa = PBXBuildFile; fileRef = E29C4A2C2CED94DB00EFCA9A /* animal.txt */; };
+		E29C4A362CED94DB00EFCA9A /* scenery.txt in Resources */ = {isa = PBXBuildFile; fileRef = E29C4A322CED94DB00EFCA9A /* scenery.txt */; };
+		E29C4A372CED94DB00EFCA9A /* lifestyle.txt in Resources */ = {isa = PBXBuildFile; fileRef = E29C4A302CED94DB00EFCA9A /* lifestyle.txt */; };
+		E29C4A382CED94DB00EFCA9A /* plant.txt in Resources */ = {isa = PBXBuildFile; fileRef = E29C4A312CED94DB00EFCA9A /* plant.txt */; };
+		E29C4A392CED94DB00EFCA9A /* architecture.txt in Resources */ = {isa = PBXBuildFile; fileRef = E29C4A2D2CED94DB00EFCA9A /* architecture.txt */; };
+		E29C4A3A2CED94DB00EFCA9A /* human.txt in Resources */ = {isa = PBXBuildFile; fileRef = E29C4A2F2CED94DB00EFCA9A /* human.txt */; };
+		E29C4A3B2CED94DB00EFCA9A /* vehicles.txt in Resources */ = {isa = PBXBuildFile; fileRef = E29C4A332CED94DB00EFCA9A /* vehicles.txt */; };
+		E29C4A3C2CED94DB00EFCA9A /* food.txt in Resources */ = {isa = PBXBuildFile; fileRef = E29C4A2E2CED94DB00EFCA9A /* food.txt */; };
+		E29C4A8A2CEDA80200EFCA9A /* t5block-layer2.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A5E2CEDA80200EFCA9A /* t5block-layer2.mlpackage */; };
+		E29C4A8B2CEDA80200EFCA9A /* t5block-layer3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A5F2CEDA80200EFCA9A /* t5block-layer3.mlpackage */; };
+		E29C4A8C2CEDA80200EFCA9A /* stdit3_part1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A3D2CEDA80200EFCA9A /* stdit3_part1.mlpackage */; };
+		E29C4A8D2CEDA80200EFCA9A /* vae_spatial_part3_2.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A7A2CEDA80200EFCA9A /* vae_spatial_part3_2.mlpackage */; };
+		E29C4A8E2CEDA80200EFCA9A /* t5block-layer6.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A622CEDA80200EFCA9A /* t5block-layer6.mlpackage */; };
+		E29C4A8F2CEDA80200EFCA9A /* t5block-layer16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A6C2CEDA80200EFCA9A /* t5block-layer16.mlpackage */; };
+		E29C4A902CEDA80200EFCA9A /* stdit3_ST_25.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A582CEDA80200EFCA9A /* stdit3_ST_25.mlpackage */; };
+		E29C4A912CEDA80200EFCA9A /* t5block-layer14.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A6A2CEDA80200EFCA9A /* t5block-layer14.mlpackage */; };
+		E29C4A922CEDA80200EFCA9A /* t5block-layer17.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A6D2CEDA80200EFCA9A /* t5block-layer17.mlpackage */; };
+		E29C4A932CEDA80200EFCA9A /* stdit3_ST_27.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A5A2CEDA80200EFCA9A /* stdit3_ST_27.mlpackage */; };
+		E29C4A942CEDA80200EFCA9A /* stdit3_ST_24.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A572CEDA80200EFCA9A /* stdit3_ST_24.mlpackage */; };
+		E29C4A952CEDA80200EFCA9A /* t5block-layer15.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A6B2CEDA80200EFCA9A /* t5block-layer15.mlpackage */; };
+		E29C4A962CEDA80200EFCA9A /* stdit3_ST_17.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A502CEDA80200EFCA9A /* stdit3_ST_17.mlpackage */; };
+		E29C4A972CEDA80200EFCA9A /* stdit3_ST_5.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A442CEDA80200EFCA9A /* stdit3_ST_5.mlpackage */; };
+		E29C4A982CEDA80200EFCA9A /* vae_spatial_part3_4_2.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A802CEDA80200EFCA9A /* vae_spatial_part3_4_2.mlpackage */; };
+		E29C4A992CEDA80200EFCA9A /* stdit3_ST_26.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A592CEDA80200EFCA9A /* stdit3_ST_26.mlpackage */; };
+		E29C4A9A2CEDA80200EFCA9A /* t5block-layer9.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A652CEDA80200EFCA9A /* t5block-layer9.mlpackage */; };
+		E29C4A9B2CEDA80200EFCA9A /* stdit3_ST_23.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A562CEDA80200EFCA9A /* stdit3_ST_23.mlpackage */; };
+		E29C4A9C2CEDA80200EFCA9A /* stdit3_ST_1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A402CEDA80200EFCA9A /* stdit3_ST_1.mlpackage */; };
+		E29C4A9D2CEDA80200EFCA9A /* t5block-layer18.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A6E2CEDA80200EFCA9A /* t5block-layer18.mlpackage */; };
+		E29C4A9E2CEDA80200EFCA9A /* t5block-layer12.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A682CEDA80200EFCA9A /* t5block-layer12.mlpackage */; };
+		E29C4A9F2CEDA80200EFCA9A /* t5block-layer10.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A662CEDA80200EFCA9A /* t5block-layer10.mlpackage */; };
+		E29C4AA02CEDA80200EFCA9A /* t5block-layer19.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A6F2CEDA80200EFCA9A /* t5block-layer19.mlpackage */; };
+		E29C4AA12CEDA80200EFCA9A /* stdit3_ST_18.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A512CEDA80200EFCA9A /* stdit3_ST_18.mlpackage */; };
+		E29C4AA22CEDA80200EFCA9A /* stdit3_ST_7.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A462CEDA80200EFCA9A /* stdit3_ST_7.mlpackage */; };
+		E29C4AA32CEDA80200EFCA9A /* stdit3_ST_12.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A4B2CEDA80200EFCA9A /* stdit3_ST_12.mlpackage */; };
+		E29C4AA42CEDA80200EFCA9A /* t5block-layer8.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A642CEDA80200EFCA9A /* t5block-layer8.mlpackage */; };
+		E29C4AA52CEDA80200EFCA9A /* t5embed-tokens.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A742CEDA80200EFCA9A /* t5embed-tokens.mlpackage */; };
+		E29C4AA62CEDA80200EFCA9A /* t5block-layer11.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A672CEDA80200EFCA9A /* t5block-layer11.mlpackage */; };
+		E29C4AA72CEDA80200EFCA9A /* vae_spatial_part3_4.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A7C2CEDA80200EFCA9A /* vae_spatial_part3_4.mlpackage */; };
+		E29C4AA82CEDA80200EFCA9A /* t5final-layer-norm.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A752CEDA80200EFCA9A /* t5final-layer-norm.mlpackage */; };
+		E29C4AA92CEDA80200EFCA9A /* vae_spatial_part1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A772CEDA80200EFCA9A /* vae_spatial_part1.mlpackage */; };
+		E29C4AAA2CEDA80200EFCA9A /* vae_spatial_part3_4_1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A7D2CEDA80200EFCA9A /* vae_spatial_part3_4_1.mlpackage */; };
+		E29C4AAB2CEDA80200EFCA9A /* vae_spatial_part2.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A782CEDA80200EFCA9A /* vae_spatial_part2.mlpackage */; };
+		E29C4AAC2CEDA80200EFCA9A /* stdit3_ST_10.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A492CEDA80200EFCA9A /* stdit3_ST_10.mlpackage */; };
+		E29C4AAD2CEDA80200EFCA9A /* vae_temporal_part2_4.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A872CEDA80200EFCA9A /* vae_temporal_part2_4.mlpackage */; };
+		E29C4AAE2CEDA80200EFCA9A /* stdit3_ST_8.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A472CEDA80200EFCA9A /* stdit3_ST_8.mlpackage */; };
+		E29C4AAF2CEDA80200EFCA9A /* vae_temporal_part2_3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A862CEDA80200EFCA9A /* vae_temporal_part2_3.mlpackage */; };
+		E29C4AB02CEDA80200EFCA9A /* vae_spatial_part4.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A822CEDA80200EFCA9A /* vae_spatial_part4.mlpackage */; };
+		E29C4AB12CEDA80200EFCA9A /* stdit3_ST_19.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A522CEDA80200EFCA9A /* stdit3_ST_19.mlpackage */; };
+		E29C4AB22CEDA80200EFCA9A /* stdit3_ST_20.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A532CEDA80200EFCA9A /* stdit3_ST_20.mlpackage */; };
+		E29C4AB32CEDA80200EFCA9A /* t5block-layer7.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A632CEDA80200EFCA9A /* t5block-layer7.mlpackage */; };
+		E29C4AB42CEDA80200EFCA9A /* vae_spatial_part3_3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A7B2CEDA80200EFCA9A /* vae_spatial_part3_3.mlpackage */; };
+		E29C4AB52CEDA80200EFCA9A /* stdit3_ST_11.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A4A2CEDA80200EFCA9A /* stdit3_ST_11.mlpackage */; };
+		E29C4AB62CEDA80200EFCA9A /* t5block-layer22.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A722CEDA80200EFCA9A /* t5block-layer22.mlpackage */; };
+		E29C4AB72CEDA80200EFCA9A /* t5block-layer1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A5D2CEDA80200EFCA9A /* t5block-layer1.mlpackage */; };
+		E29C4AB82CEDA80200EFCA9A /* vae_temporal_part2_2.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A852CEDA80200EFCA9A /* vae_temporal_part2_2.mlpackage */; };
+		E29C4AB92CEDA80200EFCA9A /* stdit3_ST_13.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A4C2CEDA80200EFCA9A /* stdit3_ST_13.mlpackage */; };
+		E29C4ABA2CEDA80200EFCA9A /* t5block-layer23.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A732CEDA80200EFCA9A /* t5block-layer23.mlpackage */; };
+		E29C4ABB2CEDA80200EFCA9A /* t5block-layer21.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A712CEDA80200EFCA9A /* t5block-layer21.mlpackage */; };
+		E29C4ABC2CEDA80200EFCA9A /* vae_spatial_part3_4_1_3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A7F2CEDA80200EFCA9A /* vae_spatial_part3_4_1_3.mlpackage */; };
+		E29C4ABD2CEDA80200EFCA9A /* t5block-layer5.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A612CEDA80200EFCA9A /* t5block-layer5.mlpackage */; };
+		E29C4ABE2CEDA80200EFCA9A /* stdit3_ST_3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A422CEDA80200EFCA9A /* stdit3_ST_3.mlpackage */; };
+		E29C4ABF2CEDA80200EFCA9A /* stdit3_ST_22.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A552CEDA80200EFCA9A /* stdit3_ST_22.mlpackage */; };
+		E29C4AC02CEDA80200EFCA9A /* stdit3_part2.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A3E2CEDA80200EFCA9A /* stdit3_part2.mlpackage */; };
+		E29C4AC12CEDA80200EFCA9A /* vae_spatial_part3_1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A792CEDA80200EFCA9A /* vae_spatial_part3_1.mlpackage */; };
+		E29C4AC22CEDA80200EFCA9A /* vae_temporal_part1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A832CEDA80200EFCA9A /* vae_temporal_part1.mlpackage */; };
+		E29C4AC32CEDA80200EFCA9A /* stdit3_ST_15.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A4E2CEDA80200EFCA9A /* stdit3_ST_15.mlpackage */; };
+		E29C4AC42CEDA80200EFCA9A /* stdit3_ST_16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A4F2CEDA80200EFCA9A /* stdit3_ST_16.mlpackage */; };
+		E29C4AC52CEDA80200EFCA9A /* vae_spatial_part3_4_1_2.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A7E2CEDA80200EFCA9A /* vae_spatial_part3_4_1_2.mlpackage */; };
+		E29C4AC62CEDA80200EFCA9A /* t5block-layer13.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A692CEDA80200EFCA9A /* t5block-layer13.mlpackage */; };
+		E29C4AC72CEDA80200EFCA9A /* stdit3_ST_4.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A432CEDA80200EFCA9A /* stdit3_ST_4.mlpackage */; };
+		E29C4AC82CEDA80200EFCA9A /* t5block-layer0.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A5C2CEDA80200EFCA9A /* t5block-layer0.mlpackage */; };
+		E29C4AC92CEDA80200EFCA9A /* stdit3_ST_14.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A4D2CEDA80200EFCA9A /* stdit3_ST_14.mlpackage */; };
+		E29C4ACA2CEDA80200EFCA9A /* stdit3_ST_2.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A412CEDA80200EFCA9A /* stdit3_ST_2.mlpackage */; };
+		E29C4ACB2CEDA80200EFCA9A /* vae_temporal_part2_1.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A842CEDA80200EFCA9A /* vae_temporal_part2_1.mlpackage */; };
+		E29C4ACC2CEDA80200EFCA9A /* stdit3_ST_0.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A3F2CEDA80200EFCA9A /* stdit3_ST_0.mlpackage */; };
+		E29C4ACD2CEDA80200EFCA9A /* t5block-layer20.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A702CEDA80200EFCA9A /* t5block-layer20.mlpackage */; };
+		E29C4ACE2CEDA80200EFCA9A /* stdit3_ST_6.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A452CEDA80200EFCA9A /* stdit3_ST_6.mlpackage */; };
+		E29C4ACF2CEDA80200EFCA9A /* t5block-layer4.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A602CEDA80200EFCA9A /* t5block-layer4.mlpackage */; };
+		E29C4AD02CEDA80200EFCA9A /* vae_temporal_part3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A882CEDA80200EFCA9A /* vae_temporal_part3.mlpackage */; };
+		E29C4AD12CEDA80200EFCA9A /* stdit3_ST_21.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A542CEDA80200EFCA9A /* stdit3_ST_21.mlpackage */; };
+		E29C4AD22CEDA80200EFCA9A /* vae_spatial_part3_4_3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A812CEDA80200EFCA9A /* vae_spatial_part3_4_3.mlpackage */; };
+		E29C4AD32CEDA80200EFCA9A /* stdit3_ST_9.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E29C4A482CEDA80200EFCA9A /* stdit3_ST_9.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,14 +130,89 @@
 		0CCFB52C2C2AD669009DB83F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CCFB5312C2AD66B009DB83F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		650514272CDB3354004F65A5 /* vae_spatial.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial.mlpackage; sourceTree = "<group>"; };
-		650514282CDB3354004F65A5 /* vae_temporal.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_temporal.mlpackage; sourceTree = "<group>"; };
+		E29C4A2C2CED94DB00EFCA9A /* animal.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = animal.txt; sourceTree = "<group>"; };
+		E29C4A2D2CED94DB00EFCA9A /* architecture.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = architecture.txt; sourceTree = "<group>"; };
+		E29C4A2E2CED94DB00EFCA9A /* food.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = food.txt; sourceTree = "<group>"; };
+		E29C4A2F2CED94DB00EFCA9A /* human.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = human.txt; sourceTree = "<group>"; };
+		E29C4A302CED94DB00EFCA9A /* lifestyle.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = lifestyle.txt; sourceTree = "<group>"; };
+		E29C4A312CED94DB00EFCA9A /* plant.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = plant.txt; sourceTree = "<group>"; };
+		E29C4A322CED94DB00EFCA9A /* scenery.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = scenery.txt; sourceTree = "<group>"; };
+		E29C4A332CED94DB00EFCA9A /* vehicles.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = vehicles.txt; sourceTree = "<group>"; };
+		E29C4A3D2CEDA80200EFCA9A /* stdit3_part1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_part1.mlpackage; sourceTree = "<group>"; };
+		E29C4A3E2CEDA80200EFCA9A /* stdit3_part2.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_part2.mlpackage; sourceTree = "<group>"; };
+		E29C4A3F2CEDA80200EFCA9A /* stdit3_ST_0.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_0.mlpackage; sourceTree = "<group>"; };
+		E29C4A402CEDA80200EFCA9A /* stdit3_ST_1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_1.mlpackage; sourceTree = "<group>"; };
+		E29C4A412CEDA80200EFCA9A /* stdit3_ST_2.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_2.mlpackage; sourceTree = "<group>"; };
+		E29C4A422CEDA80200EFCA9A /* stdit3_ST_3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_3.mlpackage; sourceTree = "<group>"; };
+		E29C4A432CEDA80200EFCA9A /* stdit3_ST_4.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_4.mlpackage; sourceTree = "<group>"; };
+		E29C4A442CEDA80200EFCA9A /* stdit3_ST_5.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_5.mlpackage; sourceTree = "<group>"; };
+		E29C4A452CEDA80200EFCA9A /* stdit3_ST_6.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_6.mlpackage; sourceTree = "<group>"; };
+		E29C4A462CEDA80200EFCA9A /* stdit3_ST_7.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_7.mlpackage; sourceTree = "<group>"; };
+		E29C4A472CEDA80200EFCA9A /* stdit3_ST_8.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_8.mlpackage; sourceTree = "<group>"; };
+		E29C4A482CEDA80200EFCA9A /* stdit3_ST_9.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_9.mlpackage; sourceTree = "<group>"; };
+		E29C4A492CEDA80200EFCA9A /* stdit3_ST_10.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_10.mlpackage; sourceTree = "<group>"; };
+		E29C4A4A2CEDA80200EFCA9A /* stdit3_ST_11.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_11.mlpackage; sourceTree = "<group>"; };
+		E29C4A4B2CEDA80200EFCA9A /* stdit3_ST_12.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_12.mlpackage; sourceTree = "<group>"; };
+		E29C4A4C2CEDA80200EFCA9A /* stdit3_ST_13.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_13.mlpackage; sourceTree = "<group>"; };
+		E29C4A4D2CEDA80200EFCA9A /* stdit3_ST_14.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_14.mlpackage; sourceTree = "<group>"; };
+		E29C4A4E2CEDA80200EFCA9A /* stdit3_ST_15.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_15.mlpackage; sourceTree = "<group>"; };
+		E29C4A4F2CEDA80200EFCA9A /* stdit3_ST_16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_16.mlpackage; sourceTree = "<group>"; };
+		E29C4A502CEDA80200EFCA9A /* stdit3_ST_17.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_17.mlpackage; sourceTree = "<group>"; };
+		E29C4A512CEDA80200EFCA9A /* stdit3_ST_18.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_18.mlpackage; sourceTree = "<group>"; };
+		E29C4A522CEDA80200EFCA9A /* stdit3_ST_19.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_19.mlpackage; sourceTree = "<group>"; };
+		E29C4A532CEDA80200EFCA9A /* stdit3_ST_20.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_20.mlpackage; sourceTree = "<group>"; };
+		E29C4A542CEDA80200EFCA9A /* stdit3_ST_21.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_21.mlpackage; sourceTree = "<group>"; };
+		E29C4A552CEDA80200EFCA9A /* stdit3_ST_22.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_22.mlpackage; sourceTree = "<group>"; };
+		E29C4A562CEDA80200EFCA9A /* stdit3_ST_23.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_23.mlpackage; sourceTree = "<group>"; };
+		E29C4A572CEDA80200EFCA9A /* stdit3_ST_24.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_24.mlpackage; sourceTree = "<group>"; };
+		E29C4A582CEDA80200EFCA9A /* stdit3_ST_25.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_25.mlpackage; sourceTree = "<group>"; };
+		E29C4A592CEDA80200EFCA9A /* stdit3_ST_26.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_26.mlpackage; sourceTree = "<group>"; };
+		E29C4A5A2CEDA80200EFCA9A /* stdit3_ST_27.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = stdit3_ST_27.mlpackage; sourceTree = "<group>"; };
+		E29C4A5C2CEDA80200EFCA9A /* t5block-layer0.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer0.mlpackage"; sourceTree = "<group>"; };
+		E29C4A5D2CEDA80200EFCA9A /* t5block-layer1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer1.mlpackage"; sourceTree = "<group>"; };
+		E29C4A5E2CEDA80200EFCA9A /* t5block-layer2.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer2.mlpackage"; sourceTree = "<group>"; };
+		E29C4A5F2CEDA80200EFCA9A /* t5block-layer3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer3.mlpackage"; sourceTree = "<group>"; };
+		E29C4A602CEDA80200EFCA9A /* t5block-layer4.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer4.mlpackage"; sourceTree = "<group>"; };
+		E29C4A612CEDA80200EFCA9A /* t5block-layer5.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer5.mlpackage"; sourceTree = "<group>"; };
+		E29C4A622CEDA80200EFCA9A /* t5block-layer6.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer6.mlpackage"; sourceTree = "<group>"; };
+		E29C4A632CEDA80200EFCA9A /* t5block-layer7.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer7.mlpackage"; sourceTree = "<group>"; };
+		E29C4A642CEDA80200EFCA9A /* t5block-layer8.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer8.mlpackage"; sourceTree = "<group>"; };
+		E29C4A652CEDA80200EFCA9A /* t5block-layer9.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer9.mlpackage"; sourceTree = "<group>"; };
+		E29C4A662CEDA80200EFCA9A /* t5block-layer10.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer10.mlpackage"; sourceTree = "<group>"; };
+		E29C4A672CEDA80200EFCA9A /* t5block-layer11.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer11.mlpackage"; sourceTree = "<group>"; };
+		E29C4A682CEDA80200EFCA9A /* t5block-layer12.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer12.mlpackage"; sourceTree = "<group>"; };
+		E29C4A692CEDA80200EFCA9A /* t5block-layer13.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer13.mlpackage"; sourceTree = "<group>"; };
+		E29C4A6A2CEDA80200EFCA9A /* t5block-layer14.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer14.mlpackage"; sourceTree = "<group>"; };
+		E29C4A6B2CEDA80200EFCA9A /* t5block-layer15.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer15.mlpackage"; sourceTree = "<group>"; };
+		E29C4A6C2CEDA80200EFCA9A /* t5block-layer16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer16.mlpackage"; sourceTree = "<group>"; };
+		E29C4A6D2CEDA80200EFCA9A /* t5block-layer17.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer17.mlpackage"; sourceTree = "<group>"; };
+		E29C4A6E2CEDA80200EFCA9A /* t5block-layer18.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer18.mlpackage"; sourceTree = "<group>"; };
+		E29C4A6F2CEDA80200EFCA9A /* t5block-layer19.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer19.mlpackage"; sourceTree = "<group>"; };
+		E29C4A702CEDA80200EFCA9A /* t5block-layer20.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer20.mlpackage"; sourceTree = "<group>"; };
+		E29C4A712CEDA80200EFCA9A /* t5block-layer21.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer21.mlpackage"; sourceTree = "<group>"; };
+		E29C4A722CEDA80200EFCA9A /* t5block-layer22.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer22.mlpackage"; sourceTree = "<group>"; };
+		E29C4A732CEDA80200EFCA9A /* t5block-layer23.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5block-layer23.mlpackage"; sourceTree = "<group>"; };
+		E29C4A742CEDA80200EFCA9A /* t5embed-tokens.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5embed-tokens.mlpackage"; sourceTree = "<group>"; };
+		E29C4A752CEDA80200EFCA9A /* t5final-layer-norm.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "t5final-layer-norm.mlpackage"; sourceTree = "<group>"; };
+		E29C4A772CEDA80200EFCA9A /* vae_spatial_part1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial_part1.mlpackage; sourceTree = "<group>"; };
+		E29C4A782CEDA80200EFCA9A /* vae_spatial_part2.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial_part2.mlpackage; sourceTree = "<group>"; };
+		E29C4A792CEDA80200EFCA9A /* vae_spatial_part3_1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial_part3_1.mlpackage; sourceTree = "<group>"; };
+		E29C4A7A2CEDA80200EFCA9A /* vae_spatial_part3_2.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial_part3_2.mlpackage; sourceTree = "<group>"; };
+		E29C4A7B2CEDA80200EFCA9A /* vae_spatial_part3_3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial_part3_3.mlpackage; sourceTree = "<group>"; };
+		E29C4A7C2CEDA80200EFCA9A /* vae_spatial_part3_4.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial_part3_4.mlpackage; sourceTree = "<group>"; };
+		E29C4A7D2CEDA80200EFCA9A /* vae_spatial_part3_4_1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial_part3_4_1.mlpackage; sourceTree = "<group>"; };
+		E29C4A7E2CEDA80200EFCA9A /* vae_spatial_part3_4_1_2.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial_part3_4_1_2.mlpackage; sourceTree = "<group>"; };
+		E29C4A7F2CEDA80200EFCA9A /* vae_spatial_part3_4_1_3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial_part3_4_1_3.mlpackage; sourceTree = "<group>"; };
+		E29C4A802CEDA80200EFCA9A /* vae_spatial_part3_4_2.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial_part3_4_2.mlpackage; sourceTree = "<group>"; };
+		E29C4A812CEDA80200EFCA9A /* vae_spatial_part3_4_3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial_part3_4_3.mlpackage; sourceTree = "<group>"; };
+		E29C4A822CEDA80200EFCA9A /* vae_spatial_part4.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_spatial_part4.mlpackage; sourceTree = "<group>"; };
+		E29C4A832CEDA80200EFCA9A /* vae_temporal_part1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_temporal_part1.mlpackage; sourceTree = "<group>"; };
+		E29C4A842CEDA80200EFCA9A /* vae_temporal_part2_1.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_temporal_part2_1.mlpackage; sourceTree = "<group>"; };
+		E29C4A852CEDA80200EFCA9A /* vae_temporal_part2_2.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_temporal_part2_2.mlpackage; sourceTree = "<group>"; };
+		E29C4A862CEDA80200EFCA9A /* vae_temporal_part2_3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_temporal_part2_3.mlpackage; sourceTree = "<group>"; };
+		E29C4A872CEDA80200EFCA9A /* vae_temporal_part2_4.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_temporal_part2_4.mlpackage; sourceTree = "<group>"; };
+		E29C4A882CEDA80200EFCA9A /* vae_temporal_part3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = vae_temporal_part3.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		0CB223802CB6F19E000A75D0 /* T5 */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = T5; sourceTree = "<group>"; };
-		0CB223822CB6F1B2000A75D0 /* STDit */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = STDit; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0CCFB5242C2AD669009DB83F /* Frameworks */ = {
@@ -90,6 +245,7 @@
 		0CCFB5292C2AD669009DB83F /* On-Device-OpenSora */ = {
 			isa = PBXGroup;
 			children = (
+				E29C4A342CED94DB00EFCA9A /* prompts */,
 				0CCFB52E2C2AD66B009DB83F /* Assets.xcassets */,
 				0CCFB5302C2AD66B009DB83F /* Preview Content */,
 				0CCFB52A2C2AD669009DB83F /* On_Device_OpenSoraApp.swift */,
@@ -97,14 +253,13 @@
 				0CCD49F62C6C5936005D7F77 /* ResourceManaging.swift */,
 				0CCD49F02C6C4760005D7F77 /* ManagedMLModel.swift */,
 				0CCD49FE2C6C84FC005D7F77 /* T5Tokenizer.swift */,
+				E29C4A5B2CEDA80200EFCA9A /* STDit */,
+				E29C4A762CEDA80200EFCA9A /* T5 */,
+				E29C4A892CEDA80200EFCA9A /* VAE */,
 				0CC6190F2CABD02400FF7506 /* Asepct.swift */,
 				0C4CBA1C2C8059AC00B37757 /* tokenizer.json */,
 				0C4CBA1B2C8059AC00B37757 /* tokenizer_config.json */,
-				0CB223802CB6F19E000A75D0 /* T5 */,
-				0CB223822CB6F1B2000A75D0 /* STDit */,
 				0CCD49FA2C6C5A1E005D7F77 /* SoraPipeline.swift */,
-				650514272CDB3354004F65A5 /* vae_spatial.mlpackage */,
-				650514282CDB3354004F65A5 /* vae_temporal.mlpackage */,
 				0C4CBA1F2C805F5D00B37757 /* TextEncoding.swift */,
 				0CCD49F22C6C54CA005D7F77 /* STDit3.swift */,
 				0CCD49FC2C6C744F005D7F77 /* RFLOW.swift */,
@@ -124,6 +279,116 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		E29C4A342CED94DB00EFCA9A /* prompts */ = {
+			isa = PBXGroup;
+			children = (
+				E29C4A2C2CED94DB00EFCA9A /* animal.txt */,
+				E29C4A2D2CED94DB00EFCA9A /* architecture.txt */,
+				E29C4A2E2CED94DB00EFCA9A /* food.txt */,
+				E29C4A2F2CED94DB00EFCA9A /* human.txt */,
+				E29C4A302CED94DB00EFCA9A /* lifestyle.txt */,
+				E29C4A312CED94DB00EFCA9A /* plant.txt */,
+				E29C4A322CED94DB00EFCA9A /* scenery.txt */,
+				E29C4A332CED94DB00EFCA9A /* vehicles.txt */,
+			);
+			path = prompts;
+			sourceTree = "<group>";
+		};
+		E29C4A5B2CEDA80200EFCA9A /* STDit */ = {
+			isa = PBXGroup;
+			children = (
+				E29C4A3D2CEDA80200EFCA9A /* stdit3_part1.mlpackage */,
+				E29C4A3E2CEDA80200EFCA9A /* stdit3_part2.mlpackage */,
+				E29C4A3F2CEDA80200EFCA9A /* stdit3_ST_0.mlpackage */,
+				E29C4A402CEDA80200EFCA9A /* stdit3_ST_1.mlpackage */,
+				E29C4A412CEDA80200EFCA9A /* stdit3_ST_2.mlpackage */,
+				E29C4A422CEDA80200EFCA9A /* stdit3_ST_3.mlpackage */,
+				E29C4A432CEDA80200EFCA9A /* stdit3_ST_4.mlpackage */,
+				E29C4A442CEDA80200EFCA9A /* stdit3_ST_5.mlpackage */,
+				E29C4A452CEDA80200EFCA9A /* stdit3_ST_6.mlpackage */,
+				E29C4A462CEDA80200EFCA9A /* stdit3_ST_7.mlpackage */,
+				E29C4A472CEDA80200EFCA9A /* stdit3_ST_8.mlpackage */,
+				E29C4A482CEDA80200EFCA9A /* stdit3_ST_9.mlpackage */,
+				E29C4A492CEDA80200EFCA9A /* stdit3_ST_10.mlpackage */,
+				E29C4A4A2CEDA80200EFCA9A /* stdit3_ST_11.mlpackage */,
+				E29C4A4B2CEDA80200EFCA9A /* stdit3_ST_12.mlpackage */,
+				E29C4A4C2CEDA80200EFCA9A /* stdit3_ST_13.mlpackage */,
+				E29C4A4D2CEDA80200EFCA9A /* stdit3_ST_14.mlpackage */,
+				E29C4A4E2CEDA80200EFCA9A /* stdit3_ST_15.mlpackage */,
+				E29C4A4F2CEDA80200EFCA9A /* stdit3_ST_16.mlpackage */,
+				E29C4A502CEDA80200EFCA9A /* stdit3_ST_17.mlpackage */,
+				E29C4A512CEDA80200EFCA9A /* stdit3_ST_18.mlpackage */,
+				E29C4A522CEDA80200EFCA9A /* stdit3_ST_19.mlpackage */,
+				E29C4A532CEDA80200EFCA9A /* stdit3_ST_20.mlpackage */,
+				E29C4A542CEDA80200EFCA9A /* stdit3_ST_21.mlpackage */,
+				E29C4A552CEDA80200EFCA9A /* stdit3_ST_22.mlpackage */,
+				E29C4A562CEDA80200EFCA9A /* stdit3_ST_23.mlpackage */,
+				E29C4A572CEDA80200EFCA9A /* stdit3_ST_24.mlpackage */,
+				E29C4A582CEDA80200EFCA9A /* stdit3_ST_25.mlpackage */,
+				E29C4A592CEDA80200EFCA9A /* stdit3_ST_26.mlpackage */,
+				E29C4A5A2CEDA80200EFCA9A /* stdit3_ST_27.mlpackage */,
+			);
+			path = STDit;
+			sourceTree = "<group>";
+		};
+		E29C4A762CEDA80200EFCA9A /* T5 */ = {
+			isa = PBXGroup;
+			children = (
+				E29C4A5C2CEDA80200EFCA9A /* t5block-layer0.mlpackage */,
+				E29C4A5D2CEDA80200EFCA9A /* t5block-layer1.mlpackage */,
+				E29C4A5E2CEDA80200EFCA9A /* t5block-layer2.mlpackage */,
+				E29C4A5F2CEDA80200EFCA9A /* t5block-layer3.mlpackage */,
+				E29C4A602CEDA80200EFCA9A /* t5block-layer4.mlpackage */,
+				E29C4A612CEDA80200EFCA9A /* t5block-layer5.mlpackage */,
+				E29C4A622CEDA80200EFCA9A /* t5block-layer6.mlpackage */,
+				E29C4A632CEDA80200EFCA9A /* t5block-layer7.mlpackage */,
+				E29C4A642CEDA80200EFCA9A /* t5block-layer8.mlpackage */,
+				E29C4A652CEDA80200EFCA9A /* t5block-layer9.mlpackage */,
+				E29C4A662CEDA80200EFCA9A /* t5block-layer10.mlpackage */,
+				E29C4A672CEDA80200EFCA9A /* t5block-layer11.mlpackage */,
+				E29C4A682CEDA80200EFCA9A /* t5block-layer12.mlpackage */,
+				E29C4A692CEDA80200EFCA9A /* t5block-layer13.mlpackage */,
+				E29C4A6A2CEDA80200EFCA9A /* t5block-layer14.mlpackage */,
+				E29C4A6B2CEDA80200EFCA9A /* t5block-layer15.mlpackage */,
+				E29C4A6C2CEDA80200EFCA9A /* t5block-layer16.mlpackage */,
+				E29C4A6D2CEDA80200EFCA9A /* t5block-layer17.mlpackage */,
+				E29C4A6E2CEDA80200EFCA9A /* t5block-layer18.mlpackage */,
+				E29C4A6F2CEDA80200EFCA9A /* t5block-layer19.mlpackage */,
+				E29C4A702CEDA80200EFCA9A /* t5block-layer20.mlpackage */,
+				E29C4A712CEDA80200EFCA9A /* t5block-layer21.mlpackage */,
+				E29C4A722CEDA80200EFCA9A /* t5block-layer22.mlpackage */,
+				E29C4A732CEDA80200EFCA9A /* t5block-layer23.mlpackage */,
+				E29C4A742CEDA80200EFCA9A /* t5embed-tokens.mlpackage */,
+				E29C4A752CEDA80200EFCA9A /* t5final-layer-norm.mlpackage */,
+			);
+			path = T5;
+			sourceTree = "<group>";
+		};
+		E29C4A892CEDA80200EFCA9A /* VAE */ = {
+			isa = PBXGroup;
+			children = (
+				E29C4A772CEDA80200EFCA9A /* vae_spatial_part1.mlpackage */,
+				E29C4A782CEDA80200EFCA9A /* vae_spatial_part2.mlpackage */,
+				E29C4A792CEDA80200EFCA9A /* vae_spatial_part3_1.mlpackage */,
+				E29C4A7A2CEDA80200EFCA9A /* vae_spatial_part3_2.mlpackage */,
+				E29C4A7B2CEDA80200EFCA9A /* vae_spatial_part3_3.mlpackage */,
+				E29C4A7C2CEDA80200EFCA9A /* vae_spatial_part3_4.mlpackage */,
+				E29C4A7D2CEDA80200EFCA9A /* vae_spatial_part3_4_1.mlpackage */,
+				E29C4A7E2CEDA80200EFCA9A /* vae_spatial_part3_4_1_2.mlpackage */,
+				E29C4A7F2CEDA80200EFCA9A /* vae_spatial_part3_4_1_3.mlpackage */,
+				E29C4A802CEDA80200EFCA9A /* vae_spatial_part3_4_2.mlpackage */,
+				E29C4A812CEDA80200EFCA9A /* vae_spatial_part3_4_3.mlpackage */,
+				E29C4A822CEDA80200EFCA9A /* vae_spatial_part4.mlpackage */,
+				E29C4A832CEDA80200EFCA9A /* vae_temporal_part1.mlpackage */,
+				E29C4A842CEDA80200EFCA9A /* vae_temporal_part2_1.mlpackage */,
+				E29C4A852CEDA80200EFCA9A /* vae_temporal_part2_2.mlpackage */,
+				E29C4A862CEDA80200EFCA9A /* vae_temporal_part2_3.mlpackage */,
+				E29C4A872CEDA80200EFCA9A /* vae_temporal_part2_4.mlpackage */,
+				E29C4A882CEDA80200EFCA9A /* vae_temporal_part3.mlpackage */,
+			);
+			path = VAE;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,10 +403,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				0CB223802CB6F19E000A75D0 /* T5 */,
-				0CB223822CB6F1B2000A75D0 /* STDit */,
 			);
 			name = "On-Device-OpenSora";
 			packageProductDependencies = (
@@ -195,6 +456,14 @@
 				0CCFB5322C2AD66B009DB83F /* Preview Assets.xcassets in Resources */,
 				0C4CBA1E2C8059AC00B37757 /* tokenizer.json in Resources */,
 				0C4CBA1D2C8059AC00B37757 /* tokenizer_config.json in Resources */,
+				E29C4A352CED94DB00EFCA9A /* animal.txt in Resources */,
+				E29C4A362CED94DB00EFCA9A /* scenery.txt in Resources */,
+				E29C4A372CED94DB00EFCA9A /* lifestyle.txt in Resources */,
+				E29C4A382CED94DB00EFCA9A /* plant.txt in Resources */,
+				E29C4A392CED94DB00EFCA9A /* architecture.txt in Resources */,
+				E29C4A3A2CED94DB00EFCA9A /* human.txt in Resources */,
+				E29C4A3B2CED94DB00EFCA9A /* vehicles.txt in Resources */,
+				E29C4A3C2CED94DB00EFCA9A /* food.txt in Resources */,
 				0CCFB52F2C2AD66B009DB83F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +475,80 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E29C4A8A2CEDA80200EFCA9A /* t5block-layer2.mlpackage in Sources */,
+				E29C4A8B2CEDA80200EFCA9A /* t5block-layer3.mlpackage in Sources */,
+				E29C4A8C2CEDA80200EFCA9A /* stdit3_part1.mlpackage in Sources */,
+				E29C4A8D2CEDA80200EFCA9A /* vae_spatial_part3_2.mlpackage in Sources */,
+				E29C4A8E2CEDA80200EFCA9A /* t5block-layer6.mlpackage in Sources */,
+				E29C4A8F2CEDA80200EFCA9A /* t5block-layer16.mlpackage in Sources */,
+				E29C4A902CEDA80200EFCA9A /* stdit3_ST_25.mlpackage in Sources */,
+				E29C4A912CEDA80200EFCA9A /* t5block-layer14.mlpackage in Sources */,
+				E29C4A922CEDA80200EFCA9A /* t5block-layer17.mlpackage in Sources */,
+				E29C4A932CEDA80200EFCA9A /* stdit3_ST_27.mlpackage in Sources */,
+				E29C4A942CEDA80200EFCA9A /* stdit3_ST_24.mlpackage in Sources */,
+				E29C4A952CEDA80200EFCA9A /* t5block-layer15.mlpackage in Sources */,
+				E29C4A962CEDA80200EFCA9A /* stdit3_ST_17.mlpackage in Sources */,
+				E29C4A972CEDA80200EFCA9A /* stdit3_ST_5.mlpackage in Sources */,
+				E29C4A982CEDA80200EFCA9A /* vae_spatial_part3_4_2.mlpackage in Sources */,
+				E29C4A992CEDA80200EFCA9A /* stdit3_ST_26.mlpackage in Sources */,
+				E29C4A9A2CEDA80200EFCA9A /* t5block-layer9.mlpackage in Sources */,
+				E29C4A9B2CEDA80200EFCA9A /* stdit3_ST_23.mlpackage in Sources */,
+				E29C4A9C2CEDA80200EFCA9A /* stdit3_ST_1.mlpackage in Sources */,
+				E29C4A9D2CEDA80200EFCA9A /* t5block-layer18.mlpackage in Sources */,
+				E29C4A9E2CEDA80200EFCA9A /* t5block-layer12.mlpackage in Sources */,
+				E29C4A9F2CEDA80200EFCA9A /* t5block-layer10.mlpackage in Sources */,
+				E29C4AA02CEDA80200EFCA9A /* t5block-layer19.mlpackage in Sources */,
+				E29C4AA12CEDA80200EFCA9A /* stdit3_ST_18.mlpackage in Sources */,
+				E29C4AA22CEDA80200EFCA9A /* stdit3_ST_7.mlpackage in Sources */,
+				E29C4AA32CEDA80200EFCA9A /* stdit3_ST_12.mlpackage in Sources */,
+				E29C4AA42CEDA80200EFCA9A /* t5block-layer8.mlpackage in Sources */,
+				E29C4AA52CEDA80200EFCA9A /* t5embed-tokens.mlpackage in Sources */,
+				E29C4AA62CEDA80200EFCA9A /* t5block-layer11.mlpackage in Sources */,
+				E29C4AA72CEDA80200EFCA9A /* vae_spatial_part3_4.mlpackage in Sources */,
+				E29C4AA82CEDA80200EFCA9A /* t5final-layer-norm.mlpackage in Sources */,
+				E29C4AA92CEDA80200EFCA9A /* vae_spatial_part1.mlpackage in Sources */,
+				E29C4AAA2CEDA80200EFCA9A /* vae_spatial_part3_4_1.mlpackage in Sources */,
+				E29C4AAB2CEDA80200EFCA9A /* vae_spatial_part2.mlpackage in Sources */,
+				E29C4AAC2CEDA80200EFCA9A /* stdit3_ST_10.mlpackage in Sources */,
+				E29C4AAD2CEDA80200EFCA9A /* vae_temporal_part2_4.mlpackage in Sources */,
+				E29C4AAE2CEDA80200EFCA9A /* stdit3_ST_8.mlpackage in Sources */,
+				E29C4AAF2CEDA80200EFCA9A /* vae_temporal_part2_3.mlpackage in Sources */,
+				E29C4AB02CEDA80200EFCA9A /* vae_spatial_part4.mlpackage in Sources */,
+				E29C4AB12CEDA80200EFCA9A /* stdit3_ST_19.mlpackage in Sources */,
+				E29C4AB22CEDA80200EFCA9A /* stdit3_ST_20.mlpackage in Sources */,
+				E29C4AB32CEDA80200EFCA9A /* t5block-layer7.mlpackage in Sources */,
+				E29C4AB42CEDA80200EFCA9A /* vae_spatial_part3_3.mlpackage in Sources */,
+				E29C4AB52CEDA80200EFCA9A /* stdit3_ST_11.mlpackage in Sources */,
+				E29C4AB62CEDA80200EFCA9A /* t5block-layer22.mlpackage in Sources */,
+				E29C4AB72CEDA80200EFCA9A /* t5block-layer1.mlpackage in Sources */,
+				E29C4AB82CEDA80200EFCA9A /* vae_temporal_part2_2.mlpackage in Sources */,
+				E29C4AB92CEDA80200EFCA9A /* stdit3_ST_13.mlpackage in Sources */,
+				E29C4ABA2CEDA80200EFCA9A /* t5block-layer23.mlpackage in Sources */,
+				E29C4ABB2CEDA80200EFCA9A /* t5block-layer21.mlpackage in Sources */,
+				E29C4ABC2CEDA80200EFCA9A /* vae_spatial_part3_4_1_3.mlpackage in Sources */,
+				E29C4ABD2CEDA80200EFCA9A /* t5block-layer5.mlpackage in Sources */,
+				E29C4ABE2CEDA80200EFCA9A /* stdit3_ST_3.mlpackage in Sources */,
+				E29C4ABF2CEDA80200EFCA9A /* stdit3_ST_22.mlpackage in Sources */,
+				E29C4AC02CEDA80200EFCA9A /* stdit3_part2.mlpackage in Sources */,
+				E29C4AC12CEDA80200EFCA9A /* vae_spatial_part3_1.mlpackage in Sources */,
+				E29C4AC22CEDA80200EFCA9A /* vae_temporal_part1.mlpackage in Sources */,
+				E29C4AC32CEDA80200EFCA9A /* stdit3_ST_15.mlpackage in Sources */,
+				E29C4AC42CEDA80200EFCA9A /* stdit3_ST_16.mlpackage in Sources */,
+				E29C4AC52CEDA80200EFCA9A /* vae_spatial_part3_4_1_2.mlpackage in Sources */,
+				E29C4AC62CEDA80200EFCA9A /* t5block-layer13.mlpackage in Sources */,
+				E29C4AC72CEDA80200EFCA9A /* stdit3_ST_4.mlpackage in Sources */,
+				E29C4AC82CEDA80200EFCA9A /* t5block-layer0.mlpackage in Sources */,
+				E29C4AC92CEDA80200EFCA9A /* stdit3_ST_14.mlpackage in Sources */,
+				E29C4ACA2CEDA80200EFCA9A /* stdit3_ST_2.mlpackage in Sources */,
+				E29C4ACB2CEDA80200EFCA9A /* vae_temporal_part2_1.mlpackage in Sources */,
+				E29C4ACC2CEDA80200EFCA9A /* stdit3_ST_0.mlpackage in Sources */,
+				E29C4ACD2CEDA80200EFCA9A /* t5block-layer20.mlpackage in Sources */,
+				E29C4ACE2CEDA80200EFCA9A /* stdit3_ST_6.mlpackage in Sources */,
+				E29C4ACF2CEDA80200EFCA9A /* t5block-layer4.mlpackage in Sources */,
+				E29C4AD02CEDA80200EFCA9A /* vae_temporal_part3.mlpackage in Sources */,
+				E29C4AD12CEDA80200EFCA9A /* stdit3_ST_21.mlpackage in Sources */,
+				E29C4AD22CEDA80200EFCA9A /* vae_spatial_part3_4_3.mlpackage in Sources */,
+				E29C4AD32CEDA80200EFCA9A /* stdit3_ST_9.mlpackage in Sources */,
 				0CCD49FD2C6C744F005D7F77 /* RFLOW.swift in Sources */,
 				0CCFB52D2C2AD669009DB83F /* ContentView.swift in Sources */,
 				0CCFB52B2C2AD669009DB83F /* On_Device_OpenSoraApp.swift in Sources */,
@@ -220,8 +563,6 @@
 				0CCD49FB2C6C5A1E005D7F77 /* SoraPipeline.swift in Sources */,
 				0CCD49F32C6C54CA005D7F77 /* STDit3.swift in Sources */,
 				0C3D77F12CC63BD900277C60 /* Tensor2Vid.swift in Sources */,
-				650514292CDB3354004F65A5 /* vae_spatial.mlpackage in Sources */,
-				6505142A2CDB3354004F65A5 /* vae_temporal.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +711,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.EAI.On-Device-OpenSora-jjm";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.EAI.On-Device-OpenSora-experiments";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -405,7 +746,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.EAI.On-Device-OpenSora-jjm";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.EAI.On-Device-OpenSora-experiments";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
