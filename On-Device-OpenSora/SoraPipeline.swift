@@ -118,9 +118,9 @@ func sample(prompts: [String], logdir: URL) { // for ios
             // Scheduler input
             let additionalArgs: [String: MLTensor] = [:]
             let vaeOutChannels = 4
-            let latentsize = (20, 20, 27)
-            let height = 166.0
-            let width = 221.0
+            let latentsize = (20, 32, 32)
+            let height = 256.0
+            let width = 256.0
             let fps = 24.0
             let resolution = width * height
             let z = await MLTensor(randomNormal: [1, vaeOutChannels, latentsize.0, latentsize.1, latentsize.2],seed: 42,scalarType: Float32.self).shapedArray(of: Float32.self)
