@@ -132,7 +132,7 @@ public final class RFLOW {
       
       if i == self.numLpltarget - 1 {
         // break the loop
-        break
+        return z
       }
       
     }
