@@ -55,18 +55,18 @@ public struct STDit3 {
                 }
                 group.leave()
         }
-        if i < spatialAndTemporals.count - 1 {
-            let nextModel = spatialAndTemporals[i + 1]
-            //group.enter()
-            loadQueue.async {
-                do {
-                    try nextModel.loadResources()
-                } catch {
-                    print("Failed to load next Model")
-                }
-                //group.leave()
-            }
-        }
+//        if i < spatialAndTemporals.count - 1 {
+//            let nextModel = spatialAndTemporals[i + 1]
+//            //group.enter()
+//            loadQueue.async {
+//                do {
+//                    try nextModel.loadResources()
+//                } catch {
+//                    print("Failed to load next Model")
+//                }
+//                //group.leave()
+//            }
+////        }
         group.wait()
 //        let spatialOutput = try spatialAndTemporal.perform { model in
 //        try model.prediction(from: inputFeatures)

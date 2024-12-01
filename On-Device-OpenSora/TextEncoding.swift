@@ -95,7 +95,7 @@ public struct TextEncoding {
 //      let layerOutputs = try model.perform { model in
 //        try model.prediction(from: inputFeatures)
 //      }
-//      model.unloadResources()
+      model.unloadResources()
 //      if index == 0 {
 //        position_bias = layerOutputs.featureValue(for: "output_position_bias")
 //        yNull = layerOutputs.featureValue(for: "yNull")?.multiArrayValue
@@ -128,18 +128,18 @@ public struct TextEncoding {
                 }
                 t5group.leave()
         }
-        if index < DivT5s.count - 1 {
-            let nextModel = DivT5s[index + 1]
-            //t5group.enter()
-            t5loadQueue.async {
-                do {
-                    try nextModel.loadResources()
-                } catch {
-                    print("Failed to load next T5 Model")
-                }
-                //t5group.leave()
-            }
-        }
+//        if index < DivT5s.count - 1 {
+//            let nextModel = DivT5s[index + 1]
+//            //t5group.enter()
+//            t5loadQueue.async {
+//                do {
+//                    try nextModel.loadResources()
+//                } catch {
+//                    print("Failed to load next T5 Model")
+//                }
+//                //t5group.leave()
+//            }
+//        }
         t5group.wait()
     }
       

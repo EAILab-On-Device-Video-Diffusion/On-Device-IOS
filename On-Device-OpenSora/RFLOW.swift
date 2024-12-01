@@ -25,9 +25,15 @@ public final class RFLOW {
   
   public let numSamplingsteps: Int
   public let numTimesteps: Int
-  public let numLpltarget : Int
+  public var numLpltarget : Int
   public let cfgScale: Float
   public let scheduler: RFlowScheduler
+  
+  public var best_cos : Float
+  public var prev_vel : MLTensor
+  public let cos_tolerance : Float
+  public var tolerance_n : Int
+  
 //  public let useDiscreteTimestepTransform: Bool
 //  public let useTimestepTransform: Bool
   
@@ -39,6 +45,11 @@ public final class RFLOW {
     self.scheduler = RFlowScheduler(numTimesteps: numTimesteps)
 //    self.useDiscreteTimestepTransform = useDiscreteTimestepTransform
 //    self.useTimestepTransform = useTimestepTransform
+    self.best_cos = 0.0
+    self.prev_vel = MLTensor(zeros: [1,20,32,32],scalarType:Float.self)
+    self.cos_tolerance = 0.0001
+    self.tolerance_n = 5
+    
   }
   
   public func sample(rflowInput: RFLOWInput, yNull: MLShapedArray<Float32>) async -> MLTensor {
@@ -54,6 +65,9 @@ public final class RFLOW {
     modelArgs["BDM"] = rflowInput.BDM
     // prepare timesteps
     var timeSteps: [Float32] = []
+    
+    
+    
     for i in 0..<self.numSamplingsteps {
       var t = (1.0 - Float32(i) / Float32(self.numSamplingsteps)) * Float32(self.numTimesteps)
       t = timestep_transform(t: round(t), num_timesteps: self.numTimesteps, resolution: rflowInput.resolution)
@@ -68,6 +82,11 @@ public final class RFLOW {
     var z = MLTensor(rflowInput.z)
     let startTime = DispatchTime.now()
 
+    // previous velocity
+    
+    var prev_velocity: MLTensor = MLTensor(repeating: 0.0, shape: rflowInput.z.shape, scalarType: Float32.self)
+    
+    
     for (i,t) in timeSteps.enumerated() {
       print("== Step \(i) ==")
       // mask for adding noise
@@ -90,6 +109,19 @@ public final class RFLOW {
       let zIn = await MLTensor(concatenating: [z,z], alongAxis: 0).shapedArray(of: Float32.self)
       let tIn = await MLTensor(concatenating: [T,T], alongAxis: 0).shapedArray(of: Float32.self)
       var pred: MLTensor = try! await rflowInput.model.sample(x: zIn, timestep: tIn, modelargs: modelArgs)
+      
+      //if sum of previous velocity is 0 == None, prev_vel is pred
+      if await prev_velocity.sum().shapedArray(of: Float32.self) == MLShapedArray(arrayLiteral: 0.0) {
+        prev_velocity = pred
+      }
+      
+      //bosung, LPL Shoot flags
+      var shoot_flag = await self.compute_cos_sim(prev: prev_velocity, v_pred: pred, i: i)
+      
+      if shoot_flag == true {
+        self.numLpltarget = i
+      }
+        
 //      print(await pred.shapedArray(of: Float32.self))
 //      var printOutput = [Float32]()
 //      for i in 0...100 {
@@ -114,7 +146,7 @@ public final class RFLOW {
       // update z
       var dt = i < timeSteps.count - 1 ? timeSteps[i] - timeSteps[i + 1] : timeSteps[i]
       
-      if i == self.numLpltarget - 1 {
+      if i == self.numLpltarget {
         dt = timeSteps[i]
       }
       
@@ -130,8 +162,11 @@ public final class RFLOW {
 //      print(await z.shapedArray(of: Float32.self))
       
       
-      if i == self.numLpltarget - 1 {
+      if i == self.numLpltarget{
         // break the loop
+        let endTime = DispatchTime.now()
+        let elapsedTime = endTime.uptimeNanoseconds - startTime.uptimeNanoseconds
+        print("STDit Running Time: \(Double(elapsedTime) / 1000000000)")
         return z
       }
       
@@ -144,6 +179,7 @@ public final class RFLOW {
 }
 
 extension RFLOW {
+
   func timestep_transform(t: Float32, num_timesteps: Int = 1, resolution: Double) -> Float32 {
     let base_resolution = 512.0 * 512.0
     
@@ -155,4 +191,38 @@ extension RFLOW {
     new_t = new_t * Float32(num_timesteps)
     return new_t
   }
+  
+  
+  func compute_cos_sim(prev: MLTensor, v_pred: MLTensor,i:Int) async -> Bool{
+    var shoot_flag = false
+    if await prev.sum().shapedArray(of: Float32.self) != MLShapedArray(arrayLiteral: 0.0) {
+      
+      let prev_shape = prev.shape
+      var pred_v_val = prev.split(count: prev_shape[0], alongAxis: 0)[0].split(count: prev_shape[1], alongAxis: 1)[0].split(count: prev_shape[2], alongAxis: 2)[0]
+      var v_pred_val = v_pred.split(count: prev_shape[0], alongAxis: 0)[0].split(count: prev_shape[1], alongAxis: 1)[0].split(count: prev_shape[2], alongAxis: 2)[0]
+      let pred_norm = pred_v_val.squareRoot().sum()
+      let prev_norm = v_pred_val.squareRoot().sum()
+      
+      pred_v_val = pred_v_val / pred_norm
+      v_pred_val = v_pred_val / prev_norm
+      
+      let cos_sim = pred_v_val.matmul(v_pred_val).sum()
+      let cos_sim_mean = Float32(MLMultiArray(await cos_sim.mean().shapedArray(of: Float32.self))[0])
+      if cos_sim_mean > self.best_cos + self.cos_tolerance {
+        self.best_cos = cos_sim_mean
+        self.tolerance_n = 5
+        shoot_flag = false
+      }
+      
+      else {
+        self.tolerance_n -= 1
+      }
+      
+      if tolerance_n == 0 {
+        shoot_flag = true
+      }
+    }
+    return shoot_flag
+  }
 }
+

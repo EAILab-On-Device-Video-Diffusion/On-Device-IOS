@@ -39,7 +39,7 @@ let VAE: VAEDecoder?
 let Converter: Tensor2Vid?
 
 init(resourcesAt baseURL: URL, videoConverter converter: Tensor2Vid ) throws {
-    
+//  let baseURL = baseURL.appending(path: "Contents/Resources")
     let urls = ResourceURLs(resourcesAt: baseURL)
     Converter = converter
     
@@ -99,6 +99,11 @@ func sample(prompts: [String], logdir: URL) { // for ios
     Task(priority: .high) {
     do {
         for (index, prompt) in prompts.enumerated() {
+            // skipping what we already did
+          if index < 0 {
+            print("skipping sample; prompt: \(prompt)")
+            continue
+          }
             print("sample start; prompt: \(prompt)")
             var filename = "sample-\(index).mp4"
             print(prompt)
